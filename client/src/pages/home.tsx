@@ -27,8 +27,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Assets
-import voltMain from "@assets/generated_images/volt_chihuahua_on_dark_blue_background.png";
-import voltTools from "@assets/generated_images/volt_chihuahua_with_tools_on_white.png";
+import voltMain from "@assets/Generated Image November 20, 2025 - 8_49AM_1763673302834.png";
+import voltTools from "@assets/Gemini_Generated_Image_62tzie62tzie62tz_1763673302834.png";
 import logoRound from "@assets/LOGO_CTL_1763673320699.jpg";
 import logoText from "@assets/IMAGEN_CTL_1763673302835.jpg";
 
@@ -187,7 +187,7 @@ function Hero() {
             <img 
               src={voltMain} 
               alt="Volt el experto" 
-              className="relative z-10 object-contain w-full h-full drop-shadow-2xl rounded-2xl"
+              className="relative z-10 object-contain w-full h-full drop-shadow-2xl"
             />
             
             <motion.div 
@@ -260,7 +260,7 @@ function HowItWorks() {
 
         <div className="mt-12 flex justify-center">
           <div className="bg-blue-50 p-4 rounded-xl inline-flex items-center gap-4 max-w-md border border-blue-100 shadow-sm">
-            <img src={voltTools} alt="Volt Mini" className="w-12 h-12 object-contain mix-blend-multiply" />
+            <img src={voltTools} alt="Volt Mini" className="w-12 h-12 object-contain" />
             <p className="text-sm text-primary font-bold italic">
               "Si no entiendes una tarifa, no te preocupes, yo te la explico."
             </p>
@@ -497,7 +497,7 @@ function MeetVolt() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2 flex justify-center">
-            <img src={voltTools} alt="Volt con herramientas" className="w-full max-w-md drop-shadow-xl mix-blend-multiply" />
+            <img src={voltTools} alt="Volt con herramientas" className="w-full max-w-md drop-shadow-xl" />
           </div>
           <div className="md:w-1/2">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 uppercase tracking-tight">Conoce a Volt, tu experto en luz</h2>
