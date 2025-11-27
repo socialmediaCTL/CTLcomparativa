@@ -55,15 +55,11 @@ export default function Home() {
       <AnimatePresence>
         {loading && <Preloader />}
       </AnimatePresence>
-
       <Navbar />
       <Hero />
       <HowItWorks />
       <Comparison />
       <Savings />
-      <Collaborators />
-      <Trust />
-      <FutureIncentives />
       <MeetVolt />
       <FAQ />
       <Footer />
@@ -80,7 +76,23 @@ function Preloader() {
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[var(--color-brand-blue)]"
     >
       <div className="relative">
-        <img src={logoLoading} alt="Logo" className="w-48 h-auto" />
+        <motion.div
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <img src={logoLoading} alt="Logo" className="w-48 h-auto" />
+        </motion.div>
+        <motion.div
+          className="absolute -top-6 -right-6 text-[var(--color-brand-yellow)]"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 15, -15, 0],
+            filter: ["brightness(1)", "brightness(1.5)", "brightness(1)"]
+          }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <Zap className="w-12 h-12 fill-current drop-shadow-[0_0_10px_rgba(255,255,0,0.5)]" />
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -471,39 +483,35 @@ function Savings() {
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center gap-12">
         {/* Imagen del personaje a la izquierda */}
-        <div className="flex-1 flex justify-center lg:justify-end">
+        <div className="flex-1 flex flex-col items-center lg:items-end gap-8">
           <img src={voltAhorro} alt="Volt Ahorro" className="w-full max-w-md h-auto object-contain drop-shadow-2xl" />
-        </div>
-        {/* Contenido a la derecha */}
-        <div className="flex-1 flex flex-col gap-8">
-          {/* Tarjeta grande + tarjetas pequeñas */}
-          <div className="flex items-start gap-4">
-            {/* Tarjeta grande */}
-            <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 flex flex-col items-center justify-center w-40 h-40 hover:bg-white/20 transition-colors">
-              <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">100%</div>
-              <p className="text-blue-100 font-bold uppercase text-xs tracking-wider">Online y sin llamadas</p>
-            </Card>
-            {/* Tarjetas pequeñas */}
-            <div className="grid grid-cols-2 gap-4 flex-1">
-              <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 text-center flex flex-col items-center justify-center h-32 hover:bg-white/20 transition-colors">
-                <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">300€</div>
-                <p className="text-blue-100 font-bold uppercase text-xs tracking-wider">Ahorro potencial anual</p>
-              </Card>
-              <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 text-center flex flex-col items-center justify-center h-32 hover:bg-white/20 transition-colors">
-                <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">3 min</div>
-                <p className="text-blue-100 font-bold uppercase text-xs tracking-wider">Tiempo medio del proceso</p>
-              </Card>
-            </div>
-          </div>
-          {/* Bloque de caso de éxito */}
-          <div className="self-end w-full max-w-md bg-white/10 backdrop-blur border-white/20 p-4 rounded-lg">
+          {/* Bloque de caso de éxito movido aquí */}
+          <div className="w-full max-w-md bg-white/10 backdrop-blur border-white/20 p-4 rounded-lg">
             <h3 className="text-lg font-bold text-[var(--color-brand-yellow)] mb-2">Caso de éxito</h3>
             <p className="text-white">"Gracias a Volt ahorré 45€/mes y el proceso fue rápido y sin llamadas." – María G.</p>
           </div>
         </div>
+        {/* Contenido a la derecha */}
+        <div className="flex-1 flex flex-col gap-8 w-full">
+          {/* Grid unificado de 3 tarjetas iguales */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+            <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 flex flex-col items-center justify-center h-40 hover:bg-white/20 transition-colors">
+              <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">100%</div>
+              <p className="text-blue-100 font-bold uppercase text-xs tracking-wider text-center">Online y sin llamadas</p>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 flex flex-col items-center justify-center h-40 hover:bg-white/20 transition-colors">
+              <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">300€</div>
+              <p className="text-blue-100 font-bold uppercase text-xs tracking-wider text-center">Ahorro potencial anual</p>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 flex flex-col items-center justify-center h-40 hover:bg-white/20 transition-colors">
+              <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">3 min</div>
+              <p className="text-blue-100 font-bold uppercase text-xs tracking-wider text-center">Tiempo medio del proceso</p>
+            </Card>
+          </div>
+        </div>
       </div>
       {/* Testimonios */}
-      <div className="max-w-4xl mx-auto mt-12">
+      <div className="max-w-4xl mx-auto mt-12 px-4 md:px-0"> {/* <-- AQUI AGREGUÉ px-4 para móviles */}
         <div className="relative bg-white text-primary p-8 rounded-2xl shadow-2xl">
           <div className="flex items-center">
             <button onClick={prevTestimonial} className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Anterior testimonio">
@@ -533,7 +541,7 @@ function Savings() {
             ))}
           </div>
         </div>
-        <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+        <p className="text-muted-foreground max-w-2xl mx-auto mb-12 mt-8 text-center">
           Además del ahorro directo, estamos preparando incentivos exclusivos para nuestra comunidad.
         </p>
 
@@ -578,11 +586,12 @@ function MeetVolt() {
   ];
 
   return (
-    <section id="meet-volt" className="py-12 md:py-20 bg-blue-50">
+    <section id="meet-volt" className="py-12 md:py-20 bg-blue-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-16 max-w-6xl mx-auto">
-          <div className="md:w-5/12 flex justify-center md:justify-center relative">
-            <div className="relative scale-125">
+          <div className="md:w-5/12 flex justify-center md:justify-center relative mb-12 md:mb-0">
+            {/* Ajusté la escala para móvil (scale-100) y desktop (md:scale-125) */}
+            <div className="relative scale-100 md:scale-125">
               {/* Dark Neon Gradient Background */}
               <motion.div
                 animate={{ opacity: [0.4, 0.2, 0.4], scale: [0.75, 0.7, 0.75] }}
@@ -595,13 +604,14 @@ function MeetVolt() {
                 className="absolute inset-0 bg-indigo-500/30 rounded-full blur-[40px] mix-blend-screen"
               ></motion.div>
 
-              <img src={voltTools} alt="Volt con herramientas" className="w-full max-w-sm drop-shadow-2xl relative z-10 scale-[1.4] md:scale-[1.3]" />
+              {/* Ajusté la escala de la imagen también */}
+              <img src={voltTools} alt="Volt con herramientas" className="w-full max-w-sm drop-shadow-2xl relative z-10 scale-100 md:scale-[1.3]" />
 
               {/* Floating Quality Buttons */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                className="absolute top-12 -left-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
+                className="absolute top-0 -left-4 md:top-12 md:-left-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
               >
                 <Brain className="w-4 h-4 text-[var(--color-brand-yellow)] fill-[var(--color-brand-yellow)]" />
                 <span className="text-sm font-bold text-primary">Experto</span>
@@ -610,7 +620,7 @@ function MeetVolt() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-16 -right-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
+                className="absolute bottom-4 -right-4 md:bottom-16 md:-right-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
               >
                 <ShieldCheck className="w-4 h-4 text-[var(--color-brand-yellow)]" />
                 <span className="text-sm font-bold text-primary">Protector</span>
@@ -619,8 +629,8 @@ function MeetVolt() {
           </div>
 
           <div className="md:w-6/12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 uppercase tracking-tight">Conoce a Volt, tu experto en luz</h2>
-            <p className="text-lg text-muted-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 uppercase tracking-tight text-center md:text-left">Conoce a Volt, tu experto en luz</h2>
+            <p className="text-lg text-muted-foreground mb-6 text-center md:text-left">
               Volt es el chihuahua que te acompaña en cada paso. Él representa nuestra forma de trabajar: cercano, inteligente y siempre atento a que no pagues de más.
             </p>
 
@@ -735,23 +745,26 @@ function Footer() {
             </p>
           </div>
 
-          <div>
-            <h4 className="font-bold mb-4 text-[var(--color-brand-yellow)] uppercase text-sm tracking-wider">Enlaces</h4>
-            <ul className="space-y-2 text-white/80">
-              <li><a href="#" className="hover:text-white">Inicio</a></li>
-              <li><a href="#how-it-works" className="hover:text-white">Cómo funciona</a></li>
-              <li><a href="#savings" className="hover:text-white">Ahorro</a></li>
-              <li><a href="#" className="hover:text-white">Blog</a></li>
-            </ul>
-          </div>
+          {/* Contenedor para Enlaces y Legal juntos en móvil */}
+          <div className="col-span-1 md:col-span-2 grid grid-cols-2 gap-8">
+            <div>
+              <h4 className="font-bold mb-4 text-[var(--color-brand-yellow)] uppercase text-sm tracking-wider">Enlaces</h4>
+              <ul className="space-y-2 text-white/80">
+                <li><a href="#" className="hover:text-white">Inicio</a></li>
+                <li><a href="#how-it-works" className="hover:text-white">Cómo funciona</a></li>
+                <li><a href="#savings" className="hover:text-white">Ahorro</a></li>
+                <li><a href="#" className="hover:text-white">Blog</a></li>
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="font-bold mb-4 text-[var(--color-brand-yellow)] uppercase text-sm tracking-wider">Legal</h4>
-            <ul className="space-y-2 text-white/80">
-              <li><a href="#" className="hover:text-white">Aviso Legal</a></li>
-              <li><a href="#" className="hover:text-white">Privacidad</a></li>
-              <li><a href="#" className="hover:text-white">Cookies</a></li>
-            </ul>
+            <div>
+              <h4 className="font-bold mb-4 text-[var(--color-brand-yellow)] uppercase text-sm tracking-wider">Legal</h4>
+              <ul className="space-y-2 text-white/80">
+                <li><a href="#" className="hover:text-white">Aviso Legal</a></li>
+                <li><a href="#" className="hover:text-white">Privacidad</a></li>
+                <li><a href="#" className="hover:text-white">Cookies</a></li>
+              </ul>
+            </div>
           </div>
         </div>
 
