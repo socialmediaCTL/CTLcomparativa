@@ -37,6 +37,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Assets
 import voltMain from "@assets/volt_hero_v2.png";
 import voltTools from "@assets/volt_tools.png";
+import voltAhorro from "@assets/volt_ahorro.png";
 import logoRound from "@assets/logo_ctl_clean.png";
 import logoLoading from "@assets/logo sin fondo.png";
 import arcosImage from "@assets/arcos.png";
@@ -338,7 +339,7 @@ function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="relative bg-white p-8 rounded-2xl shadow-lg border border-blue-50 hover:border-blue-100 hover:shadow-xl transition-all group"
+              className="relative bg-white p-8 rounded-2xl shadow-lg border border-blue-50 hover:border-blue-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-out group"
             >
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-900/20 relative z-10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                 {step.icon}
@@ -369,8 +370,8 @@ function Comparison() {
   return (
     <section id="comparison" className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+          <div className="space-y-6 text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-primary leading-tight uppercase">
               Más que un comparador: tu filtro de alta velocidad
             </h2>
@@ -392,11 +393,13 @@ function Comparison() {
             </ul>
           </div>
 
-          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-xl">
-            <h3 className="text-xl font-bold text-primary mb-6 text-center uppercase">Comparativa</h3>
-            <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
+          <div className="bg-[#1c2e4a] rounded-2xl p-8 border border-white/10 shadow-xl w-full text-white">
+            <h3 className="text-xl font-bold text-white mb-8 text-center uppercase">Comparativa</h3>
+            <div className="grid grid-cols-2 gap-8">
               <div className="space-y-4">
-                <div className="font-bold text-muted-foreground text-center mb-4 uppercase text-sm">Otros</div>
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <div className="font-bold text-slate-300 text-center uppercase text-sm">Otros</div>
+                </div>
                 <div className="bg-red-50 p-4 rounded-lg text-sm text-red-800 border border-red-100 h-24 flex items-center justify-center text-center font-medium">
                   Piden tu número para llamarte sin parar
                 </div>
@@ -406,7 +409,9 @@ function Comparison() {
               </div>
 
               <div className="space-y-4">
-                <div className="font-bold text-primary text-center mb-4 uppercase text-sm">Comparamos Tu Luz</div>
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img src={logoRound} alt="Comparamos Tu Luz" className="h-16 w-auto object-contain" />
+                </div>
                 <div className="bg-blue-50 p-4 rounded-lg text-sm text-primary border border-blue-100 h-24 flex items-center justify-center text-center font-bold shadow-sm">
                   Subes tu factura y ves resultados al instante
                 </div>
@@ -464,181 +469,70 @@ function Savings() {
   return (
     <section id="savings" className="py-12 md:py-20 bg-brand-gradient text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase tracking-tight">Hasta al menos 30€ al mes</h2>
-          <p className="text-blue-200 text-lg max-w-2xl mx-auto">
-            Nuestros usuarios han optimizado sus facturas drásticamente.
-          </p>
+      <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+        {/* Imagen del personaje a la izquierda */}
+        <div className="flex-1 flex justify-center lg:justify-end">
+          <img src={voltAhorro} alt="Volt Ahorro" className="w-full max-w-md h-auto object-contain drop-shadow-2xl" />
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-8 text-center">
-            <div className="text-5xl font-bold text-[var(--color-brand-yellow)] mb-2">300€</div>
-            <p className="text-blue-100 font-bold uppercase text-sm tracking-wider">Ahorro potencial anual</p>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-8 text-center">
-            <div className="text-5xl font-bold text-[var(--color-brand-yellow)] mb-2">3 min</div>
-            <p className="text-blue-100 font-bold uppercase text-sm tracking-wider">Tiempo medio del proceso</p>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-8 text-center">
-            <div className="text-5xl font-bold text-[var(--color-brand-yellow)] mb-2">100%</div>
-            <p className="text-blue-100 font-bold uppercase text-sm tracking-wider">Online y sin llamadas</p>
-          </Card>
-        </div>
-
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="relative bg-white text-primary p-8 rounded-2xl shadow-2xl">
-            <div className="flex items-center">
-              <button
-                onClick={prevTestimonial}
-                className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10"
-                aria-label="Anterior testimonio"
-              >
-                <ChevronLeft className="w-6 h-6 md:w-10 md:h-10" />
-              </button>
-
-              <div className="flex-1 px-4 md:px-12">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col md:flex-row gap-6 items-center"
-                  >
-                    <div className="w-20 h-20 bg-slate-200 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center">
-                      <Users className="w-10 h-10 text-slate-400" />
-                    </div>
-                    <div>
-                      <p className="text-lg italic mb-4">
-                        "{testimonials[currentIndex].text}"
-                      </p>
-                      <div className="font-bold text-primary">— {testimonials[currentIndex].name}</div>
-                      <div className="text-sm text-muted-foreground font-medium">Ahorró {testimonials[currentIndex].amount}</div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <button
-                onClick={nextTestimonial}
-                className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10"
-                aria-label="Siguiente testimonio"
-              >
-                <ChevronRight className="w-6 h-6 md:w-10 md:h-10" />
-              </button>
-            </div>
-
-            <div className="flex justify-center gap-2 mt-6">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-[var(--color-brand-blue)] w-6' : 'bg-slate-300'}`}
-                  aria-label={`Ir al testimonio ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Collaborators() {
-  return (
-    <section id="collaborators" className="py-12 md:py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-12 overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)] rounded-full filter blur-[80px] opacity-20"></div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div>
-              <h2 className="text-3xl font-bold mb-4 uppercase tracking-tight">Gana comisiones recomendando ahorro real</h2>
-              <p className="text-slate-300 mb-8 text-lg">
-                Si tienes audiencia, nosotros ponemos la herramienta y tú el código QR. Todo lo facturado del día 1 al 30 se paga el día 5.
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                    <BarChart3 className="text-[var(--color-brand-yellow)]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg uppercase text-sm tracking-wider">Seguimiento en tiempo real</h4>
-                    <p className="text-slate-400 text-sm">Panel privado para ver tus conversiones.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                    <FileText className="text-[var(--color-brand-yellow)]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg uppercase text-sm tracking-wider">Autofactura mensual</h4>
-                    <p className="text-slate-400 text-sm">Pagos automáticos y transparentes.</p>
-                  </div>
-                </div>
-              </div>
-
-              <Button className="mt-8 bg-[var(--color-brand-yellow)] text-primary hover:bg-yellow-400 font-bold uppercase tracking-wide shadow-lg glow-yellow">
-                Ser Colaborador
-              </Button>
-            </div>
-
-            <div className="hidden md:block relative h-full min-h-[300px]">
-              <div className="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 h-full flex items-center justify-center">
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-[var(--color-brand-yellow)] mb-2 uppercase">Panel de Partner</p>
-                  <p className="text-slate-400">Próximamente visualización del dashboard</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Trust() {
-  return (
-    <section id="trust" className="py-12 md:py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-primary mb-4 uppercase tracking-tight">Confianza y Experiencia</h2>
-          <p className="text-muted-foreground font-medium">Tu factura no es un experimento.</p>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {[
-            { title: "+10 Años", desc: "Experiencia en el sector energético" },
-            { title: "< 2%", desc: "Índice de bajas anual" },
-            { title: "0", desc: "Incidencias no resueltas" },
-            { title: "100%", desc: "Monitorización en tiempo real" }
-          ].map((stat, i) => (
-            <Card key={i} className="p-6 text-center border-none shadow-sm bg-white hover:shadow-md transition-shadow">
-              <div className="text-3xl font-bold text-[var(--color-brand-blue)] mb-2">{stat.title}</div>
-              <p className="text-sm text-muted-foreground font-medium uppercase tracking-wide">{stat.desc}</p>
+        {/* Contenido a la derecha */}
+        <div className="flex-1 flex flex-col gap-8">
+          {/* Tarjeta grande + tarjetas pequeñas */}
+          <div className="flex items-start gap-4">
+            {/* Tarjeta grande */}
+            <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 flex flex-col items-center justify-center w-40 h-40 hover:bg-white/20 transition-colors">
+              <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">100%</div>
+              <p className="text-blue-100 font-bold uppercase text-xs tracking-wider">Online y sin llamadas</p>
             </Card>
-          ))}
+            {/* Tarjetas pequeñas */}
+            <div className="grid grid-cols-2 gap-4 flex-1">
+              <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 text-center flex flex-col items-center justify-center h-32 hover:bg-white/20 transition-colors">
+                <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">300€</div>
+                <p className="text-blue-100 font-bold uppercase text-xs tracking-wider">Ahorro potencial anual</p>
+              </Card>
+              <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 text-center flex flex-col items-center justify-center h-32 hover:bg-white/20 transition-colors">
+                <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">3 min</div>
+                <p className="text-blue-100 font-bold uppercase text-xs tracking-wider">Tiempo medio del proceso</p>
+              </Card>
+            </div>
+          </div>
+          {/* Bloque de caso de éxito */}
+          <div className="self-end w-full max-w-md bg-white/10 backdrop-blur border-white/20 p-4 rounded-lg">
+            <h3 className="text-lg font-bold text-[var(--color-brand-yellow)] mb-2">Caso de éxito</h3>
+            <p className="text-white">"Gracias a Volt ahorré 45€/mes y el proceso fue rápido y sin llamadas." – María G.</p>
+          </div>
         </div>
       </div>
-    </section>
-  );
-}
-
-function FutureIncentives() {
-  return (
-    <section id="incentives" className="py-12 md:py-20 bg-white border-t border-slate-100">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-primary mb-4 uppercase tracking-tight">Ahorra hoy… y gana mañana</h2>
+      {/* Testimonios */}
+      <div className="max-w-4xl mx-auto mt-12">
+        <div className="relative bg-white text-primary p-8 rounded-2xl shadow-2xl">
+          <div className="flex items-center">
+            <button onClick={prevTestimonial} className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Anterior testimonio">
+              <ChevronLeft className="w-6 h-6 md:w-10 md:h-10" />
+            </button>
+            <div className="flex-1 px-4 md:px-12">
+              <AnimatePresence mode="wait">
+                <motion.div key={currentIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="flex flex-col md:flex-row gap-6 items-center">
+                  <div className="w-20 h-20 bg-slate-200 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <Users className="w-10 h-10 text-slate-400" />
+                  </div>
+                  <div>
+                    <p className="text-lg italic mb-4">"{testimonials[currentIndex].text}"</p>
+                    <div className="font-bold text-primary">— {testimonials[currentIndex].name}</div>
+                    <div className="text-sm text-muted-foreground font-medium">Ahorró {testimonials[currentIndex].amount}</div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <button onClick={nextTestimonial} className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Siguiente testimonio">
+              <ChevronRight className="w-6 h-6 md:w-10 md:h-10" />
+            </button>
+          </div>
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button key={index} onClick={() => setCurrentIndex(index)} className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-[var(--color-brand-blue)] w-6' : 'bg-slate-300'}`} aria-label={`Ir al testimonio ${index + 1}`}></button>
+            ))}
+          </div>
+        </div>
         <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
           Además del ahorro directo, estamos preparando incentivos exclusivos para nuestra comunidad.
         </p>
@@ -661,7 +555,7 @@ function FutureIncentives() {
           ))}
         </div>
       </div>
-    </section>
+    </section >
   );
 }
 
