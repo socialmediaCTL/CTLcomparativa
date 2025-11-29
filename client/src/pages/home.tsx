@@ -33,23 +33,25 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 // Assets
 import voltMain from "@assets/volt_hero_v2.png";
 import voltTools from "@assets/volt_tools.png";
+import voltHowToWork from "@assets/volt_hero_final.png";
 import voltAhorro from "@assets/volt_ahorro.png";
 import logoRound from "@assets/logo_ctl_clean.png";
 import logoLoading from "@assets/logo sin fondo.png";
 import arcosImage from "@assets/arcos.png";
-
+import testimonialMaria from "@assets/testimonial_maria.jpg";
+import testimonialCarlos from "@assets/testimonial_carlos.jpg";
+import testimonialLaura from "@assets/testimonial_laura.jpg";
+import testimonialAntonio from "@assets/testimonial_antonio.jpg";
+import testimonialIsabel from "@assets/testimonial_isabel.jpg";
 export default function Home() {
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <div className="min-h-screen bg-background font-sans">
       <AnimatePresence>
@@ -66,7 +68,6 @@ export default function Home() {
     </div>
   );
 }
-
 function Preloader() {
   return (
     <motion.div
@@ -97,11 +98,9 @@ function Preloader() {
     </motion.div>
   );
 }
-
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -109,7 +108,6 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <nav
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 text-white ${isScrolled
@@ -125,15 +123,11 @@ function Navbar() {
             className="h-16 md:h-20 w-auto transition-transform duration-300 hover:scale-110"
           />
         </div>
-
         <div className="hidden xl:flex items-center">
           {[
             { name: "Cómo funciona", href: "#how-it-works" },
             { name: "Comparativa", href: "#comparison" },
             { name: "Ahorro", href: "#savings" },
-            { name: "Colaboradores", href: "#collaborators" },
-            { name: "Confianza", href: "#trust" },
-            { name: "Incentivos", href: "#incentives" },
             { name: "Conoce a Volt", href: "#meet-volt" },
             { name: "Preguntas", href: "#faq" },
           ].map((link, index, array) => (
@@ -154,12 +148,10 @@ function Navbar() {
             Subir Factura
           </Button>
         </div>
-
         <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X className="text-white" /> : <Menu className="text-white" />}
         </button>
       </div>
-
       {isOpen && (
         <div className="md:hidden p-4 bg-white border-b space-y-4">
           <a href="#how-it-works" className="block text-sm font-bold uppercase text-foreground hover:text-[var(--color-brand-yellow)]" onClick={() => setIsOpen(false)}>Cómo funciona</a>
@@ -173,12 +165,10 @@ function Navbar() {
     </nav>
   );
 }
-
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-brand-blue)] pt-20 pb-12 md:pt-32 md:pb-32 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 to-transparent opacity-50 blur-3xl pointer-events-none"></div>
-
       <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -190,17 +180,15 @@ function Hero() {
             <Zap className="mr-2 h-4 w-4 text-[var(--color-brand-yellow)]" />
             <span>Ahorro inteligente garantizado</span>
           </div>
-
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight font-sans leading-tight uppercase">
+          {/* CORREGIDO: Se eliminó font-sans para que tome Montserrat globalmente */}
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight uppercase">
             Sube tu factura y <br />
             ahorra hasta <br />
             <span className="text-[var(--color-brand-yellow)]">300€</span> al año
           </h1>
-
           <p className="text-lg text-white max-w-2xl mx-auto lg:mx-0 font-medium">
             Rápido, seguro y sin llamadas comerciales. Nosotros comparamos por ti, tú solo eliges y ahorras.
           </p>
-
           <div className="hidden lg:flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <Button size="lg" className="bg-[var(--color-brand-yellow)] text-primary hover:bg-yellow-400 font-bold text-lg h-14 px-8 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all duration-300 animate-pulse-slow uppercase border-2 border-white">
               Subir mi factura ahora
@@ -209,7 +197,6 @@ function Hero() {
               Ver cómo funciona
             </Button>
           </div>
-
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-sm text-white pt-4 font-medium">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-6 w-6 text-[var(--color-brand-yellow)]" />
@@ -221,7 +208,6 @@ function Hero() {
             </div>
           </div>
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -235,14 +221,12 @@ function Hero() {
               alt=""
               className="absolute inset-0 w-full h-full z-0 pointer-events-none object-contain scale-125"
             />
-
             <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
             <img
               src={voltMain}
               alt="Volt el experto"
-              className="relative z-10 object-contain w-full h-full drop-shadow-2xl scale-[1.4] md:scale-[1.4]"
+              className="relative z-10 object-contain w-full h-[80%] drop-shadow-2xl scale-[1.4] md:scale-[1.4]"
             />
-
             {/* Floating Buttons */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
@@ -252,7 +236,6 @@ function Hero() {
               <Users className="w-5 h-5 text-[var(--color-brand-yellow)]" />
               <span className="text-xs font-bold text-white whitespace-nowrap">Comunidad de Ahorro</span>
             </motion.div>
-
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1 }}
@@ -261,7 +244,6 @@ function Hero() {
               <MessageCircle className="w-5 h-5 text-[var(--color-brand-yellow)]" />
               <span className="text-xs font-bold text-white whitespace-nowrap">Asesoramiento Real</span>
             </motion.div>
-
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 2 }}
@@ -270,7 +252,6 @@ function Hero() {
               <Phone className="w-5 h-5 text-[var(--color-brand-yellow)]" />
               <span className="text-xs font-bold text-white whitespace-nowrap">Sin Spam Telefónico</span>
             </motion.div>
-
             {/* Speech Bubble */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -283,21 +264,18 @@ function Hero() {
                 Tu amigo experto en energía. Sube tu factura y déjame conseguirte el mejor precio."
               </p>
             </motion.div>
-
           </div>
         </motion.div>
-
         {/* New Mobile-Only Side-by-Side Layout */}
         <div className="flex lg:hidden flex-row items-end justify-between mt-10 w-full">
           {/* Left: Big Dog */}
-          <div className="w-[45%] relative -ml-8 translate-y-8">
+          <div className="w-[45%] relative -ml-4 translate-y-4">
             <img
               src={voltMain}
               alt="Volt el experto"
-              className="w-full object-contain scale-[1.65] origin-bottom-left drop-shadow-2xl"
+              className="w-full object-contain scale-125 origin-bottom-left drop-shadow-2xl"
             />
           </div>
-
           {/* Right: Small Buttons */}
           <div className="w-[55%] flex flex-col gap-3 pb-4">
             <Button size="sm" className="w-full bg-[var(--color-brand-yellow)] text-primary hover:bg-yellow-400 font-bold text-xs h-12 shadow-lg uppercase border border-white leading-tight whitespace-normal text-center px-1">
@@ -312,7 +290,6 @@ function Hero() {
     </section >
   );
 }
-
 function HowItWorks() {
   const steps = [
     {
@@ -331,7 +308,6 @@ function HowItWorks() {
       description: "Te mostramos las mejores opciones. Tú eliges, contratas al instante y empiezas a ahorrar."
     }
   ];
-
   return (
     <section id="how-it-works" className="py-12 md:py-20 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -339,11 +315,9 @@ function HowItWorks() {
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 uppercase tracking-tight">¿Cómo funciona Comparamos Tu Luz?</h2>
           <p className="text-lg text-muted-foreground">Tres pasos sencillos para dejar de pagar de más.</p>
         </div>
-
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connecting line for desktop */}
           <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-blue-100 -z-10"></div>
-
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -364,10 +338,9 @@ function HowItWorks() {
             </motion.div>
           ))}
         </div>
-
         <div className="mt-12 flex justify-center">
           <div className="bg-blue-50 p-4 rounded-xl inline-flex items-center gap-4 max-w-md border border-blue-100 shadow-sm">
-            <img src={voltTools} alt="Volt Mini" className="w-12 h-12 object-contain" />
+            <img src={voltHowToWork} alt="Volt Mini" className="w-12 h-12 object-contain" />
             <p className="text-sm text-primary font-bold italic">
               "Si no entiendes una tarifa, no te preocupes, yo te la explico."
             </p>
@@ -377,7 +350,6 @@ function HowItWorks() {
     </section>
   );
 }
-
 function Comparison() {
   return (
     <section id="comparison" className="py-12 md:py-20 bg-white">
@@ -390,7 +362,6 @@ function Comparison() {
             <p className="text-lg text-muted-foreground">
               En un mercado saturado, nosotros somos la luz. Sin letra pequeña, sin comerciales insistentes, solo ahorro claro.
             </p>
-
             <ul className="space-y-4">
               {[
                 "No te pedimos datos para llamarte luego.",
@@ -404,7 +375,6 @@ function Comparison() {
               ))}
             </ul>
           </div>
-
           <div className="bg-[#1c2e4a] rounded-2xl p-8 border border-white/10 shadow-xl w-full text-white">
             <h3 className="text-xl font-bold text-white mb-8 text-center uppercase">Comparativa</h3>
             <div className="grid grid-cols-2 gap-8">
@@ -419,7 +389,6 @@ function Comparison() {
                   Comparaciones genéricas
                 </div>
               </div>
-
               <div className="space-y-4">
                 <div className="h-16 flex items-center justify-center mb-4">
                   <img src={logoRound} alt="Comparamos Tu Luz" className="h-16 w-auto object-contain" />
@@ -438,62 +407,71 @@ function Comparison() {
     </section>
   );
 }
-
 function Savings() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const testimonials = [
     {
       name: "María G., Madrid",
       amount: "45€/mes",
-      text: "Pensaba que ya pagaba poco. Subí mi factura, en 5 minutos tenía una tarifa mejor y hoy pago mucho menos. Increíblemente fácil."
+      text: "Pensaba que ya pagaba poco. Subí mi factura, en 5 minutos tenía una tarifa mejor y hoy pago mucho menos. Increíblemente fácil.",
+      image: testimonialMaria
     },
     {
       name: "Carlos R., Barcelona",
       amount: "38€/mes",
-      text: "Nunca me fié de los comparadores, pero Volt me mostró el ahorro real con mi factura. Sin llamadas molestas, todo 100% online."
+      text: "Nunca me fié de los comparadores, pero Volt me mostró el ahorro real con mi factura. Sin llamadas molestas, todo 100% online.",
+      image: testimonialCarlos
     },
     {
       name: "Laura M., Valencia",
       amount: "32€/mes",
-      text: "Genial que no pidan teléfono para acosar. Subes el PDF, ves tu ahorro y decides tú mismo. Así debería ser siempre."
+      text: "Genial que no pidan teléfono para acosar. Subes el PDF, ves tu ahorro y decides tú mismo. Así debería ser siempre.",
+      image: testimonialLaura
     },
     {
       name: "Antonio S., Sevilla",
       amount: "50€/mes",
-      text: "Somos 4 y el aire dispara la factura. Gracias a Comparamos Tu Luz bajamos el gasto casi a la mitad este verano."
+      text: "Somos 4 y el aire dispara la factura. Gracias a Comparamos Tu Luz bajamos el gasto casi a la mitad este verano.",
+      image: testimonialAntonio
     },
     {
       name: "Isabel P., Bilbao",
       amount: "29€/mes",
-      text: "Sencillo, rápido y muy transparente. Me cambié de compañía al momento y sin papeleos complicados. Lo recomiendo a todo el mundo."
+      text: "Sencillo, rápido y muy transparente. Me cambié de compañía al momento y sin papeleos complicados. Lo recomiendo a todo el mundo.",
+      image: testimonialIsabel
     }
   ];
-
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
-
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
-
   return (
     <section id="savings" className="py-12 md:py-20 bg-brand-gradient text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-      <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-start gap-12">
         {/* Imagen del personaje a la izquierda */}
         <div className="flex-1 flex flex-col items-center lg:items-end gap-8">
-          <img src={voltAhorro} alt="Volt Ahorro" className="w-full max-w-md h-auto object-contain drop-shadow-2xl" />
-          {/* Bloque de caso de éxito movido aquí */}
-          <div className="w-full max-w-md bg-white/10 backdrop-blur border-white/20 p-4 rounded-lg">
-            <h3 className="text-lg font-bold text-[var(--color-brand-yellow)] mb-2">Caso de éxito</h3>
-            <p className="text-white">"Gracias a Volt ahorré 45€/mes y el proceso fue rápido y sin llamadas." – María G.</p>
+          {/* CORREGIDO: Añadido w-3/4 y mx-auto para reducir tamaño en móvil */}
+          <div className="relative w-3/4 md:w-full max-w-sm md:max-w-md mx-auto lg:mx-0 lg:-translate-x-[15%]">
+            <img
+              src={arcosImage}
+              alt=""
+              className="absolute inset-0 w-full h-full z-0 pointer-events-none object-contain scale-145"
+            />
+            <div className="absolute inset-0 z-0 bg-white/20 blur-3xl rounded-full animate-pulse" style={{ animationDuration: '4s' }}></div>
+            <img src={voltAhorro} alt="Volt Ahorro" className="relative z-10 w-full h-auto object-contain drop-shadow-2xl" />
           </div>
+          {/* Bloque de caso de éxito movido aquí */}
         </div>
         {/* Contenido a la derecha */}
         <div className="flex-1 flex flex-col gap-8 w-full">
           {/* Grid unificado de 3 tarjetas iguales */}
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 uppercase text-left">¡EMPECEMOS A AHORRAR HOY!</h2>
+          <p className="text-blue-100 text-lg mb-6 text-left">
+            Únete a miles de usuarios que ya han reducido su factura de luz. Es rápido, sencillo y 100% gratuito.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
             <Card className="bg-white/10 backdrop-blur border-white/20 text-white p-4 flex flex-col items-center justify-center h-40 hover:bg-white/20 transition-colors">
               <div className="text-3xl font-bold text-[var(--color-brand-yellow)] mb-1">100%</div>
@@ -508,68 +486,45 @@ function Savings() {
               <p className="text-blue-100 font-bold uppercase text-xs tracking-wider text-center">Tiempo medio del proceso</p>
             </Card>
           </div>
-        </div>
-      </div>
-      {/* Testimonios */}
-      <div className="max-w-4xl mx-auto mt-12 px-4 md:px-0"> {/* <-- AQUI AGREGUÉ px-4 para móviles */}
-        <div className="relative bg-white text-primary p-8 rounded-2xl shadow-2xl">
-          <div className="flex items-center">
-            <button onClick={prevTestimonial} className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Anterior testimonio">
-              <ChevronLeft className="w-6 h-6 md:w-10 md:h-10" />
-            </button>
-            <div className="flex-1 px-4 md:px-12">
-              <AnimatePresence mode="wait">
-                <motion.div key={currentIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="flex flex-col md:flex-row gap-6 items-center">
-                  <div className="w-20 h-20 bg-slate-200 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center">
-                    <Users className="w-10 h-10 text-slate-400" />
-                  </div>
-                  <div>
-                    <p className="text-lg italic mb-4">"{testimonials[currentIndex].text}"</p>
-                    <div className="font-bold text-primary">— {testimonials[currentIndex].name}</div>
-                    <div className="text-sm text-muted-foreground font-medium">Ahorró {testimonials[currentIndex].amount}</div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-            <button onClick={nextTestimonial} className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Siguiente testimonio">
-              <ChevronRight className="w-6 h-6 md:w-10 md:h-10" />
-            </button>
-          </div>
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
-              <button key={index} onClick={() => setCurrentIndex(index)} className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-[var(--color-brand-blue)] w-6' : 'bg-slate-300'}`} aria-label={`Ir al testimonio ${index + 1}`}></button>
-            ))}
-          </div>
-        </div>
-        <p className="text-muted-foreground max-w-2xl mx-auto mb-12 mt-8 text-center">
-          Además del ahorro directo, estamos preparando incentivos exclusivos para nuestra comunidad.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {[
-            { icon: <Gift className="w-8 h-8" />, title: "Experiencias" },
-            { icon: <Zap className="w-8 h-8" />, title: "Sorteos Luz Gratis" },
-            { icon: <Users className="w-8 h-8" />, title: "Eventos VIP" }
-          ].map((item, i) => (
-            <div key={i} className="group relative p-8 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden">
-              <div className="absolute top-3 right-3 bg-blue-100 text-[var(--color-brand-blue)] text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">
-                Próximamente
+          {/* Testimonios movidos aquí */}
+          <div className="w-full mt-8">
+            <div className="relative bg-white text-primary p-8 rounded-2xl shadow-2xl">
+              <div className="flex items-center">
+                <button onClick={prevTestimonial} className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Anterior testimonio">
+                  <ChevronLeft className="w-6 h-6 md:w-10 md:h-10" />
+                </button>
+                <div className="flex-1 px-4 md:px-12">
+                  <AnimatePresence mode="wait">
+                    <motion.div key={currentIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="flex flex-col md:flex-row gap-6 items-center">
+                      <div className="w-20 h-20 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center border-2 border-slate-200">
+                        <img src={testimonials[currentIndex].image} alt={testimonials[currentIndex].name} className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-lg italic mb-4">"{testimonials[currentIndex].text}"</p>
+                        <div className="font-bold text-primary">— {testimonials[currentIndex].name}</div>
+                        <div className="text-sm text-muted-foreground font-medium">Ahorró {testimonials[currentIndex].amount}</div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                <button onClick={nextTestimonial} className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 p-2 bg-slate-200/50 md:bg-white/20 hover:bg-white/30 rounded-full text-primary md:text-white transition-colors z-10" aria-label="Siguiente testimonio">
+                  <ChevronRight className="w-6 h-6 md:w-10 md:h-10" />
+                </button>
               </div>
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-[var(--color-brand-yellow)] group-hover:scale-110 transition-transform">
-                {item.icon}
+              <div className="flex justify-center gap-2 mt-6">
+                {testimonials.map((_, index) => (
+                  <button key={index} onClick={() => setCurrentIndex(index)} className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-[var(--color-brand-blue)] w-6' : 'bg-slate-300'}`} aria-label={`Ir al testimonio ${index + 1}`}></button>
+                ))}
               </div>
-              <h3 className="font-bold text-lg text-primary uppercase">{item.title}</h3>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      </div >
     </section >
   );
 }
-
 function MeetVolt() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   const features = [
     {
       title: "Vigila las tarifas 24/7",
@@ -584,56 +539,21 @@ function MeetVolt() {
       description: "Nos encargamos de las gestiones pesadas. Si tienes una incidencia o un cobro indebido, Volt reclama por ti."
     }
   ];
-
   return (
     <section id="meet-volt" className="py-12 md:py-20 bg-blue-50 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-16 max-w-6xl mx-auto">
-          <div className="md:w-5/12 flex justify-center md:justify-center relative mb-12 md:mb-0">
-            {/* Ajusté la escala para móvil (scale-100) y desktop (md:scale-125) */}
-            <div className="relative scale-100 md:scale-125">
-              {/* Dark Neon Gradient Background */}
-              <motion.div
-                animate={{ opacity: [0.4, 0.2, 0.4], scale: [0.75, 0.7, 0.75] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 bg-blue-600/40 rounded-full blur-[60px] mix-blend-multiply"
-              ></motion.div>
-              <motion.div
-                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.6, 0.55, 0.6] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute inset-0 bg-indigo-500/30 rounded-full blur-[40px] mix-blend-screen"
-              ></motion.div>
-
-              {/* Ajusté la escala de la imagen también */}
-              <img src={voltTools} alt="Volt con herramientas" className="w-full max-w-sm drop-shadow-2xl relative z-10 scale-100 md:scale-[1.3]" />
-
-              {/* Floating Quality Buttons */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                className="absolute top-0 -left-4 md:top-12 md:-left-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
-              >
-                <Brain className="w-4 h-4 text-[var(--color-brand-yellow)] fill-[var(--color-brand-yellow)]" />
-                <span className="text-sm font-bold text-primary">Experto</span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-4 -right-4 md:bottom-16 md:-right-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
-              >
-                <ShieldCheck className="w-4 h-4 text-[var(--color-brand-yellow)]" />
-                <span className="text-sm font-bold text-primary">Protector</span>
-              </motion.div>
-            </div>
-          </div>
-
-          <div className="md:w-6/12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 uppercase tracking-tight text-center md:text-left">Conoce a Volt, tu experto en luz</h2>
-            <p className="text-lg text-muted-foreground mb-6 text-center md:text-left">
+        {/* CORREGIDO: Invertido el orden visual en Desktop si fuera necesario con flex-row-reverse, 
+            pero aquí cambiamos el orden HTML para que el Texto salga primero en móvil si se desea, 
+            o simplemente Texto Izquierda / Imagen Derecha en Desktop. 
+        */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 max-w-6xl mx-auto">
+          
+          {/* 1. BLOQUE DE TEXTO (Ahora va primero para estar a la izquierda en Desktop) */}
+          <div className="w-full lg:w-6/12 order-2 lg:order-1">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 uppercase tracking-tight text-center lg:text-left">Conoce a Volt, tu experto en luz</h2>
+            <p className="text-lg text-muted-foreground mb-6 text-center lg:text-left">
               Volt es el chihuahua que te acompaña en cada paso. Él representa nuestra forma de trabajar: cercano, inteligente y siempre atento a que no pagues de más.
             </p>
-
             <div className="space-y-4">
               {features.map((item, i) => (
                 <motion.div
@@ -672,12 +592,46 @@ function MeetVolt() {
               ))}
             </div>
           </div>
+          {/* 2. BLOQUE DE IMAGEN (Ahora va segundo para estar a la derecha en Desktop) */}
+          <div className="w-full lg:w-5/12 flex justify-center relative mb-12 lg:mb-0 order-1 lg:order-2">
+            {/* Ajusté la escala y el ancho para móvil */}
+            <div className="relative scale-100 lg:scale-125 w-3/4 max-w-xs lg:max-w-none mx-auto">
+              {/* Dark Neon Gradient Background */}
+              <motion.div
+                animate={{ opacity: [0.4, 0.2, 0.4], scale: [0.75, 0.7, 0.75] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-blue-600/40 rounded-full blur-[60px] mix-blend-multiply"
+              ></motion.div>
+              <motion.div
+                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.6, 0.55, 0.6] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute inset-0 bg-indigo-500/30 rounded-full blur-[40px] mix-blend-screen"
+              ></motion.div>
+              <img src={voltTools} alt="Volt con herramientas" className="w-full drop-shadow-2xl relative z-10" />
+              {/* Floating Quality Buttons */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                className="absolute top-0 -left-4 lg:top-12 lg:-left-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
+              >
+                <Brain className="w-4 h-4 text-[var(--color-brand-yellow)] fill-[var(--color-brand-yellow)]" />
+                <span className="text-sm font-bold text-primary">Experto</span>
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
+                className="absolute bottom-4 -right-4 lg:bottom-16 lg:-right-8 bg-white shadow-xl border border-blue-100 px-4 py-2 rounded-full flex items-center gap-2 z-20"
+              >
+                <ShieldCheck className="w-4 h-4 text-[var(--color-brand-yellow)]" />
+                <span className="text-sm font-bold text-primary">Protector</span>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
 function FAQ() {
   const faqs = [
     {
@@ -701,12 +655,10 @@ function FAQ() {
       a: "Para ti es 100% gratuito. Nosotros cobramos una comisión a las comercializadoras, no a ti."
     },
   ];
-
   return (
     <section id="faq" className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4 max-w-3xl">
         <h2 className="text-3xl font-bold text-primary text-center mb-12 uppercase tracking-tight">Preguntas Frecuentes</h2>
-
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`}>
@@ -726,7 +678,6 @@ function FAQ() {
     </section>
   );
 }
-
 function Footer() {
   return (
     <footer className="bg-[var(--color-brand-blue)] text-white py-8 md:py-12 border-t border-white/10">
@@ -744,7 +695,6 @@ function Footer() {
               La plataforma inteligente que democratiza el ahorro energético. Sin letra pequeña.
             </p>
           </div>
-
           {/* Contenedor para Enlaces y Legal juntos en móvil */}
           <div className="col-span-1 md:col-span-2 grid grid-cols-2 gap-8">
             <div>
@@ -756,7 +706,6 @@ function Footer() {
                 <li><a href="#" className="hover:text-white">Blog</a></li>
               </ul>
             </div>
-
             <div>
               <h4 className="font-bold mb-4 text-[var(--color-brand-yellow)] uppercase text-sm tracking-wider">Legal</h4>
               <ul className="space-y-2 text-white/80">
@@ -767,7 +716,6 @@ function Footer() {
             </div>
           </div>
         </div>
-
         <div className="pt-8 border-t border-white/10 text-center text-sm text-white/60 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; 2025 Comparamos Tu Luz. Todos los derechos reservados.</p>
           <div className="flex items-center gap-2">
