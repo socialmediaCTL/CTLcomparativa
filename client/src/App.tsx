@@ -4,13 +4,15 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
+import Upload from "@/pages/upload";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route component={NotFound} />
-    </Switch>
+  <Route path="/" component={Home} />
+  <Route path="/subir-factura" component={Upload} /> {/* Nueva línea */}
+  <Route component={NotFound} />
+</Switch>
   );
 }
 
