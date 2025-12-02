@@ -62,12 +62,12 @@ import testimonialCarlos from "@assets/testimonial_carlos.jpg";
 import testimonialLaura from "@assets/testimonial_laura.jpg";
 import testimonialAntonio from "@assets/testimonial_antonio.jpg";
 import testimonialIsabel from "@assets/testimonial_isabel.jpg";
-import familyHero from "@assets/family_hero.svg";
+import familyHero from "@assets/family_hero.webp";
 import logoUE from "@assets/logo-compo-ue-color.png";
 import logoFooter from "@assets/logo_footer.webp";
 import voltBoton from "@assets/volt-boton.webp";
 import voltFAQ from "@assets/volt-intriga.webp";
-import familyHero2 from "@assets/family_hero2.jpg";
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -253,7 +253,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0C1A2B] via-[#0C1A2B]/90 to-transparent lg:via-[#0C1A2B]/40 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1A2B] via-transparent to-transparent z-10 lg:hidden"></div>
         <img
-          src={familyHero2}
+          src={familyHero}
           alt="Familia feliz ahorrando luz"
           className="w-full h-full object-cover object-center"
         />
@@ -649,7 +649,7 @@ function Comparison() {
                   Procesos lentos
                 </div>
                 <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
-                  Solo lo que necesitas ver
+                  Resultados en minutos
                 </div>
 
                 {/* Row 2 */}
@@ -657,7 +657,7 @@ function Comparison() {
                   Ofertas confusas
                 </div>
                 <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
-                  100% Digital y claro
+                   Información clara y directa
                 </div>
 
                 {/* Row 3 */}
@@ -1003,16 +1003,12 @@ function MeetVolt() {
 
           {/* TEXTO: Derecha (lg:order-2) */}
           <div className="w-full lg:w-6/12 order-2 lg:order-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1c2e4a] mb-6 uppercase tracking-tight text-center lg:text-left">
-              Conoce a Volt: tu{" "}
-              <span className="text-[var(--color-brand-yellow)]">guía</span> en
-              todo el proceso
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1c2e4a] mb-6 tracking-tight text-center lg:text-left">
+              Volt: tu acompañante en cada{" "}
+              <span className="text-[var(--color-brand-yellow)]"> decisión</span> energética
             </h2>
             <p className="text-lg text-[#1c2e4a] mb-8 text-center lg:text-left">
-              Esta sección existe para que tengas a alguien de confianza
-              acompañándote en cada paso. Volt, nuestro experto canino, es la
-              representación de nuestro compromiso: claridad, protección y ayuda
-              real.
+              Volt está contigo en cada paso importante, haciendo que todo sea más claro y fácil de entender. Su misión es darte seguridad y ayudarte a comprender tu factura sin enredos.
             </p>
 
             {/* TABS NAVIGATION */}
