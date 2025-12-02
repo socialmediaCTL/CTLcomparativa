@@ -172,7 +172,7 @@ function Navbar() {
               )}
             </div>
           ))}
-          <Button className="ml-4 bg-[var(--color-brand-yellow)] text-white hover:bg-yellow-400 font-bold shadow-lg shadow-white/20 hover:shadow-white/40 transition-all uppercase text-xs tracking-wide border-2 border-white whitespace-nowrap transition-all transform hover:scale-105">
+          <Button className="ml-4 bg-[var(--color-brand-yellow)] text-white hover:bg-yellow-400 font-bold shadow-lg shadow-white/20 hover:shadow-white/40 transition-all uppercase text-xs tracking-wide border-2 [text-shadow:1px_1px_2px_black] border-white whitespace-nowrap transition-all transform hover:scale-105">
             Subir Factura
           </Button>
         </div>
@@ -248,7 +248,7 @@ function Hero() {
   //  const [, setLocation] = useLocation();
   return (
     <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[85vh] flex items-center text-white">
-      <div className="absolute top-24 right-0 w-full lg:w-[45%] h-[calc(100%-6rem)] z-0">
+      <div className="absolute top-24 right-0 w-full lg:w-[40%] h-[calc(100%-6rem)] z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0C1A2B] via-[#0C1A2B]/90 to-transparent lg:via-[#0C1A2B]/40 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1A2B] via-transparent to-transparent z-10 lg:hidden"></div>
         <img
@@ -354,7 +354,7 @@ function Hero() {
               <Button
                 size="lg"
                 // onClick={() => setLocation("/subir-factura")} // Añade esta línea
-                className="bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-white font-bold text-lg h-14 px-8 rounded-xl shadow-lg shadow-yellow-500/20 transition-all duration-300 relative z-10"
+                className="bg-[var(--color-brand-yellow)] [text-shadow:1px_1px_2px_black] hover:bg-yellow-400 text-white font-bold text-lg h-14 px-8 rounded-xl shadow-lg shadow-yellow-500/20 transition-all duration-300 relative z-10"
               >
                 Comparar tarifas ahora
               </Button>
@@ -1015,7 +1015,7 @@ function MeetVolt() {
             </p>
 
             {/* TABS NAVIGATION */}
-            <div className="flex flex-wrap gap-2 mb-6 justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-2 mb-6 justify-center lg:justify-start ">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
@@ -1023,7 +1023,7 @@ function MeetVolt() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 ${activeTab === tab.id
                     ? "bg-[var(--color-brand-yellow)] text-white shadow-md transform scale-105"
-                    : "bg-white text-[#1c2e4a] border border-gray-200 hover:bg-gray-50"
+                    : "bg-white text-[#1c2e4a] border  border-gray-200 hover:bg-gray-50"
                     }`}
                 >
                   {tab.label}
@@ -1109,7 +1109,7 @@ function FAQ() {
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Preguntas frecuentes
+            Preguntas <span className="text-[var(--color-brand-yellow)]">frecuentes</span>
           </h2>
           <p className="text-lg text-[#C6CFDA]">
             Resolvemos las dudas más comunes para ayudarte a entender cómo
@@ -1230,7 +1230,7 @@ function CTA() {
           <div className="pt-4 pb-8">
             <Button
               size="lg"
-              className="bg-[var(--color-brand-yellow)]  text-[#f8f8f8] font-bold text-lg h-16 px-10 rounded-full  transition-all transform hover:scale-105"
+              className="bg-[var(--color-brand-yellow)] [text-shadow:1px_1px_2px_black]  text-[#f8f8f8] font-bold text-lg h-16 px-10 rounded-full  transition-all transform hover:scale-105"
             >
               Comparar tarifas ahora
             </Button>
