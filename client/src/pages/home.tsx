@@ -259,7 +259,7 @@ function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-[35%] left-[10%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
+            className="absolute top-[35%] left-[10%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
           >
             <div className="bg-[var(--color-brand-yellow)] p-3 rounded-full text-primary shadow-lg">
               <Users className="w-6 h-6" />
@@ -277,7 +277,7 @@ function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute top-[55%] right-[5%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
+            className="absolute top-[55%] right-[5%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
           >
             <div className="bg-[var(--color-brand-yellow)] p-3 rounded-full text-primary shadow-lg">
               <Zap className="w-6 h-6" />
@@ -295,7 +295,7 @@ function Hero() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="absolute bottom-[10%] left-[35%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
+            className="absolute bottom-[10%] left-[35%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
           >
             <div className="bg-[var(--color-brand-yellow)] p-3 rounded-full text-primary shadow-lg">
               <ShieldCheck className="w-6 h-6" />
@@ -443,6 +443,28 @@ function Features() {
       id="features"
       className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
     >
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <svg
+          className="absolute top-0 left-0 w-full h-full opacity-[0.04]"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 100 C 20 0 50 0 100 100 Z"
+            fill="none"
+            stroke="white"
+            strokeWidth="0.5"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            stroke="white"
+            strokeWidth="0.2"
+          />
+        </svg>
+      </div>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -577,6 +599,7 @@ function Comparison() {
   return (
     <section id="comparison" className="py-20 bg-blue-50 relative overflow-hidden scroll-mt-28">
       <GoldenArcBackground position="top-right" />
+      <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
@@ -721,6 +744,29 @@ function Testimonials() {
       id="testimonials"
       className="py-20  bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
     >
+            {/* Background Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <svg
+          className="absolute top-0 left-0 w-full h-full opacity-[0.04]"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 100 C 20 0 50 0 100 100 Z"
+            fill="none"
+            stroke="white"
+            strokeWidth="0.5"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            stroke="white"
+            strokeWidth="0.2"
+          />
+        </svg>
+      </div>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -969,9 +1015,9 @@ function MeetVolt() {
   ];
 
   return (
-    <section id="meet-volt" className="py-12 bg-blue-50 overflow-hidden scroll-mt-28">
-      <GoldenArcBackground position="bottom-left" />
+    <section id="meet-volt" className="py-12 bg-blue-50 overflow-hidden scroll-mt-28 relative">
       <GoldenArcBackground position="top-right" />
+      <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
           {/* IMAGEN: Izquierda (lg:order-1) */}
@@ -1093,7 +1139,7 @@ function FAQ() {
   return (
     <section
       id="faq"
-      className="py-10 bg-[#0F1B2D] border-t border-white/5 relative overflow-hidden scroll-mt-28"
+      className="py-20 bg-[#0F1B2D] border-t border-white/5 relative overflow-hidden scroll-mt-28"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
