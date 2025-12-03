@@ -455,7 +455,7 @@ function Features() {
   return (
     <section
       id="features"
-      className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
+      className="py-20 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg
@@ -542,7 +542,7 @@ function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="py-24 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden"
+      className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -611,7 +611,7 @@ function HowItWorks() {
 
 function Comparison() {
   return (
-    <section id="comparison" className="py-20 bg-blue-50 relative overflow-hidden scroll-mt-28">
+    <section id="comparison" className="py-20 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden">
       <GoldenArcBackground position="top-right" />
       <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
@@ -620,86 +620,86 @@ function Comparison() {
           {/* Contenido de Imagen (Ahora a la Izquierda) */}
           <div className="lg:w-5/12 relative flex justify-center lg:justify-end">
             {/* Elementos decorativos de fondo */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-brand-yellow)]/20 to-transparent rounded-full blur-3xl transform scale-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr to-transparent rounded-full blur-3xl transform scale-90"></div>
 
             <img
               src={voltAhorro}
               alt="Comparativa de mercado con Volt"
-              className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500"
             />
           </div>
 
           {/* Contenido de Texto (Ahora a la Derecha) */}
           <div className="lg:w-7/12 space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1c2e4a] leading-tight mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
                 Te comparamos la tasa entre{" "}
                 <span className="text-[var(--color-brand-yellow)]">
                   <br /> +20 compañías
                 </span>{" "}
                 del mercado
               </h2>
-              <p className="text-lg text-[#1c2e4a] leading-relaxed mb-8">
+              <p className="text-lg text-[#C6CFDA] leading-relaxed mb-8">
                 En un mercado lleno de tarifas confusas y mensajes poco claros, nosotros te ayudamos a ver de forma simple, transparente y directa cuál es la mejor opción para ti.
               </p>
 
               <ul className="space-y-4 mb-10">
                 <li className="flex items-start gap-3">
                   <div className="mt-1">
-                    <BarChart3 className="w-6 h-6 text-[#1c2e4a]" />
+                    <BarChart3 className="w-6 h-6 text-[#C6CFDA]" />
                   </div>
-                  <span className="text-[#1c2e4a] font-medium">Análisis real basado en tu consumo, no en simulaciones.</span>
+                  <span className="text-[#C6CFDA] font-medium">Análisis real basado en tu consumo, no en simulaciones.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="mt-1">
-                    <FileText className="w-6 h-6 text-[#1c2e4a]" />
+                    <FileText className="w-6 h-6 text-[#C6CFDA]" />
                   </div>
-                  <span className="text-[#1c2e4a] font-medium">Estudio directo desde tu factura real: sin errores ni estimaciones fallidas.</span>
+                  <span className="text-[#C6CFDA] font-medium">Estudio directo desde tu factura real: sin errores ni estimaciones fallidas.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="mt-1">
-                    <ShieldCheck className="w-6 h-6 text-[#1c2e4a]" />
+                    <ShieldCheck className="w-6 h-6 text-[#C6CFDA]" />
                   </div>
-                  <span className="text-[#1c2e4a] font-medium">Recomendaciones transparentes: sin letra pequeña ni estrategias comerciales.</span>
+                  <span className="text-[#C6CFDA] font-medium">Recomendaciones transparentes: sin letra pequeña ni estrategias comerciales.</span>
                 </li>
               </ul>
             </div>
 
             {/* Tabla de Comparación */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+            <div className="bg-[#102033] rounded-2xl shadow-xl overflow-hidden border border-white/5">
               <div className="grid grid-cols-2">
                 {/* Header Otros */}
-                <div className="bg-gray-700 p-4 text-center border-b border-gray-200">
+                <div className="bg-[#0F1B2D] p-4 text-center border-b border-white/5">
                   <span className="font-bold text-white uppercase tracking-wider text-sm">Otros</span>
                 </div>
                 {/* Header Nosotros */}
-                <div className="bg-[#002782] p-4 text-center border-b border-[#1c2e4a] relative">
+                <div className="bg-[#002782] p-4 text-center border-b border-white/5 relative">
                   <div className="flex items-center justify-center gap-2">
                     <span className="font-bold text-white uppercase tracking-wider text-sm">Nosotros</span>
                   </div>
                 </div>
 
                 {/* Row 1 */}
-                <div className="p-4 text-center border-b border-gray-100 bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Procesos lentos
                 </div>
-                <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-[#C6CFDA] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Resultados en minutos
                 </div>
 
                 {/* Row 2 */}
-                <div className="p-4 text-center border-b border-gray-100 bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Ofertas confusas
                 </div>
-                <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-[#C6CFDA] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Información clara y directa
                 </div>
 
                 {/* Row 3 */}
-                <div className="p-4 text-center border-b border-gray-100 bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Resultados genéricos
                 </div>
-                <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-[#C6CFDA] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Recomendaciones personalizadas
                 </div>
               </div>
@@ -1021,7 +1021,7 @@ function MeetVolt() {
   ];
 
   return (
-    <section id="meet-volt" className="py-12 bg-blue-50 overflow-hidden scroll-mt-28 relative">
+    <section id="meet-volt" className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28">
       <GoldenArcBackground position="top-right" />
       <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
@@ -1029,25 +1029,14 @@ function MeetVolt() {
           {/* IMAGEN: Izquierda (lg:order-1) */}
           <div className="w-full lg:w-5/12 flex justify-center relative lg:mb-0 order-1 lg:order-1">
             <div className="relative scale-100 lg:scale-110 w-full max-w-sm lg:max-w-md mx-auto">
-              <motion.div
-                animate={{ opacity: [0.4, 0.2, 0.4], scale: [0.75, 0.7, 0.75] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-blue-600/40 rounded-full blur-[60px] mix-blend-multiply"
-              ></motion.div>
-              <motion.div
-                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.6, 0.55, 0.6] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                className="absolute inset-0 bg-indigo-500/30 rounded-full blur-[40px] mix-blend-screen"
-              ></motion.div>
+              {/* Círculo de fondo con sombra blanca sutil */}
+              <div className="absolute inset-0 m-auto w-[300px] h-[300px] lg:w-[380px] lg:h-[380px] bg-[#002782] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10 z-0">
+                {/* Arco Blanco (Superior Derecho) */}
+                <div className="absolute -top-[2px] -right-[2px] w-full h-full rounded-full border-t-4 border-r-4 border-white opacity-90 transform rotate-12 pointer-events-none"></div>
+                {/* Arco Amarillo (Inferior Izquierdo) */}
+                <div className="absolute -bottom-[2px] -left-[2px] w-full h-full rounded-full border-b-4 border-l-4 border-[var(--color-brand-yellow)] opacity-90 transform rotate-12 pointer-events-none"></div>
+              </div>
+
               <img
                 src={voltTools}
                 alt="Volt con herramientas"
@@ -1058,11 +1047,11 @@ function MeetVolt() {
 
           {/* TEXTO: Derecha (lg:order-2) */}
           <div className="w-full lg:w-6/12 order-2 lg:order-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1c2e4a] mb-6 tracking-tight text-center lg:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight text-left">
               Volt: tu acompañante en cada{" "}
               <span className="text-[var(--color-brand-yellow)]"> decisión</span> energética
             </h2>
-            <p className="text-lg text-[#1c2e4a] mb-8 text-center lg:text-left">
+            <p className="text-lg text-[#C6CFDA] mb-8 text-left">
               Volt está contigo en cada paso importante, haciendo que todo sea más claro y fácil de entender. Su misión es darte seguridad y ayudarte a comprender tu factura sin enredos.
             </p>
 
@@ -1071,9 +1060,9 @@ function MeetVolt() {
               {tabs.map((tab) => (
                 <motion.div
                   key={tab.id}
-                  className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer ${activeTab === tab.id
+                  className={`bg-[#102033] rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer ${activeTab === tab.id
                     ? "border-[var(--color-brand-yellow)] shadow-[0_0_12px_rgba(255,255,255,0.08)]"
-                    : "border-gray-200 hover:border-gray-300"
+                    : "border-white/5 hover:border-white/10"
                     }`}
                   style={{
                     transform: activeTab === tab.id ? "translateY(-2px)" : "none",
@@ -1084,15 +1073,15 @@ function MeetVolt() {
                   <div className="p-4 flex items-start gap-4">
                     <div
                       className={`p-2 rounded-lg transition-colors duration-300 ${activeTab === tab.id
-                        ? "bg-[var(--color-brand-yellow)] text-white"
-                        : "bg-gray-100 text-gray-500"
+                        ? "bg-[var(--color-brand-yellow)] text-[#1c2e4a]"
+                        : "bg-white/5 text-gray-400"
                         }`}
                     >
                       <tab.icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 text-left">
                       <h3
-                        className={`text-lg font-bold mb-1 transition-colors duration-300 ${activeTab === tab.id ? "text-[#1c2e4a]" : "text-gray-600"
+                        className={`text-lg font-bold mb-1 transition-colors duration-300 ${activeTab === tab.id ? "text-white" : "text-white"
                           }`}
                       >
                         {tab.title}
@@ -1105,7 +1094,7 @@ function MeetVolt() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
                           >
-                            <p className="text-[#1c2e4a] text-base leading-relaxed pt-1">
+                            <p className="text-[#C6CFDA] text-base leading-relaxed pt-1">
                               {tab.content}
                             </p>
                           </motion.div>
@@ -1208,7 +1197,7 @@ function FAQ() {
             ))}
           </Accordion>
           {/* Columna Derecha: Volt */}
-          <div className="flex justify-center lg:justify-start relative pt-10 mb-20">
+          <div className="flex justify-center lg:justify-start relative pt-10 mb-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500">
             <motion.div
               initial={{ scale: 0.9 }}
               whileHover={{ scale: 0.95 }}
@@ -1217,7 +1206,7 @@ function FAQ() {
             >
               {/* Fondo difuminado detrás */}
               <motion.div
-                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.95, 1, 0.95] }}
+                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.95, 1, 0.30] }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
@@ -1226,7 +1215,7 @@ function FAQ() {
                 className="absolute inset-0 bg-blue-500/20 rounded-full blur-[50px]"
               ></motion.div>
               {/* SOMBRA */}
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-black/60 blur-xl rounded-[100%] z-0"></div>
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-[60%] h-8 bg-black/60 blur-xl rounded-[100%] z-0"></div>
               {/* BURBUJA DE PENSAMIENTO (CON DELAY DE 1.5s) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
