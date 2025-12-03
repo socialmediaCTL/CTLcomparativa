@@ -231,9 +231,22 @@ function Hero() {
         <div className="absolute inset-0 z-20 hidden lg:block pointer-events-none">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute top-[35%] left-[10%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
+            animate={{ 
+              opacity: 1, 
+              x: 0,
+              y: [0, -10, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 0.5, delay: 0.3 },
+              x: { duration: 0.5, delay: 0.3 },
+              y: { 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut", 
+                delay: 0.8 
+              }
+            }}
+            className="absolute top-[35%] left-[10%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
           >
             <div className="bg-[var(--color-brand-yellow)] p-3 rounded-full text-primary shadow-lg">
               <Users className="w-6 h-6" />
@@ -242,16 +255,29 @@ function Hero() {
               <p className="text-xs text-gray-300 uppercase font-bold tracking-wider">
                 Bienestar
               </p>
-              <p className="text-lg font-bold text-white leading-none">
+              <p className="text-lg font-bold text-white leading-none [text-shadow:1px_1px_2px_black]">
                 Para tu Familia
               </p>
             </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute top-[55%] right-[5%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
+            animate={{ 
+              opacity: 1, 
+              x: 0,
+              y: [0, -10, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 0.5, delay: 0.5 },
+              x: { duration: 0.5, delay: 0.5 },
+              y: { 
+                duration: 5, 
+                repeat: Infinity, 
+                ease: "easeInOut", 
+                delay: 1.0 
+              }
+            }}
+            className="absolute top-[55%] right-[5%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
           >
             <div className="bg-[var(--color-brand-yellow)] p-3 rounded-full text-primary shadow-lg">
               <Zap className="w-6 h-6" />
@@ -260,16 +286,29 @@ function Hero() {
               <p className="text-xs text-gray-300 uppercase font-bold tracking-wider">
                 Energía
               </p>
-              <p className="text-lg font-bold text-white leading-none">
+              <p className="text-lg font-bold text-white leading-none [text-shadow:1px_1px_2px_black]">
                 Luz al mejor precio
               </p>
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-            className="absolute bottom-[10%] left-[35%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              y: [0, -10, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 0.5, delay: 0.7 },
+              scale: { duration: 0.5, delay: 0.7 },
+              y: { 
+                duration: 4.5, 
+                repeat: Infinity, 
+                ease: "easeInOut", 
+                delay: 1.2 
+              }
+            }}
+            className="absolute bottom-[10%] left-[35%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
           >
             <div className="bg-[var(--color-brand-yellow)] p-3 rounded-full text-primary shadow-lg">
               <ShieldCheck className="w-6 h-6" />
@@ -278,7 +317,7 @@ function Hero() {
               <p className="text-xs text-gray-300 uppercase font-bold tracking-wider">
                 Tranquilidad
               </p>
-              <p className="text-lg font-bold text-white leading-none">
+              <p className="text-lg font-bold text-white leading-none [text-shadow:1px_1px_2px_black]">
                 Hogar Protegido
               </p>
             </div>
@@ -321,8 +360,8 @@ function Hero() {
             opción que realmente te ayuda a pagar menos cada mes.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 items-center sm:items-end group">
-            <div className="relative transition-transform duration-300 group-hover:-translate-y-2">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 items-center sm:items-end">
+            <div className="relative transition-transform duration-300 hover:-translate-y-2">
               <Button
                 size="lg"
                 // onClick={() => setLocation("/subir-factura")} // Añade esta línea
