@@ -683,7 +683,7 @@ function Comparison() {
                 <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Procesos lentos
                 </div>
-                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-[#C6CFDA] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-white font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Resultados en minutos
                 </div>
 
@@ -691,7 +691,7 @@ function Comparison() {
                 <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Ofertas confusas
                 </div>
-                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-[#C6CFDA] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-white font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Información clara y directa
                 </div>
 
@@ -699,7 +699,7 @@ function Comparison() {
                 <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Resultados genéricos
                 </div>
-                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-[#C6CFDA] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-white font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Recomendaciones personalizadas
                 </div>
               </div>
