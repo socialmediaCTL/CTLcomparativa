@@ -67,6 +67,7 @@ import logoUE from "@assets/logo-compo-ue-color.png";
 import logoFooter from "@assets/logo_footer.webp";
 import voltBoton from "@assets/volt-boton.webp";
 import voltFAQ from "@assets/volt-intriga.webp";
+import thoughtBubble from "@assets/thought_bubble.png";
 
 
 export default function Home() {
@@ -231,19 +232,19 @@ function Hero() {
         <div className="absolute inset-0 z-20 hidden lg:block pointer-events-none">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               x: 0,
               y: [0, -10, 0]
             }}
-            transition={{ 
+            transition={{
               opacity: { duration: 0.5, delay: 0.3 },
               x: { duration: 0.5, delay: 0.3 },
-              y: { 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut", 
-                delay: 0.8 
+              y: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.8
               }
             }}
             className="absolute top-[35%] left-[10%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
@@ -262,19 +263,19 @@ function Hero() {
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               x: 0,
               y: [0, -10, 0]
             }}
-            transition={{ 
+            transition={{
               opacity: { duration: 0.5, delay: 0.5 },
               x: { duration: 0.5, delay: 0.5 },
-              y: { 
-                duration: 5, 
-                repeat: Infinity, 
-                ease: "easeInOut", 
-                delay: 1.0 
+              y: {
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.0
               }
             }}
             className="absolute top-[55%] right-[5%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
@@ -293,19 +294,19 @@ function Hero() {
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               scale: 1,
               y: [0, -10, 0]
             }}
-            transition={{ 
+            transition={{
               opacity: { duration: 0.5, delay: 0.7 },
               scale: { duration: 0.5, delay: 0.7 },
-              y: { 
-                duration: 4.5, 
-                repeat: Infinity, 
-                ease: "easeInOut", 
-                delay: 1.2 
+              y: {
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.2
               }
             }}
             className="absolute bottom-[10%] left-[35%] pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl flex items-center gap-4 w-64 transition-all duration-200 ease-out hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)]"
@@ -384,7 +385,7 @@ function Hero() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/20 bg-transparent text-white hover:bg-white/10 h-14 px-8 font-bold rounded-xl"
+                className="border-white/20 bg-transparent text-white hover:bg-[var(--color-brand-yellow)] hover:text-[#FFFFFF] hover:-translate-y-1 hover:border-[var(--color-brand-white)] transition-all duration-300 h-14 px-8 font-bold rounded-xl"
               >
                 Hablar con un asesor
               </Button>
@@ -454,7 +455,7 @@ function Features() {
   return (
     <section
       id="features"
-      className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
+      className="py-20 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg
@@ -541,7 +542,7 @@ function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="py-24 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden"
+      className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -610,7 +611,7 @@ function HowItWorks() {
 
 function Comparison() {
   return (
-    <section id="comparison" className="py-20 bg-blue-50 relative overflow-hidden scroll-mt-28">
+    <section id="comparison" className="py-20 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden">
       <GoldenArcBackground position="top-right" />
       <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
@@ -619,95 +620,87 @@ function Comparison() {
           {/* Contenido de Imagen (Ahora a la Izquierda) */}
           <div className="lg:w-5/12 relative flex justify-center lg:justify-end">
             {/* Elementos decorativos de fondo */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-brand-yellow)]/20 to-transparent rounded-full blur-3xl transform scale-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr to-transparent rounded-full blur-3xl transform scale-90"></div>
 
             <img
               src={voltAhorro}
               alt="Comparativa de mercado con Volt"
-              className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500"
             />
           </div>
 
           {/* Contenido de Texto (Ahora a la Derecha) */}
           <div className="lg:w-7/12 space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1c2e4a] leading-tight mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
                 Te comparamos la tasa entre{" "}
                 <span className="text-[var(--color-brand-yellow)]">
-                  +20 compañías
+                  <br /> +20 compañías
                 </span>{" "}
                 del mercado
               </h2>
-              <p className="text-lg text-[#1c2e4a] leading-relaxed mb-8">
+              <p className="text-lg text-[#C6CFDA] leading-relaxed mb-8">
                 En un mercado lleno de tarifas confusas y mensajes poco claros, nosotros te ayudamos a ver de forma simple, transparente y directa cuál es la mejor opción para ti.
               </p>
 
               <ul className="space-y-4 mb-10">
                 <li className="flex items-start gap-3">
                   <div className="mt-1">
-                    <BarChart3 className="w-6 h-6 text-[#1c2e4a]" />
+                    <BarChart3 className="w-6 h-6 text-[#C6CFDA]" />
                   </div>
-                  <span className="text-[#1c2e4a] font-medium">Análisis real basado en tu consumo, no en simulaciones.</span>
+                  <span className="text-[#C6CFDA] font-medium">Análisis real basado en tu consumo, no en simulaciones.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="mt-1">
-                    <FileText className="w-6 h-6 text-[#1c2e4a]" />
+                    <FileText className="w-6 h-6 text-[#C6CFDA]" />
                   </div>
-                  <span className="text-[#1c2e4a] font-medium">Estudio directo desde tu factura real: sin errores ni estimaciones fallidas.</span>
+                  <span className="text-[#C6CFDA] font-medium">Estudio directo desde tu factura real: sin errores ni estimaciones fallidas.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="mt-1">
-                    <ShieldCheck className="w-6 h-6 text-[#1c2e4a]" />
+                    <ShieldCheck className="w-6 h-6 text-[#C6CFDA]" />
                   </div>
-                  <span className="text-[#1c2e4a] font-medium">Recomendaciones transparentes: sin letra pequeña ni estrategias comerciales.</span>
+                  <span className="text-[#C6CFDA] font-medium">Recomendaciones transparentes: sin letra pequeña ni estrategias comerciales.</span>
                 </li>
               </ul>
             </div>
 
             {/* Tabla de Comparación */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+            <div className="bg-[#102033] rounded-2xl shadow-xl overflow-hidden border border-white/5">
               <div className="grid grid-cols-2">
                 {/* Header Otros */}
-                <div className="bg-gray-700 p-4 text-center border-b border-gray-200">
+                <div className="bg-[#0F1B2D] p-4 text-center border-b border-white/5">
                   <span className="font-bold text-white uppercase tracking-wider text-sm">Otros</span>
                 </div>
                 {/* Header Nosotros */}
-                <div className="bg-[#002782] p-4 text-center border-b border-[#1c2e4a] relative">
+                <div className="bg-[#002782] p-4 text-center border-b border-white/5 relative">
                   <div className="flex items-center justify-center gap-2">
                     <span className="font-bold text-white uppercase tracking-wider text-sm">Nosotros</span>
                   </div>
                 </div>
 
                 {/* Row 1 */}
-                <div className="p-4 text-center border-b border-gray-100 bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Procesos lentos
                 </div>
-                <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-white font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Resultados en minutos
                 </div>
 
                 {/* Row 2 */}
-                <div className="p-4 text-center border-b border-gray-100 bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Ofertas confusas
                 </div>
-                <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-white font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Información clara y directa
                 </div>
 
                 {/* Row 3 */}
-                <div className="p-4 text-center border-b border-gray-100 bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-red-900/10 text-[#ff8080] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Resultados genéricos
                 </div>
-                <div className="p-4 text-center border-b border-gray-100 bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
+                <div className="p-4 text-center border-b border-white/5 bg-blue-900/10 text-white font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
                   Recomendaciones personalizadas
-                </div>
-
-                {/* Row 4 */}
-                <div className="p-4 text-center bg-red-50/50 text-[#E25555] text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
-                  Esperas interminables
-                </div>
-                <div className="p-4 text-center bg-blue-50/30 text-[#1c2e4a] font-semibold text-sm md:text-base hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out">
-                  Resultados en segundos
                 </div>
               </div>
             </div>
@@ -723,7 +716,7 @@ function Testimonials() {
   const testimonials = [
     {
       name: "María G., Madrid",
-      amount: "45€/mes",
+      amount: "42€/mes",
       text: "Pensaba que ya pagaba poco. Subí mi factura, en 5 minutos tenía una tarifa mejor y hoy pago mucho menos. Increíblemente fácil.",
       image: testimonialMaria,
     },
@@ -741,7 +734,7 @@ function Testimonials() {
     },
     {
       name: "Antonio S., Sevilla",
-      amount: "50€/mes",
+      amount: "35€/mes",
       text: "Somos 4 y el aire dispara la factura. Gracias a Comparamos Tu Luz bajamos el gasto casi a la mitad este verano.",
       image: testimonialAntonio,
     },
@@ -1028,7 +1021,7 @@ function MeetVolt() {
   ];
 
   return (
-    <section id="meet-volt" className="py-12 bg-blue-50 overflow-hidden scroll-mt-28 relative">
+    <section id="meet-volt" className="py-20 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28">
       <GoldenArcBackground position="top-right" />
       <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
@@ -1036,40 +1029,29 @@ function MeetVolt() {
           {/* IMAGEN: Izquierda (lg:order-1) */}
           <div className="w-full lg:w-5/12 flex justify-center relative lg:mb-0 order-1 lg:order-1">
             <div className="relative scale-100 lg:scale-110 w-full max-w-sm lg:max-w-md mx-auto">
-              <motion.div
-                animate={{ opacity: [0.4, 0.2, 0.4], scale: [0.75, 0.7, 0.75] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-blue-600/40 rounded-full blur-[60px] mix-blend-multiply"
-              ></motion.div>
-              <motion.div
-                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.6, 0.55, 0.6] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-                className="absolute inset-0 bg-indigo-500/30 rounded-full blur-[40px] mix-blend-screen"
-              ></motion.div>
+              {/* Círculo de fondo con sombra blanca sutil */}
+              <div className="absolute inset-0 m-auto w-[300px] h-[300px] lg:w-[380px] lg:h-[380px] bg-[#002782] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10 z-0">
+                {/* Arco Blanco (Superior Derecho) */}
+                <div className="absolute -top-[2px] -right-[2px] w-full h-full rounded-full border-t-4 border-r-4 border-white opacity-90 transform rotate-12 pointer-events-none"></div>
+                {/* Arco Amarillo (Inferior Izquierdo) */}
+                <div className="absolute -bottom-[2px] -left-[2px] w-full h-full rounded-full border-b-4 border-l-4 border-[var(--color-brand-yellow)] opacity-90 transform rotate-12 pointer-events-none"></div>
+              </div>
+
               <img
                 src={voltTools}
                 alt="Volt con herramientas"
-                className="w-full drop-shadow-2xl relative z-10"
+                className="w-full drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] relative z-10"
               />
             </div>
           </div>
 
           {/* TEXTO: Derecha (lg:order-2) */}
           <div className="w-full lg:w-6/12 order-2 lg:order-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1c2e4a] mb-6 tracking-tight text-center lg:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight text-left">
               Volt: tu acompañante en cada{" "}
               <span className="text-[var(--color-brand-yellow)]"> decisión</span> energética
             </h2>
-            <p className="text-lg text-[#1c2e4a] mb-8 text-center lg:text-left">
+            <p className="text-lg text-[#C6CFDA] mb-8 text-left">
               Volt está contigo en cada paso importante, haciendo que todo sea más claro y fácil de entender. Su misión es darte seguridad y ayudarte a comprender tu factura sin enredos.
             </p>
 
@@ -1078,9 +1060,9 @@ function MeetVolt() {
               {tabs.map((tab) => (
                 <motion.div
                   key={tab.id}
-                  className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer ${activeTab === tab.id
+                  className={`bg-[#102033] rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer ${activeTab === tab.id
                     ? "border-[var(--color-brand-yellow)] shadow-[0_0_12px_rgba(255,255,255,0.08)]"
-                    : "border-gray-200 hover:border-gray-300"
+                    : "border-white/5 hover:border-white/10"
                     }`}
                   style={{
                     transform: activeTab === tab.id ? "translateY(-2px)" : "none",
@@ -1091,15 +1073,15 @@ function MeetVolt() {
                   <div className="p-4 flex items-start gap-4">
                     <div
                       className={`p-2 rounded-lg transition-colors duration-300 ${activeTab === tab.id
-                        ? "bg-[var(--color-brand-yellow)] text-white"
-                        : "bg-gray-100 text-gray-500"
+                        ? "bg-[var(--color-brand-yellow)] text-[#1c2e4a]"
+                        : "bg-white/5 text-gray-400"
                         }`}
                     >
                       <tab.icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 text-left">
                       <h3
-                        className={`text-lg font-bold mb-1 transition-colors duration-300 ${activeTab === tab.id ? "text-[#1c2e4a]" : "text-gray-600"
+                        className={`text-lg font-bold mb-1 transition-colors duration-300 ${activeTab === tab.id ? "text-white" : "text-white"
                           }`}
                       >
                         {tab.title}
@@ -1112,7 +1094,7 @@ function MeetVolt() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
                           >
-                            <p className="text-[#1c2e4a] text-base leading-relaxed pt-1">
+                            <p className="text-[#C6CFDA] text-base leading-relaxed pt-1">
                               {tab.content}
                             </p>
                           </motion.div>
@@ -1192,7 +1174,7 @@ function FAQ() {
             Preguntas <span className="text-[var(--color-brand-yellow)]">frecuentes</span>
           </h2>
           <p className="text-lg text-[#C6CFDA]">
-            Resolvemos las dudas más comunes para ayudarte a entender cómo
+            Resolvemos las dudas más comunes para ayudarte a entender cómo <br />
             funciona nuestra plataforma y cómo puedes empezar a ahorrar.
           </p>
         </div>
@@ -1215,11 +1197,16 @@ function FAQ() {
             ))}
           </Accordion>
           {/* Columna Derecha: Volt */}
-          <div className="flex justify-center lg:justify-start relative pt-10 mb-20">
-            <div className="relative w-full max-w-xs scale-90">
+          <div className="flex justify-center lg:justify-start relative pt-10 mb-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500">
+            <motion.div
+              initial={{ scale: 0.9 }}
+              whileHover={{ scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-xs"
+            >
               {/* Fondo difuminado detrás */}
               <motion.div
-                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.95, 1, 0.95] }}
+                animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.95, 1, 0.30] }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
@@ -1228,36 +1215,35 @@ function FAQ() {
                 className="absolute inset-0 bg-blue-500/20 rounded-full blur-[50px]"
               ></motion.div>
               {/* SOMBRA */}
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-black/60 blur-xl rounded-[100%] z-0"></div>
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-[60%] h-8 bg-black/60 blur-xl rounded-[100%] z-0"></div>
               {/* BURBUJA DE PENSAMIENTO (CON DELAY DE 1.5s) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: false, margin: "-50px" }}
-                transition={{ type: "spring", duration: 0.6, delay: 0.8 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 15,
+                  delay: 0.8
+                }}
                 className="absolute -top-32 -right-16 z-50"
               >
                 <div className="relative filter drop-shadow-xl top-14 right-22">
-                  {/* Forma de Nube SVG */}
-                  <svg width="170" height="120" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M40 70C25 70 15 60 15 45C15 30 25 20 40 20C42 20 44 20.5 46 21.5C50 10 60 5 75 5C90 5 100 15 105 25C115 25 125 35 125 50C125 65 115 75 100 75H40Z" fill="white" />
-                  </svg>
-                  {/* Icono de Interrogación Azul */}
-                  <div className="absolute inset-0 flex items-center justify-center pb-8 pr-4 top-4 left-4">
-                    <HelpCircle className="w-16 h-16 text-[#002782] stroke-[2.5]" />
-                  </div>
-                  {/* Círculos de pensamiento */}
-                  <div className="absolute bottom-6 left-12 w-5 h-5 bg-white rounded-full"></div>
-                  <div className="absolute -bottom-1 left-8 w-3 h-3 bg-white rounded-full"></div>
+                  <img
+                    src={thoughtBubble}
+                    alt="Thought Bubble"
+                    className="w-[170px] h-[120px] object-contain"
+                  />
                 </div>
               </motion.div>
               {/* Imagen de Volt */}
               <img
                 src={voltFAQ}
                 alt="Volt respondiendo dudas"
-                className="w-full h-auto relative z-10 drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto relative z-10 drop-shadow-2xl"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -1304,7 +1290,7 @@ function CTA() {
             por tu factura de luz
           </h2>
           <p className="text-lg md:text-xl text-[#C6CFDA] max-w-2xl mx-auto">
-            Obtén un análisis imparcial y descubre cuánto puedes ahorrar en
+            Obtén un análisis imparcial y descubre <br /> cuánto puedes ahorrar en
             menos de 5 minutos.
           </p>
           <div className="pt-4 pb-8">
@@ -1322,13 +1308,15 @@ function CTA() {
               "Comparativa imparcial",
               "Seguro y transparente",
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5 cursor-default"
               >
                 <CheckCircle2 className="w-4 h-4 text-[#00C97E]" />
                 <span>{item}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
