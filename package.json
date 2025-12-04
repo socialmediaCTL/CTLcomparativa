@@ -51,6 +51,7 @@
     "date-fns": "^3.6.0",
     "drizzle-orm": "^0.39.1",
     "drizzle-zod": "^0.7.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
@@ -93,6 +94,7 @@
     "@types/ws": "^8.5.13",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
+    "bufferutil": "^4.0.9",
     "cross-env": "^10.1.0",
     "drizzle-kit": "^0.31.4",
     "esbuild": "^0.25.0",
@@ -100,8 +102,7 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.20.5",
     "typescript": "5.6.3",
-    "vite": "^7.1.9",
-    "bufferutil": "^4.0.9"
+    "vite": "^7.1.9"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.9"
