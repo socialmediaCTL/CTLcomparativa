@@ -61,7 +61,7 @@ import aboutUsTeam from "@assets/about_us_team.jpg";
 import voltMain from "@assets/volt_hero_v2.png";
 import voltTools from "@assets/conoce-a-volt.webp";
 import voltHowToWork from "@assets/volt_hero_final.png";
-import voltAhorro from "@assets/volt_ahorro.png";
+import voltAhorro from "@assets/volt_ahorro.webp";
 import logoRound from "@assets/logo_ctl_clean.png";
 
 import arcosImage from "@assets/arcos.png";
