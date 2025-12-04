@@ -68,7 +68,21 @@ import logoFooter from "@assets/logo_footer.webp";
 import voltBoton from "@assets/volt-boton.webp";
 import voltFAQ from "@assets/volt-intriga.webp";
 import thoughtBubble from "@assets/thought_bubble.png";
+import whatsappLogo from "@assets/whatsapp_logo.png";
 
+
+
+const WhatsAppIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.585 1.961.893 2.796.893 3.183 0 5.768-2.586 5.768-5.766.001-3.181-2.585-5.768-5.768-5.78zM12 2C6.48 2 2 6.48 2 12c0 1.82.48 3.53 1.31 5.02L2 22l5.12-1.35C8.64 21.55 10.29 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm.01 18c-1.48 0-2.9-.4-4.13-1.1l-.3-.16-3.05.8.81-2.98-.19-.32c-.79-1.3-1.21-2.8-1.21-4.34 0-4.96 4.04-9 9-9s9 4.04 9 9-4.04 9-9.01 9z" />
+    <path d="M16.57 14.38c-.23-.11-1.37-.68-1.58-.76-.21-.08-.37-.11-.52.11-.16.23-.61.76-.75.91-.14.16-.28.17-.51.06-.23-.11-.97-.36-1.85-1.14-.69-.62-1.16-1.38-1.29-1.61-.13-.23-.01-.36.1-.47.11-.1.23-.26.35-.39.11-.13.15-.22.23-.37.08-.16.04-.29-.02-.41-.06-.11-.52-1.26-.71-1.72-.19-.45-.38-.39-.52-.4-.13-.01-.28-.01-.43-.01-.15 0-.39.06-.6.29-.21.23-.79.77-.79 1.88 0 1.11.81 2.18.92 2.33.11.16 3.19 4.87 7.72 6.83 2.69 1.16 3.73.93 4.42.87.76-.07 1.67-.68 1.91-1.34.24-.66.24-1.22.17-1.34-.07-.11-.25-.17-.48-.29z" />
+  </svg>
+);
 
 export default function Home() {
 
@@ -150,6 +164,15 @@ function Navbar() {
               Subir Factura
             </a>
           </Button>
+          <Button asChild className="ml-4 bg-transparent hover:bg-transparent text-white font-bold uppercase text-xs tracking-wide whitespace-nowrap transition-all transform hover:scale-105 p-0 border-none shadow-none">
+            <a href="https://wa.me/34600295895" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+              <span>Hablar con un asesor</span>
+              <div className="relative flex items-center justify-center">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-brand-yellow)] opacity-75 animate-ping-slow"></span>
+                <img src={whatsappLogo} alt="WhatsApp" className="relative h-8 w-8 rounded-full" />
+              </div>
+            </a>
+          </Button>
         </div>
         <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
@@ -159,65 +182,73 @@ function Navbar() {
           )}
         </button>
       </div>
-      {isOpen && (
-        <div className="md:hidden p-4 bg-[#0F1B2D] border-b border-white/5 space-y-4">
-          <a
-            href="#features"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Beneficios
-          </a>
-          <a
-            href="#how-it-works"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Cómo funciona
-          </a>
-          <a
-            href="#comparison"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Comparativa
-          </a>
-          <a
-            href="#testimonials"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Opiniones
-          </a>
-          <a
-            href="#about-us"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Sobre nosotros
-          </a>
-          <a
-            href="#meet-volt"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Conoce a Volt
-          </a>
-          <a
-            href="#faq"
-            className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
-            onClick={() => setIsOpen(false)}
-          >
-            Preguntas
-          </a>
-          <Button asChild className="w-full bg-[var(--color-brand-yellow)] text-white font-bold uppercase border-2 border-white ">
-            <a href="https://campaign.comparamostuluz.es" target="_blank" rel="noopener noreferrer">
-              Subir Factura
+      {
+        isOpen && (
+          <div className="md:hidden p-4 bg-[#0F1B2D] border-b border-white/5 space-y-4">
+            <a
+              href="#features"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Beneficios
             </a>
-          </Button>
-        </div>
-      )}
-    </nav>
+            <a
+              href="#how-it-works"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Cómo funciona
+            </a>
+            <a
+              href="#comparison"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Comparativa
+            </a>
+            <a
+              href="#testimonials"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Opiniones
+            </a>
+            <a
+              href="#about-us"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Sobre nosotros
+            </a>
+            <a
+              href="#meet-volt"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Conoce a Volt
+            </a>
+            <a
+              href="#faq"
+              className="block text-sm font-bold uppercase text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]"
+              onClick={() => setIsOpen(false)}
+            >
+              Preguntas
+            </a>
+            <Button asChild className="w-full bg-transparent border-2 border-[var(--color-brand-yellow)] text-[var(--color-brand-yellow)] hover:bg-[var(--color-brand-yellow)] hover:text-[#0F1B2D] font-bold uppercase">
+              <a href="https://wa.me/34600295895" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                <span>Hablar con un asesor</span>
+                <WhatsAppIcon className="w-5 h-5 animate-pulse" />
+              </a>
+            </Button>
+            <Button asChild className="w-full bg-[var(--color-brand-yellow)] text-white font-bold uppercase border-2 border-white ">
+              <a href="https://campaign.comparamostuluz.es" target="_blank" rel="noopener noreferrer">
+                Subir Factura
+              </a>
+            </Button>
+          </div>
+        )
+      }
+    </nav >
   );
 }
 
