@@ -103,7 +103,7 @@ export default function Home() {
       <HowItWorks />
       <Comparison />
       <Testimonials />
-      <AboutUs />
+
       <MeetVolt />
       <FAQ />
       <CTA />
@@ -150,7 +150,6 @@ function Navbar() {
             { name: "Cómo funciona", href: "#how-it-works" },
             { name: "Comparativa", href: "#comparison" },
             { name: "Opiniones", href: "#testimonials" },
-            { name: "Sobre nosotros", href: "#about-us" },
             { name: "Conoce a Volt", href: "#meet-volt" },
             { name: "Preguntas", href: "#faq" },
           ].map((link, index, array) => (
@@ -198,7 +197,6 @@ function Navbar() {
               { name: "Cómo funciona", href: "#how-it-works" },
               { name: "Comparativa", href: "#comparison" },
               { name: "Opiniones", href: "#testimonials" },
-              { name: "Sobre nosotros", href: "#about-us" },
               { name: "Conoce a Volt", href: "#meet-volt" },
               { name: "Preguntas", href: "#faq" },
             ].map((link) => (
@@ -235,7 +233,7 @@ function Navbar() {
 function Hero() {
   //  const [, setLocation] = useLocation();
   return (
-    <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[75vh] flex items-center text-white">
+    <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[75vh] flex items-center text-white pt-28">
       <div className="absolute top-24 right-0 w-full lg:w-[55%] h-[calc(100%-6rem)] z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0C1A2B] via-[#0C1A2B]/90 to-transparent lg:via-[#0C1A2B]/40 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1A2B] via-transparent to-transparent z-10 lg:hidden"></div>
@@ -469,7 +467,7 @@ function Features() {
       description: "En pocos minutos sabes cuánto puedes ahorrar cada mes.",
     },
   ];
-    return (
+  return (
     <section
       id="features"
       className="py-10 md:py-32 bg-[#0F1B2D] border-t border-white/5 relative scroll-mt-28 overflow-hidden"
@@ -799,6 +797,7 @@ function Testimonials() {
       text: "Sencillo, rápido y muy transparente. Me cambié de compañía al momento y sin papeleos complicados. Lo recomiendo a todo el mundo.",
       image: testimonialIsabel,
     },
+
   ];
   return (
     <section
@@ -840,90 +839,8 @@ function Testimonials() {
           </p>
         </div>
 
-        {/* VISTA ESCRITORIO (Original) */}
-        <div className="hidden md:flex flex-col gap-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.slice(0, 3).map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col p-8 rounded-[20px] bg-[#102033] border border-white/5 hover:border-[var(--color-brand-yellow)]/30 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,255,255,0.25)] h-full"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0">
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white">{t.name}</div>
-                    <div className="text-sm text-[var(--color-brand-yellow)] font-medium">
-                      Ahorró {t.amount}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      className="w-4 h-4 fill-[var(--color-brand-yellow)] text-[var(--color-brand-yellow)]"
-                    />
-                  ))}
-                </div>
-                <p className="text-[#C6CFDA] text-sm leading-relaxed italic">
-                  "{t.text}"
-                </p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 md:w-2/3 mx-auto">
-            {testimonials.slice(3, 5).map((t, i) => (
-              <motion.div
-                key={i + 3}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (i + 3) * 0.1 }}
-                className="flex flex-col p-8 rounded-[20px] bg-[#102033] border border-white/5 hover:border-[var(--color-brand-yellow)]/30 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,255,255,0.25)] h-full"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0">
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white">{t.name}</div>
-                    <div className="text-sm text-[var(--color-brand-yellow)] font-medium">
-                      Ahorró {t.amount}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      className="w-4 h-4 fill-[var(--color-brand-yellow)] text-[var(--color-brand-yellow)]"
-                    />
-                  ))}
-                </div>
-                <p className="text-[#C6CFDA] text-sm leading-relaxed italic">
-                  "{t.text}"
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* VISTA MÓVIL (Carrusel) */}
-        <div className="md:hidden px-12">
+        {/* Carrusel de Testimonios (Responsive) */}
+        <div className="px-8 md:px-12">
           <Carousel
             opts={{
               align: "start",
@@ -931,15 +848,15 @@ function Testimonials() {
             }}
             plugins={[
               Autoplay({
-                delay: 3000,
+                delay: 4000,
               }),
             ]}
             className="w-full"
           >
-            <CarouselContent>
+            <CarouselContent className="-ml-4">
               {testimonials.map((t, i) => (
-                <CarouselItem key={i} className="pl-4">
-                  <div className="flex flex-col p-8 rounded-[20px] bg-[#102033] border border-white/5 h-full">
+                <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="flex flex-col p-8 rounded-[20px] bg-[#102033] border border-white/5 hover:border-[var(--color-brand-yellow)]/30 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(255,255,255,0.25)] h-full">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 shrink-0">
                         <img
@@ -970,8 +887,8 @@ function Testimonials() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="-left-9 bg-[#0F1B2D] border-white/10 text-white hover:bg-white/10" />
-            <CarouselNext className="-right-9 bg-[#0F1B2D] border-white/10 text-white hover:bg-white/10" />
+            <CarouselPrevious className="-left-4 sm:-left-9 bg-[#0F1B2D] border-white/10 text-white hover:bg-white/10 transition-colors" />
+            <CarouselNext className="-right-4 sm:-right-9 bg-[#0F1B2D] border-white/10 text-white hover:bg-white/10 transition-colors" />
           </Carousel>
         </div>
 
@@ -980,131 +897,12 @@ function Testimonials() {
   );
 }
 
-function AboutUs() {
-  return (
-    <section
-      id="about-us"
-      className="py-20 bg-[#0F1B2D] border-t border-white/5 relative overflow-hidden scroll-mt-28"
-    >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg
-          className="absolute top-0 left-0 w-full h-full opacity-[0.04]"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 100 C 20 0 50 0 100 100 Z"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.5"
-          />
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            fill="none"
-            stroke="white"
-            strokeWidth="0.2"
-          />
-        </svg>
-      </div>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          <div className="flex-1 space-y-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Sobre <span className="text-[var(--color-brand-yellow)]">nosotros</span>
-              </h2>
-              <p className="text-lg text-[#C6CFDA] leading-relaxed">
-                En ComparamosTuLuz ayudamos a miles de personas a pagar lo justo
-                por su electricidad. Nuestro equipo analiza de forma imparcial
-                las mejores tarifas del mercado para que cada hogar pueda
-                ahorrar sin complicaciones, sin letra pequeña y con total
-                transparencia.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white/5 p-6 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
-                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                  <Target className="w-5 h-5 text-[var(--color-brand-yellow)]" />
-                  Nuestra misión
-                </h3>
-                <p className="text-[#C6CFDA] text-sm">
-                  Permitir que cualquier persona pueda acceder fácilmente a una
-                  tarifa eléctrica justa, clara y adaptada a sus necesidades,
-                  sin perder tiempo comparando compañías.
-                </p>
-              </div>
-              <div className="bg-white/5 p-6 rounded-xl border border-white/5 hover:bg-white/10 transition-colors">
-                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-[var(--color-brand-yellow)]" />
-                  Nuestra visión
-                </h3>
-                <p className="text-[#C6CFDA] text-sm">
-                  Ser la plataforma de referencia en ahorro energético, donde
-                  cada usuario pueda tomar decisiones informadas y seguras sobre
-                  su consumo.
-                </p>
-              </div>
-            </div>
-                        <div>
-              <h3 className="text-xl font-bold text-white mb-4">
-                Nuestros valores
-              </h3>
-              {/* CAMBIO: grid-cols-3 para que sean 3 columnas en móvil */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-4">
-                {[
-                  {
-                    title: "Transparencia",
-                    desc: "Siempre mostramos las mejores opciones sin intereses ocultos.",
-                    icon: ShieldCheck,
-                  },
-                  {
-                    title: "Ahorro real",
-                    desc: "Nuestro objetivo es que pagues menos desde el primer mes.",
-                    icon: TrendingDown,
-                  },
-                  {
-                    title: "Cercanía",
-                    desc: "Te guiamos paso a paso para que el proceso sea sencillo.",
-                    icon: Users,
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    // CAMBIO: Padding reducido en móvil (p-2)
-                    className="flex flex-col gap-2 p-2 sm:p-4 rounded-lg bg-[#102033] border border-white/5"
-                  >
-                    <div className="flex flex-col sm:flex-row items-center sm:items-center gap-1 sm:gap-2 text-[var(--color-brand-yellow)] font-bold">
-                      <item.icon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                      {/* CAMBIO: Texto título más pequeño en móvil */}
-                      <span className="text-xs xl:text-base leading-tight">{item.title}</span>
-                    </div>
-                    {/* CAMBIO: Texto descripción más pequeño en móvil (text-[10px]) */}
-                    <p className="text-[#C6CFDA] text-[10px] sm:text-xs leading-snug">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-center">
-            <div className="relative w-full max-w-lg">
-              <div className="absolute inset-0 bg-[var(--color-brand-yellow)]/10 blur-[80px] rounded-full"></div>
-              <img
-                src={aboutUsTeam}
-                alt="Equipo ComparamosTuLuz"
-                className="relative z-10 w-full h-auto object-cover rounded-2xl shadow-2xl border border-white/10 transform hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+
+
+
+
+
+
 
 function MeetVolt() {
   const [activeTab, setActiveTab] = useState(0);
@@ -1312,7 +1110,7 @@ function FAQ() {
             ))}
           </Accordion>
           {/* Columna Derecha: Volt */}
-            <div className="flex justify-center lg:justify-center relative pt-4 mb-0 sm:pt-10 md:mb-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500">
+          <div className="flex justify-center lg:justify-center relative pt-4 mb-0 sm:pt-10 md:mb-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500">
             <motion.div
               initial={{ scale: 0.9 }}
               whileHover={{ scale: 0.95 }}
@@ -1584,15 +1382,6 @@ function Footer() {
                 >
                   <MessageCircle className="w-4 h-4 text-[var(--color-brand-yellow)]" />
                   Opiniones
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about-us"
-                  className="flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <Users className="w-4 h-4 text-[var(--color-brand-yellow)]" />
-                  Sobre nosotros
                 </a>
               </li>
               <li>
