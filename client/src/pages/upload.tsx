@@ -7,6 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { motion, AnimatePresence } from "framer-motion";
 import logoRound from "@assets/logo_ctl_clean.png";
+import voltLupa from "@assets/volt_lupa.webp";
+import voltCall from "@assets/volt_call.webp";
+import voltShared from "@assets/volt_shared.webp";
 type ActiveTab = "analyze" | "call" | "share";
 // Variantes para animaciones
 const fadeIn = {
@@ -21,27 +24,36 @@ function AnalyzeForm() {
   const handleDragLeave = () => { setIsDragging(false); };
   const handleDrop = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(false); };
   return (
-    <div className="flex flex-col md:flex-row items-center gap-12 h-full">
-      <div className="flex-1 w-full space-y-6">
+    <div className="flex flex-col md:flex-row items-stretch gap-8 h-full">
+      {/* Imagen Volt (Visible solo Desktop) */}
+      <div className="hidden md:flex w-1/3 items-center justify-center relative">
+        <img 
+          src={voltLupa} 
+          alt="Volt Analizando" 
+          className=" h-auto w-auto drop-shadow-xl" 
+        />
+      </div>
+      {/* Formulario */}
+      <div className="flex-1 w-full space-y-5 flex flex-col justify-center">
         <div className="text-center md:text-left space-y-2">
-          <h3 className="text-2xl font-bold text-[#002782]">Sube tu factura de la luz</h3>
+          <h3 className="text-2xl font-bold text-[#002782]">Sube tu factura <span className="text-[var(--color-brand-yellow)]">de la luz</span> </h3>
           <p className="text-gray-500">Descubre cuánto dinero te puedes ahorrar</p>
         </div>
         
         <div
-          className={`w-full bg-blue-50/50 rounded-xl border-2 border-dashed transition-all duration-300 p-8 flex flex-col items-center justify-center gap-4 cursor-pointer
+          className={`w-full bg-blue-50/50 rounded-xl border-2 border-dashed transition-all duration-300 p-6 flex flex-col items-center justify-center gap-3 cursor-pointer
             ${isDragging ? "border-[var(--color-brand-yellow)] bg-yellow-50" : "border-gray-200 hover:border-blue-300 hover:bg-blue-50"}`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
         >
-          <UploadIcon className="w-12 h-12 text-[#002782]" />
+          <UploadIcon className="w-10 h-10 text-[#002782]" />
           <div className="text-center">
-            <p className="font-bold text-[#002782]">Factura Reciente</p>
-            <p className="text-xs text-gray-500">.pdf, .jpeg, .png</p>
+            <p className="font-bold text-[#002782] text-sm">Factura Reciente</p>
+            <p className="text-[10px] text-gray-500">.pdf, .jpeg, .png</p>
           </div>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div>
             <Label className="text-[#002782]">Datos de contacto:</Label>
             <Input placeholder="Correo electrónico*" className="mt-1 bg-white border-gray-200 text-gray-900" />
@@ -51,7 +63,7 @@ function AnalyzeForm() {
           </div>
         </div>
         
-        <div className="space-y-4 pt-2">
+        <div className="space-y-2 pt-1">
           <div className="flex items-center space-x-2">
             <Checkbox id="terms1" />
             <label htmlFor="terms1" className="text-xs text-gray-500 leading-none">
@@ -61,11 +73,11 @@ function AnalyzeForm() {
           <div className="flex items-start space-x-2">
             <Checkbox id="ads1" />
             <label htmlFor="ads1" className="text-xs text-gray-500 leading-none">
-              Quiero recibir información sobre servicios u ofertas relacionadas.
+              Quiero recibir información comercial.
             </label>
           </div>
         </div>
-        <Button className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-6 shadow-lg hover:shadow-yellow-500/20">
+        <Button className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-4 shadow-lg hover:shadow-yellow-500/20">
           SIGUIENTE
         </Button>
       </div>
@@ -74,41 +86,45 @@ function AnalyzeForm() {
 }
 function CallForm() {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-12 h-full">
-      <div className="flex-1 w-full space-y-6">
-        <div className="text-center space-y-2">
-          <div className="w-16 h-16 bg-[var(--color-brand-yellow)] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-yellow-500/20">
-            <Phone className="w-8 h-8 text-[#0F1B2D]" />
+    <div className="flex flex-col md:flex-row items-stretch gap-8 h-full">
+      {/* Imagen Volt (Visible solo Desktop) */}
+      <div className="hidden md:flex w-1/3 items-end justify-center relative">
+        <img 
+          src={voltCall} 
+          alt="Volt Llamada" 
+          className="object-contain max-h-[450px] w-auto drop-shadow-xl" 
+        />
+      </div>
+      {/* Formulario */}
+      <div className="flex-1 w-full space-y-5 flex flex-col justify-center">
+        <div className="text-center md:text-left space-y-2">
+           {/* Icono solo en móvil para ahorrar espacio en desktop si ya está la imagen */}
+          <div className="md:hidden w-12 h-12 bg-[var(--color-brand-yellow)] rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg">
+            <Phone className="w-6 h-6 text-[#0F1B2D]" />
           </div>
-          <h3 className="text-2xl font-bold text-[#002782]">¡Nosotros te llamamos!</h3>
-          <p className="text-gray-500">Déjanos tu número y te ofreceremos asesoramiento telefónico.</p>
+          <h3 className="text-2xl font-bold text-[#002782]">¡Nosotros te <span className="text-[var(--color-brand-yellow)]">llamamos!</span></h3>
+          <p className="text-gray-500">Déjanos tu número y te asesoramos gratis.</p>
         </div>
-        <div className="space-y-4">
-          <Input placeholder="Nombre*" className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--color-brand-yellow)]" />
-          <Input placeholder="Teléfono móvil*" className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--color-brand-yellow)]" />
+        <div className="space-y-3">
+          <Input placeholder="Nombre*" className="bg-white border-gray-200 text-gray-900" />
+          <Input placeholder="Teléfono móvil*" className="bg-white border-gray-200 text-gray-900" />
           
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-            <p className="text-xs font-bold text-[#002782] mb-2">OPCIONAL - Si dispones de factura, adjúntala:</p>
-            <div className="flex items-center justify-center border border-dashed border-gray-300 rounded p-4 hover:border-[#002782] transition-colors cursor-pointer bg-white">
-              <span className="text-xs text-gray-400">Factura Reciente</span>
+          <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
+            <p className="text-xs font-bold text-[#002782] mb-1">OPCIONAL - Adjuntar factura:</p>
+            <div className="flex items-center justify-center border border-dashed border-gray-300 rounded p-2 hover:border-[#002782] transition-colors cursor-pointer bg-white">
+              <span className="text-xs text-gray-400">Seleccionar archivo</span>
             </div>
           </div>
         </div>
-        <div className="space-y-4 pt-2">
+        <div className="space-y-2 pt-1">
           <div className="flex items-center space-x-2">
             <Checkbox id="terms2" />
             <label htmlFor="terms2" className="text-xs text-gray-500 leading-none">
-              He leído y acepto la <a href="#" className="underline text-gray-500">política de tratamiento de datos*</a>
-            </label>
-          </div>
-          <div className="flex items-start space-x-2">
-            <Checkbox id="ads2" />
-            <label htmlFor="ads2" className="text-xs text-gray-500 leading-none">
-              Quiero recibir información comercial.
+              He leído y acepto la <a href="#" className="underline text-gray-500">política de privacidad*</a>
             </label>
           </div>
         </div>
-        <Button className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-6 shadow-lg shadow-yellow-500/10">
+        <Button className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-4 shadow-lg shadow-yellow-500/10">
           ENVIAR SOLICITUD
         </Button>
       </div>
@@ -117,20 +133,30 @@ function CallForm() {
 }
 function ShareForm() {
   return (
-    <div className="flex flex-col items-center gap-8 h-full max-w-md mx-auto">
-      <div className="text-center space-y-4">
-        <div className="w-16 h-16 bg-[#002782] rounded-full flex items-center justify-center mx-auto border border-white/10">
-          <Share2 className="w-8 h-8 text-white" />
-        </div>
-        <h3 className="text-2xl font-bold text-[#002782]">¿No tienes la factura a mano?</h3>
-        <p className="text-gray-500">Podemos enviarte un correo para que accedas en otro momento.</p>
+    <div className="flex flex-col md:flex-row items-center gap-8 h-full"> 
+       {/* Imagen Volt (Visible solo Desktop) */}
+       <div className="hidden md:flex w-1/3 items-end justify-center relative">
+        <img 
+          src={voltShared} 
+          alt="Volt Compartir" 
+          className="object-contain max-h-[450px] w-auto drop-shadow-xl" 
+        />
       </div>
-      <div className="w-full space-y-4">
-        <Input placeholder="Correo electrónico*" className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--color-brand-yellow)]" />
-        
-        <Button className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-6 shadow-lg shadow-yellow-500/10">
-          ENVIAR RECORDATORIO
-        </Button>
+      {/* Formulario */}
+      <div className="flex-1 w-full max-w-md mx-auto space-y-6 flex flex-col justify-center">
+        <div className="text-center md:text-left space-y-4">
+          <div>
+            <h3 className="text-2xl font-bold text-[#002782]">¿No tienes la <span className="text-[var(--color-brand-yellow)]">factura?</span> </h3>
+            <p className="text-gray-500 mt-2">Te enviamos un recordatorio para que la subas cuando puedas.</p>
+          </div>
+        </div>
+        <div className="w-full space-y-4">
+          <Input placeholder="Correo electrónico*" className="bg-white border-gray-200 text-gray-900 py-6" />
+          
+          <Button className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-6 shadow-lg shadow-yellow-500/10">
+            ENVIAR RECORDATORIO
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -180,7 +206,7 @@ export default function Upload() {
       {/* SECCIÓN 1: NAVBAR */}
       <nav className="bg-[#0F1B2D] border-b border-white/5 py-4 relative z-50 shadow-md">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <img src={logoRound} alt="Comparamos Tu Luz" className="h-24 md:h-20 w-auto" />
+          <img src={logoRound} alt="Comparamos Tu Luz" className="h-24 md:h-24 w-auto" />
           <button 
             onClick={() => setLocation("/")}
             className="text-xs md:text-sm text-gray-300 hover:text-[var(--color-brand-yellow)] flex items-center gap-2 transition-colors font-medium border border-white/10 px-4 py-2 rounded-lg hover:border-[var(--color-brand-yellow)]"
@@ -228,8 +254,9 @@ export default function Upload() {
                         variants={fadeIn}
                         className="md:hidden overflow-hidden relative z-0"
                       >
-                         <div className="p-6 bg-white rounded-xl border-x-2 border-b-2 border-white/10 shadow-lg mt-1 mx-1 mb-4">
-                           <tab.component />
+                         <div className="relative p-6 bg-white rounded-b-xl border-x-2 border-b-2 border-white/10 shadow-lg mt-1 mx-1 mb-4">
+                                       <tab.component />
+                           
                          </div>
                       </motion.div>
                     )}
