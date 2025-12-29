@@ -167,7 +167,7 @@ function Navbar() {
             </div>
           ))}
           <Button asChild className="ml-4 bg-[var(--color-brand-yellow)] text-white hover:bg-yellow-400 font-bold shadow-lg shadow-white/20 transition-all uppercase text-xs tracking-wide border-2 [text-shadow:1px_1px_2px_black] border-white whitespace-nowrap transition-all transform hover:scale-105">
-            <a href="https://campaign.comparamostuluz.es" target="_blank" rel="noopener noreferrer">
+            <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
               Subir Factura
             </a>
           </Button>
@@ -219,7 +219,7 @@ function Navbar() {
               </a>
             </Button>
             <Button asChild className="w-full bg-[var(--color-brand-yellow)] text-white font-bold uppercase border-2 border-white ">
-              <a href="https://campaign.comparamostuluz.es" target="_blank" rel="noopener noreferrer">
+              <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
                 Subir Factura
               </a>
             </Button>
@@ -381,7 +381,7 @@ function Hero() {
                 size="lg"
                 className="bg-[var(--color-brand-yellow)] [text-shadow:1px_1px_2px_black] hover:bg-yellow-400 text-white font-bold text-lg h-14 px-8 rounded-xl shadow-lg shadow-yellow-500/20 transition-all duration-300 relative z-10"
               >
-                <a href="https://campaign.comparamostuluz.es" target="_blank" rel="noopener noreferrer">
+                <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
                   Comparar tarifas ahora
                 </a>
               </Button>
@@ -1213,7 +1213,7 @@ function CTA() {
               size="lg"
               className="bg-[var(--color-brand-yellow)] [text-shadow:1px_1px_2px_black]  text-[#f8f8f8] font-bold text-lg h-16 px-10 rounded-full  transition-all transform hover:scale-105"
             >
-              <a href="https://campaign.comparamostuluz.es" target="_blank" rel="noopener noreferrer">
+              <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
                 Comparar tarifas ahora
               </a>
             </Button>
