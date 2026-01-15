@@ -401,7 +401,7 @@ function Hero() {
               />
             </div>
             <a
-              href="https://wa.me/34600295895"
+              href="https://wa.me/584120628427?text=Hola,%20quisiera%20mas%20informacion%20sobre%20la%20comparativa%20de%20la%20factura%20de%20luz"
               target="_blank"
               rel="noopener noreferrer"
             >
