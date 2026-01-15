@@ -180,7 +180,7 @@ function Navbar() {
             </a>
           </Button>
           <Button asChild className="ml-4 bg-transparent hover:bg-transparent text-white font-bold uppercase text-xs tracking-wide whitespace-nowrap transition-all transform hover:scale-105 p-0 border-none shadow-none">
-            <a href="https://wa.me/34600295895" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+            <a href="https://wa.me/584120628427" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
               <span>Hablar con un asesor</span>
               <div className="relative flex items-center justify-center">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-brand-yellow)] opacity-75 animate-ping-slow"></span>
