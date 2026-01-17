@@ -5,6 +5,7 @@ import { queryClient } from "./lib/queryClient";
 import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import Upload from "@/pages/upload";
+import { ChatWidget } from "@/components/chat-widget";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router />
+      <ChatWidget />
       <Toaster />
     </QueryClientProvider>
   );
