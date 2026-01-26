@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://comparamostuluz.es/sitemap.xml
+
+# Allow all crawlers to access all content
+# This ensures search engines and content analysis tools like NotebookLM can access the site

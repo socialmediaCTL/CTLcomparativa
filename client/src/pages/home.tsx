@@ -105,17 +105,22 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background font-sans overflow-x-hidden">
 
-      <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <Comparison />
-      <Testimonials />
-
-      <MeetVolt />
-      <FAQ />
-      <CTA />
-      <Footer />
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <Comparison />
+        <Testimonials />
+        <MeetVolt />
+        <FAQ />
+        <CTA />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
@@ -136,6 +141,8 @@ function Navbar() {
   return (
     <nav
       className="fixed top-0 left-0 z-50 w-full border-b border-white/5 transition-all duration-300 text-[#C6CFDA] bg-[#0F1B2D]"
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="container mx-auto px-4 flex h-24 items-center justify-between">
         <a
@@ -1252,7 +1259,7 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="bg-[#0F1B2D] text-[#C6CFDA] py-16 border-t border-white/5 font-sans relative overflow-hidden">
+    <div className="bg-[#0F1B2D] text-[#C6CFDA] py-16 border-t border-white/5 font-sans relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg
@@ -1565,7 +1572,7 @@ function Footer() {
           />
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
 function GoldenArcBackground({ className, position = "top-right" }: { className?: string, position?: "top-right" | "bottom-left" }) {

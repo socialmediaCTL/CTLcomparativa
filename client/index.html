@@ -30,8 +30,59 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon.ico">
 <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="ES">
+    <meta name="geo.placename" content="España">
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Comparamos Tu Luz",
+      "url": "https://comparamostuluz.es/",
+      "logo": "https://comparamostuluz.es/og-image.jpg",
+      "description": "Expertos en ahorro energético. Comparamos las mejores tarifas de luz para hogares y empresas.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Valencia",
+        "addressCountry": "ES"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@comparamostuluz.es",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Comparamos Tu Luz",
+      "url": "https://comparamostuluz.es/",
+      "description": "Comparador de tarifas de luz. Ahorra en tu factura de electricidad comparando las mejores ofertas del mercado.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://comparamostuluz.es/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+        <h1>Comparamos Tu Luz - Ahorra en tu factura de Luz</h1>
+        <p>Expertos en ahorro energético. Comparamos las mejores tarifas de luz para hogares y empresas.</p>
+        <p>Para una mejor experiencia, por favor habilita JavaScript en tu navegador.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
