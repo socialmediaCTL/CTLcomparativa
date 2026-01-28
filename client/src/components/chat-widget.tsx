@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { cn } from "@/lib/utils";
+import voltAvatar from "@/assets/volt_avatar_chat.png"; // IMAGEN DE VOLT
 
 interface Message {
   role: "user" | "model";
@@ -18,7 +19,7 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   
-  // 1. Cargar historial del localStorage
+  // 1. Cargar historial
   const [messages, setMessages] = useState<Message[]>(() => {
     const saved = localStorage.getItem("chat_history");
     return saved ? JSON.parse(saved) : [{ role: "model", text: "¡Hola! Soy Volt ⚡. Estoy aquí para ayudarte a ahorrar en tu factura. ¿Cómo te puedo ayudar hoy?" }];
@@ -26,7 +27,7 @@ export function ChatWidget() {
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // 2. Función para borrar el chat (AHORA ESTÁ FUERA Y EN EL SITIO CORRECTO)
+  // 2. Función borrar chat
   const clearChat = () => {
     localStorage.removeItem("chat_history");
     setMessages([{ role: "model", text: "Chat reiniciado 🗑️. ¿En qué puedo ayudarte hoy?" }]);
@@ -40,7 +41,7 @@ export function ChatWidget() {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  // 3. Guardar en localStorage cada vez que cambian los mensajes
+  // 3. Persistencia
   useEffect(() => {
     localStorage.setItem("chat_history", JSON.stringify(messages));
   }, [messages]);
@@ -49,8 +50,8 @@ export function ChatWidget() {
     mutationFn: async (userMessage: string) => {
       const res = await apiRequest("POST", "/api/chat", { 
         message: userMessage, 
-        history: messages.slice(-10), // Enviamos contexto
-        location: window.location.href // Enviamos URL
+        history: messages.slice(-10), 
+        location: window.location.href 
       });
       return res.json();
     },
@@ -89,35 +90,45 @@ export function ChatWidget() {
             className="mb-4 w-[320px] sm:w-[380px] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5"
           >
             <Card className="border-0 shadow-none h-full flex flex-col">
-              <CardHeader className="bg-[#002782] text-white p-4 flex flex-row justify-between items-center space-y-0">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white/10 rounded-full border border-white/20">
-                    <Bot className="h-5 w-5 text-[var(--color-brand-yellow)]" />
+              {/* HEADER NUEVO CON IMAGEN Y DEGRADADO */}
+              <CardHeader className="bg-brand-gradient text-white p-4 flex flex-row justify-between items-center space-y-0 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                
+                <div className="flex items-center gap-3 z-10">
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-full border-2 border-[var(--color-brand-yellow)] overflow-hidden bg-white/10 p-0.5 shadow-lg">
+                      <img src={voltAvatar} alt="Volt" className="w-full h-full object-cover rounded-full" />
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#002782] rounded-full"></div>
                   </div>
                   <div>
-                    <CardTitle className="text-base font-bold">Asistente Volt</CardTitle>
-                    <p className="text-[10px] text-blue-200 opacity-90">Responde al instante</p>
+                    <CardTitle className="text-lg font-bold font-heading tracking-wide">Asistente Volt</CardTitle>
+                    <p className="text-[11px] text-blue-100 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-[var(--color-brand-yellow)] rounded-full animate-pulse"></span>
+                      Responde al instante
+                    </p>
                   </div>
                 </div>
-                {/* BOTONES CORREGIDOS */}
-                <div className="flex gap-1">
-                  <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:bg-white/20 rounded-full" onClick={clearChat} title="Borrar historial">
+
+                <div className="flex gap-1 z-10">
+                  <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:text-[var(--color-brand-yellow)] hover:bg-white/10 rounded-full transition-colors" onClick={clearChat} title="Borrar historial">
                     <Trash2 className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:bg-white/20 rounded-full" onClick={() => setIsOpen(false)}>
+                  <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:text-[var(--color-brand-yellow)] hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsOpen(false)}>
                     <Minimize2 className="h-4 w-4" />
                   </Button>
                 </div>
               </CardHeader>
+
               <CardContent className="p-0 bg-gray-50 flex-1 relative">
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                 <ScrollArea className="h-[350px] p-4">
                   <div className="flex flex-col gap-4">
                     {messages.map((msg, index) => (
                       <div key={index} className={cn("flex flex-col gap-1 rounded-2xl px-4 py-2.5 text-sm shadow-sm max-w-[85%] break-words whitespace-pre-wrap",
-  msg.role === "user"
-    ? "ml-auto bg-[#002782] text-white rounded-br-none"
-    : "bg-white text-gray-800 border border-gray-100 rounded-bl-none text-left")}>
+                          msg.role === "user"
+                            ? "ml-auto bg-[#002782] text-white rounded-br-none"
+                            : "bg-white text-gray-800 border border-gray-100 rounded-bl-none text-left")}>
                         {msg.text}
                       </div>
                     ))}
@@ -147,13 +158,13 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      <motion.button
+            <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className={cn("h-16 w-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 border-4", isOpen ? "bg-gray-200 border-gray-100 text-gray-600" : "bg-[#002782] border-[var(--color-brand-yellow)] text-white hover:shadow-[0_0_30px_rgba(255,195,0,0.4)]")}
+        className={cn("h-16 w-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 border-4 p-0 overflow-hidden", isOpen ? "bg-gray-200 border-gray-100 text-gray-600" : "bg-[#002782] border-[var(--color-brand-yellow)] text-white hover:shadow-[0_0_30px_rgba(255,195,0,0.4)]")}
       >
-        {isOpen ? <X className="h-7 w-7" /> : <MessageCircle className="h-8 w-8 ml-0.5" />}
+        {isOpen ? <X className="h-7 w-7" /> : <img src={voltAvatar} alt="Chat" className="h-full w-full object-cover" />}
       </motion.button>
     </div>
   );

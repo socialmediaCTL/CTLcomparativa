@@ -1,7 +1,10 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import "dotenv/config";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "AIzaSyBSd7-fIUfQzw53eMXazoLI9qpmcz0WvNo");
-// Usamos el modelo Flash que es rápido y gratuito
+if (!process.env.GEMINI_API_KEY) {
+  throw new Error("❌ FALTA LA API KEY. Asegúrate de tener el archivo .env configurado.");
+}
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const SYSTEM_PROMPT = `
