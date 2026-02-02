@@ -1,7 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { chatWithGemini } from "./gemini";
-import { storage } from "./storage";
+import { chatWithGemini } from "./gemini.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
