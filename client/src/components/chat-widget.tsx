@@ -8,10 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { cn } from "@/lib/utils";
-
-// CAMBIO 1: Importamos la imagen de cuerpo completo (Headset)
-import voltMascot from "@assets/volt_call.webp"; 
-import voltAvatarFace from "@/assets/volt_avatar_chat.png"; // Mantenemos la cara solo para el header y botón
+import voltAvatar from "@/assets/volt_avatar_chat.png"; // IMAGEN ORIGINAL
 
 interface Message {
   role: "user" | "model";
@@ -22,7 +19,6 @@ export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   
-  // 1. Cargar historial
   const [messages, setMessages] = useState<Message[]>(() => {
     const saved = localStorage.getItem("chat_history");
     return saved ? JSON.parse(saved) : [{ role: "model", text: "¡Hola! Soy Volt ⚡. Estoy aquí para ayudarte a ahorrar en tu factura. ¿Cómo te puedo ayudar hoy?" }];
@@ -30,7 +26,6 @@ export function ChatWidget() {
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // 2. Función borrar chat
   const clearChat = () => {
     localStorage.removeItem("chat_history");
     setMessages([{ role: "model", text: "Chat reiniciado 🗑️. ¿En qué puedo ayudarte hoy?" }]);
@@ -44,7 +39,6 @@ export function ChatWidget() {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  // 3. Persistencia
   useEffect(() => {
     localStorage.setItem("chat_history", JSON.stringify(messages));
   }, [messages]);
@@ -90,17 +84,16 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="mb-4 w-[350px] sm:w-[400px] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5"
+            className="mb-4 w-[320px] sm:w-[380px] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5"
           >
             <Card className="border-0 shadow-none h-full flex flex-col">
-              {/* HEADER (Usamos la cara pequeña aquí para que quede elegante) */}
               <CardHeader className="bg-brand-gradient text-white p-4 flex flex-row justify-between items-center space-y-0 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
                 
                 <div className="flex items-center gap-3 z-10">
                   <div className="relative">
                     <div className="w-12 h-12 rounded-full border-2 border-[var(--color-brand-yellow)] overflow-hidden bg-white/10 p-0.5 shadow-lg">
-                      <img src={voltAvatarFace} alt="Volt" className="w-full h-full object-cover rounded-full" />
+                      <img src={voltAvatar} alt="Volt" className="w-full h-full object-cover rounded-full" />
                     </div>
                     <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#002782] rounded-full"></div>
                   </div>
@@ -125,50 +118,38 @@ export function ChatWidget() {
 
               <CardContent className="p-0 bg-gray-50 flex-1 relative">
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <ScrollArea className="h-[400px] p-4">
-                  <div className="flex flex-col gap-6">
-                                                        {messages.map((msg, index) => (
-                      <div key={index} className={cn("flex w-full", msg.role === "user" ? "justify-end items-end" : "justify-start items-end")}> {/* items-end SIEMPRE */}
-                        
-                        {/* A. MASCOTA VOLT (De pie en el suelo) */}
+                <ScrollArea className="h-[350px] p-4">
+                  <div className="flex flex-col gap-4">
+                    {messages.map((msg, index) => (
+                      <div key={index} className={cn("flex w-full items-end", msg.role === "user" ? "justify-end" : "justify-start")}>
                         {msg.role === "model" && (
-                          <div className="mr-[-12px] z-10 flex-shrink-0 relative mb-1"> 
+                          <div className="mr-2 flex-shrink-0 mb-1">
                              <motion.img 
-                               src={voltMascot} 
-                               alt="Volt Mascota" 
-                               className="w-28 h-auto object-contain drop-shadow-lg filter" // Más grande (w-28)
+                               src={voltAvatar} 
+                               alt="Volt" 
+                               className="w-8 h-8 rounded-full border border-gray-200 shadow-sm"
                                animate={{
+                                 scale: [1, 1.1, 1],
                                  y: [0, -3, 0],
-                                 scale: [1, 1.02, 1],
-                                 rotate: [0, 1, 0, -1, 0],
-                                 transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                                 transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                                }}
                              />
                           </div>
                         )}
-
-                        {/* B. BURBUJA DE TEXTO (Sin márgenes raros) */}
-                        <div className={cn("relative z-0 flex flex-col gap-1 rounded-2xl px-5 py-4 text-sm shadow-md max-w-[75%] break-words whitespace-pre-wrap leading-relaxed",
+                        <div className={cn("flex flex-col gap-1 rounded-2xl px-4 py-2.5 text-sm shadow-sm max-w-[80%] break-words whitespace-pre-wrap",
                             msg.role === "user"
                               ? "bg-[#002782] text-white rounded-br-none"
-                              : "bg-white text-gray-800 border-2 border-[var(--color-brand-yellow)] rounded-bl-none ml-4 mb-4")}> {/* mb-4 para que suba un poco respecto a los pies */}
+                              : "bg-white text-gray-800 border border-gray-100 rounded-bl-none text-left")}>
                           {msg.text}
-                          
-                          {/* C. COLA DEL BOCADILLO (Abajo a la izquierda) */}
-                          {msg.role === "model" && (
-                            <div className="absolute bottom-[15px] -left-[8px] w-4 h-4 bg-white border-l-2 border-b-2 border-[var(--color-brand-yellow)] transform rotate-45"></div>
-                          )}
                         </div>
                       </div>
                     ))}
-                    
-                    {/* INDICADOR ESCRIBIENDO */}
                     {chatMutation.isPending && (
                        <div className="flex w-full justify-start items-end">
-                          <motion.div className="mr-0 z-10 w-20 opacity-70">
-                            <img src={voltMascot} alt="Volt" className="w-full h-auto" />
-                          </motion.div>
-                          <div className="flex flex-col gap-2 rounded-2xl px-4 py-3 text-sm bg-white border border-gray-200 rounded-bl-none shadow-sm ml-2">
+                          <div className="mr-2 flex-shrink-0 mb-1">
+                            <img src={voltAvatar} alt="Volt" className="w-8 h-8 rounded-full border border-gray-200 opacity-70" />
+                          </div>
+                          <div className="flex flex-col gap-2 rounded-2xl px-4 py-3 text-sm bg-white border border-gray-100 rounded-bl-none shadow-sm">
                             <span className="flex gap-1">
                               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span>
                               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-100"></span>
@@ -200,7 +181,7 @@ export function ChatWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className={cn("h-16 w-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 border-4 p-0 overflow-hidden", isOpen ? "bg-gray-200 border-gray-100 text-gray-600" : "bg-[#002782] border-[var(--color-brand-yellow)] text-white hover:shadow-[0_0_30px_rgba(255,195,0,0.4)]")}
       >
-        {isOpen ? <X className="h-7 w-7" /> : <img src={voltAvatarFace} alt="Chat" className="h-full w-full object-cover" />}
+        {isOpen ? <X className="h-7 w-7" /> : <img src={voltAvatar} alt="Chat" className="h-full w-full object-cover" />}
       </motion.button>
     </div>
   );
