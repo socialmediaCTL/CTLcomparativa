@@ -127,35 +127,36 @@ export function ChatWidget() {
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                 <ScrollArea className="h-[400px] p-4">
                   <div className="flex flex-col gap-6">
-                    {messages.map((msg, index) => (
-                      <div key={index} className={cn("flex w-full items-end", msg.role === "user" ? "justify-end" : "justify-start")}>
+                                       {messages.map((msg, index) => (
+                      <div key={index} className={cn("flex w-full", msg.role === "user" ? "justify-end items-end" : "justify-start items-start")}>
                         
-                        {/* CAMBIO 2: MASCOTA VOLT (Grande y Completa) */}
+                        {/* A. MASCOTA VOLT (Alineada Arriba) */}
                         {msg.role === "model" && (
-                          <div className="mr-[-10px] z-10 flex-shrink-0 relative">
+                          <div className="mr-[-10px] z-10 flex-shrink-0 relative mt-2"> 
                              <motion.img 
                                src={voltMascot} 
                                alt="Volt Mascota" 
-                               // Ajustamos tamaño para que sea "cuerpo completo" y quitamos redondeo
                                className="w-24 h-auto object-contain drop-shadow-lg filter" 
                                animate={{
-                                 y: [0, -5, 0],       // Flote suave
-                                 scale: [1, 1.02, 1], // Respiración sutil
-                                 rotate: [0, 1, 0, -1, 0], // Pequeño bamboleo "vivo"
+                                 y: [0, -5, 0],
+                                 scale: [1, 1.02, 1],
+                                 rotate: [0, 1, 0, -1, 0],
                                  transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                                }}
                              />
                           </div>
                         )}
 
+                        {/* B. BURBUJA DE TEXTO (Con margen arriba para bajarla) */}
                         <div className={cn("relative z-0 flex flex-col gap-1 rounded-2xl px-5 py-4 text-sm shadow-md max-w-[75%] break-words whitespace-pre-wrap leading-relaxed",
                             msg.role === "user"
                               ? "bg-[#002782] text-white rounded-br-none"
-                              : "bg-white text-gray-800 border-2 border-[var(--color-brand-yellow)] rounded-bl-none ml-2")}> {/* ml-2 para separar de la imagen */}
+                              : "bg-white text-gray-800 border-2 border-[var(--color-brand-yellow)] rounded-tl-none ml-2 mt-8")}> {/* mt-8 bajamos la burbuja */}
                           {msg.text}
-                          {/* Triangulito del bocadillo para el Bot */}
+                          
+                          {/* C. COLA DEL BOCADILLO (Apuntando a la boca) */}
                           {msg.role === "model" && (
-                            <div className="absolute bottom-[10px] -left-[8px] w-4 h-4 bg-white border-l-2 border-b-2 border-[var(--color-brand-yellow)] transform rotate-45"></div>
+                            <div className="absolute top-[12px] -left-[8px] w-4 h-4 bg-white border-l-2 border-t-2 border-[var(--color-brand-yellow)] transform -rotate-45"></div>
                           )}
                         </div>
                       </div>
