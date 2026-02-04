@@ -1,8 +1,33 @@
+# Robots.txt para Comparamos Tu Luz
+# Optimizado para SEO
+
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+
+# Crawl-delay para bots agresivos
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Bots principales - acceso completo
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
 Allow: /
 
 # Sitemap
 Sitemap: https://comparamostuluz.es/sitemap.xml
 
-# Allow all crawlers to access all content
-# This ensures search engines and content analysis tools like NotebookLM can access the site
+# Host preference
+Host: https://comparamostuluz.es

@@ -248,14 +248,15 @@ function Navbar() {
 function Hero() {
   //  const [, setLocation] = useLocation();
   return (
-    <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[75vh] flex items-center text-white pt-28">
+    <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[75vh] flex items-center text-white pt-28" aria-label="Hero principal - Comparador de tarifas de luz">
       <div className="absolute top-24 right-0 w-full lg:w-[55%] h-[calc(100%-6rem)] z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0C1A2B] via-[#0C1A2B]/90 to-transparent lg:via-[#0C1A2B]/40 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1A2B] via-transparent to-transparent z-10 lg:hidden"></div>
         <img
           src={familyHero}
-          alt="Familia feliz ahorrando luz"
+          alt="Familia española feliz ahorrando dinero en su factura de luz gracias al comparador de tarifas eléctricas"
           className="w-full h-full object-cover object-center"
+          loading="eager"
         />
         <div className="absolute inset-0 z-20 hidden lg:block pointer-events-none">
           <motion.div
@@ -692,8 +693,9 @@ function Comparison() {
 
             <img
               src={voltAhorro}
-              alt="Comparativa de mercado con Volt"
+              alt="Volt mascota mostrando comparativa de +20 compañías eléctricas para ahorrar en la factura de luz"
               className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500"
+              loading="lazy"
             />
           </div>
 
@@ -1538,22 +1540,31 @@ function Footer() {
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h4 className="text-white font-bold mb-6 text-lg">Contacto</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)]" />
+              <li className="flex items-start gap-2">
+                <Phone className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)] mt-0.5" />
                 <a
-                  href="mailto:soporte@comparamostuluz.com"
+                  href="tel:+34635624154"
+                  className="hover:text-white transition-colors"
+                >
+                  +34 635 62 41 54
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Mail className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)] mt-0.5" />
+                <a
+                  href="mailto:info@comparamostuluz.es"
                   className="hover:text-white transition-colors"
                 >
                   info@comparamostuluz.es
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Clock className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)]" />
-                <span>L–V 9:00–18:00</span>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)] mt-0.5" />
+                <span>Avd. Cami Reial 101<br />46470 Valencia, España</span>
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)]" />
-                <span>España - Valencia</span>
+              <li className="flex items-start gap-2">
+                <Clock className="w-4 h-4 shrink-0 text-[var(--color-brand-yellow)] mt-0.5" />
+                <span>L–V 9:00–18:00</span>
               </li>
             </ul>
           </div>
