@@ -1,1 +1,32 @@
-{"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+    "name": "Comparamos Tu Luz - Comparador de Tarifas Eléctricas",
+    "short_name": "ComparamosTuLuz",
+    "description": "Comparador de tarifas de luz. Ahorra hasta 300€/año en tu factura eléctrica comparando +20 compañías.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#0F1B2D",
+    "background_color": "#0F1B2D",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "finance",
+        "utilities",
+        "productivity"
+    ],
+    "lang": "es",
+    "dir": "ltr"
+}

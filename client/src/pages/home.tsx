@@ -135,14 +135,15 @@ export default function Home() {
 function Hero() {
   //  const [, setLocation] = useLocation();
   return (
-    <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[75vh] flex items-center text-white pt-28">
+    <section className="relative overflow-hidden bg-[#0C1A2B] min-h-[75vh] flex items-center text-white pt-28" aria-label="Hero principal - Comparador de tarifas de luz">
       <div className="absolute top-24 right-0 w-full lg:w-[55%] h-[calc(100%-6rem)] z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0C1A2B] via-[#0C1A2B]/90 to-transparent lg:via-[#0C1A2B]/40 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1A2B] via-transparent to-transparent z-10 lg:hidden"></div>
         <img
           src={familyHero}
-          alt="Familia feliz ahorrando luz"
+          alt="Familia española feliz ahorrando dinero en su factura de luz gracias al comparador de tarifas eléctricas"
           className="w-full h-full object-cover object-center"
+          loading="eager"
         />
         <div className="absolute inset-0 z-20 hidden lg:block pointer-events-none">
           <motion.div
@@ -579,8 +580,9 @@ function Comparison() {
 
             <img
               src={voltAhorro}
-              alt="Comparativa de mercado con Volt"
+              alt="Volt mascota mostrando comparativa de +20 compañías eléctricas para ahorrar en la factura de luz"
               className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500"
+              loading="lazy"
             />
           </div>
 
@@ -1144,7 +1146,7 @@ function CTA() {
   );
 }
 
-
+          
 function GoldenArcBackground({ className, position = "top-right" }: { className?: string, position?: "top-right" | "bottom-left" }) {
   const isTopRight = position === "top-right";
   return (
