@@ -282,80 +282,120 @@ export default function CollaboratorsPage() {
               </div>
               
               {/* Mobile Straight Line fallback */}
-              <div className="absolute left-6 top-0 bottom-0 w-3 bg-slate-700 md:hidden rounded-full">
-                 <div className="w-1 h-full mx-auto my-2 border-l-2 border-dashed border-white/20"></div>
-              </div>
-
-                             {/* Quitamos 'space-y' porque ahora usamos márgenes individuales. 
-                  Mantenemos 'pt-[150px]' (o lo que quieras) como punto de partida inicial global. */}
-              <div className="relative pt-[100px]">
-                {roadmapSteps.map((step, index) => (
-                  <div 
-                    key={index} 
-                    className={`relative flex items-center md:items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-0`}
-                    style={step.customStyle} // <--- ¡AQUÍ ESTÁ LA MAGIA! Acepta cualquier estilo CSS que definas arriba
-                  >
-                    
-                    {/* CONTENIDO (Tarjeta) */}
-                    <div className={`w-full md:w-5/12 ml-16 md:ml-0 z-10 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
-                        {/* ...contenido igual que antes... */}
-                        {/* Para ahorrarte espacio aquí, el contenido interno de la tarjeta es el mismo de antes */}
-                        
-                        <div className="relative group">
-                          <Card className={`bg-[#1A2C42]/90 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden hover:shadow-[0_0_30px_rgba(255,204,0,0.1)] transition-all duration-300 transform group-hover:-translate-y-2`}>
-                             <div className={`h-1.5 w-full ${step.color}`}></div>
-                            <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                                <div className={`md:hidden p-2 rounded-lg bg-white/10 ${step.color} bg-opacity-20`}>
-                                    {step.icon}
-                                </div>
-                                <CardTitle className="text-xl md:text-2xl font-bold text-white leading-tight">
-                                    {step.title}
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                              <p className="text-slate-300 leading-relaxed text-sm md:text-base">
-                                {step.description}
-                              </p>
-                            </CardContent>
-                          </Card>
-                          
-                          <div className={`hidden md:flex absolute top-1/2 -translate-y-1/2 ${index % 2 === 0 ? '-right-24 translate-x-0' : '-left-24 translate-x-0'} w-16 h-16 rounded-full border-4 border-[#0F1B2D] items-center justify-center ${step.color} shadow-lg z-20`}>
-                             {step.icon}
-                          </div>
-                          
-                           <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 h-1 w-20 ${step.color} opacity-30 -z-10 ${index % 2 === 0 ? '-right-20' : '-left-20'}`}></div>
-                       </div>
-                    </div>
-                    <div className="hidden md:block w-2/12"></div>
-                    
-                    <div className="hidden md:flex w-5/12 items-center justify-center relative px-10">
-                         {step.voltSuggestion && (
-                             <div className={`relative group cursor-help transition-all duration-500 hover:scale-105 opacity-80 hover:opacity-100 ${index % 2 === 0 ? 'origin-left' : 'origin-right'}`}>
-                                <div className="p-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
-                                    <div className="w-48 h-48 border-2 border-dashed border-white/20 rounded-xl flex flex-col items-center justify-center bg-[#0F1B2D]/50 text-center p-4">
-                                        <span className="text-5xl mb-3">⚡</span>
-                                        <p className="text-xs text-[var(--color-brand-yellow)] font-bold mb-1">POSICIÓN VOLT</p>
-                                        <p className="text-[10px] text-slate-400 font-mono leading-tight">{step.voltSuggestion}</p>
-                                    </div>
-                                </div>
-                             </div>
-                         )}
-                    </div>
-                    {/* ...resto del código igual... */}
-                    <div className={`absolute left-6 top-0 -translate-x-1/2 md:hidden flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0F1B2D] z-20 shadow-xl ${step.color}`}>
-                      <span className="text-sm font-bold text-white">{step.id}</span>
-                    </div>
-                  </div>
-                ))}
+                            <div className="relative">
                 
-                {/* COHETE FINAL */}
-                <div className="flex justify-center pt-32 pb-10 relative z-20">
+                {/* ==============================================
+                    VERSIÓN MÓVIL (Lista Vertical Simple)
+                    Ignora tus estilos manuales para que se vea bien en celular
+                   ============================================== */}
+                <div className="md:hidden space-y-12 pt-10 relative px-4">
+                    {/* Línea vertical conectora móvil */}
+                    <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-700/50"></div>
+
+                    {roadmapSteps.map((step, index) => (
+                      <div key={`mobile-${index}`} className="relative pl-14">
+                          {/* Badge circular con número */}
+                          <div className={`absolute left-0 top-0 w-10 h-10 rounded-full border-4 border-[#0F1B2D] flex items-center justify-center z-10 shadow-lg ${step.color}`}>
+                              <span className="text-xs font-bold text-white">{step.id}</span>
+                          </div>
+
+                          {/* Tarjeta Móvil */}
+                          <Card className="bg-[#1A2C42] border-white/5 mb-4">
+                              <div className={`h-1 w-full ${step.color}`}></div>
+                              <CardHeader className="pb-2 pt-4 px-4 flex flex-row gap-3 items-center">
+                                  <div className={`p-2 rounded-md bg-white/5 ${step.color} bg-opacity-20`}>
+                                      {step.icon}
+                                  </div>
+                                  <CardTitle className="text-lg font-bold text-white leading-tight">
+                                      {step.title}
+                                  </CardTitle>
+                              </CardHeader>
+                              <CardContent className="px-4 pb-4">
+                                  <p className="text-slate-400 text-sm leading-relaxed">
+                                      {step.description}
+                                  </p>
+                              </CardContent>
+                          </Card>
+                      </div>
+                    ))}
+                </div>
+
+
+                {/* ==============================================
+                    VERSIÓN ESCRITORIO (Carretera Sinuosa)
+                    Usa tus 'customStyle' para posicionamiento libre
+                   ============================================== */}
+                <div className="hidden md:block relative pt-[50px]">
+                  {roadmapSteps.map((step, index) => (
+                    <div 
+                      key={`desktop-${index}`} 
+                      className={`relative flex items-center md:items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-0`}
+                      style={step.customStyle} // AQUÍ SE APLICAN TUS MOVIDAS MANUALES
+                    >
+                      
+                      {/* CONTENIDO (Tarjeta) */}
+                      <div className={`w-full md:w-5/12 ml-16 md:ml-0 z-10 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
+                          
+                          <div className="relative group">
+                            <Card className={`bg-[#1A2C42]/90 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden hover:shadow-[0_0_30px_rgba(255,204,0,0.1)] transition-all duration-300 transform group-hover:-translate-y-2`}>
+                               <div className={`h-1.5 w-full ${step.color}`}></div>
+                              <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                                  <CardTitle className="text-xl md:text-2xl font-bold text-white leading-tight">
+                                      {step.title}
+                                  </CardTitle>
+                              </CardHeader>
+                              <CardContent>
+                                <p className="text-slate-300 leading-relaxed text-sm md:text-base">
+                                  {step.description}
+                                </p>
+                              </CardContent>
+                            </Card>
+                            
+                            {/* Icono Flotante */}
+                            <div className={`absolute top-1/2 -translate-y-1/2 
+                                ${index % 2 === 0 ? '-right-24 translate-x-0' : '-left-24 translate-x-0'} 
+                                w-16 h-16 rounded-full border-4 border-[#0F1B2D] items-center justify-center ${step.color} shadow-lg z-20 flex`}>
+                               {step.icon}
+                            </div>
+                            
+                            {/* Línea conectora */}
+                             <div className={`absolute top-1/2 -translate-y-1/2 h-1 w-20 ${step.color} opacity-30 -z-10
+                                ${index % 2 === 0 ? '-right-20' : '-left-20'}
+                             `}></div>
+
+                         </div>
+                      </div>
+
+                      {/* Espaciador Central */}
+                      <div className="w-2/12"></div>
+                      
+                      {/* ÁREA DE VOLT */}
+                      <div className="flex w-5/12 items-center justify-center relative px-10">
+                           {step.voltSuggestion && (
+                               <div className={`relative group cursor-help transition-all duration-500 hover:scale-105 opacity-80 hover:opacity-100 ${index % 2 === 0 ? 'origin-left' : 'origin-right'}`}>
+                                  <div className="p-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                                      <div className="w-48 h-48 border-2 border-dashed border-white/20 rounded-xl flex flex-col items-center justify-center bg-[#0F1B2D]/50 text-center p-4">
+                                          <span className="text-5xl mb-3">⚡</span>
+                                          <p className="text-xs text-[var(--color-brand-yellow)] font-bold mb-1">POSICIÓN VOLT</p>
+                                          <p className="text-[10px] text-slate-400 font-mono leading-tight">{step.voltSuggestion}</p>
+                                      </div>
+                                  </div>
+                               </div>
+                           )}
+                      </div>
+
+                    </div>
+                  ))}
+                </div>
+                
+                {/* COHETE FINAL (Compartido) */}
+                <div className="flex justify-center pt-20 pb-10 relative z-20">
                      <div className="relative group">
                         <div className="absolute inset-0 bg-yellow-500/20 blur-2xl rounded-full animate-pulse"></div>
                         <div className="bg-gradient-to-t from-[var(--color-brand-yellow)] to-orange-400 p-8 rounded-full shadow-[0_0_60px_rgba(255,165,0,0.6)] border-8 border-[#0F1B2D] transform group-hover:scale-110 transition-transform duration-500 cursor-pointer relative z-10">
-                            <Rocket className="w-20 h-20 text-[#0F1B2D] animate-bounce" />
+                            <Rocket className="w-16 h-16 md:w-20 md:h-20 text-[#0F1B2D] animate-bounce" />
                         </div>
-                        <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-white/50 font-bold tracking-[0.2em] text-sm uppercase whitespace-nowrap group-hover:text-white group-hover:tracking-[0.5em] transition-all duration-700">
+                        <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-white/50 font-bold tracking-[0.2em] text-xs md:text-sm uppercase whitespace-nowrap group-hover:text-white group-hover:tracking-[0.5em] transition-all duration-700">
                             Misión Cumplida
                         </div>
                      </div>
