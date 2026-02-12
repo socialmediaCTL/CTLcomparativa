@@ -118,7 +118,7 @@ export default function Home() {
         <Testimonials />
         <MeetVolt />
         <FAQ />
-        <CollaboratorsSection/>  
+        <CollaboratorsSection />
         <CTA />
       </main>
       <footer>
@@ -1146,7 +1146,7 @@ function CTA() {
   );
 }
 
-          
+
 function GoldenArcBackground({ className, position = "top-right" }: { className?: string, position?: "top-right" | "bottom-left" }) {
   const isTopRight = position === "top-right";
   return (
