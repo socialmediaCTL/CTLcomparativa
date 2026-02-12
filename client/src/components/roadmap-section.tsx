@@ -9,6 +9,13 @@ import {
     Building2,
 } from "lucide-react";
 
+// Import Volt background images  
+import voltAlianza from "@assets/volt_alianza.webp";
+import voltIA from "@assets/volt_ia.webp";
+import voltMonitorizacion from "@assets/volt_monitorizacion.webp";
+import voltRed from "@assets/volt_red.webp";
+import voltEscalabilidad from "@assets/volt_escalabilidad.webp";
+
 gsap.registerPlugin(ScrollTrigger);
 
 interface RoadmapStep {
@@ -17,6 +24,7 @@ interface RoadmapStep {
     subtitle: string;
     description: string;
     icon: React.ReactNode;
+    image: string;
 }
 
 const roadmapSteps: RoadmapStep[] = [
@@ -27,38 +35,43 @@ const roadmapSteps: RoadmapStep[] = [
         description:
             "Firma de Convenio Institucional. Formalización de la plataforma como herramienta oficial del Colegio de Administradores de Fincas (CAF).",
         icon: <Handshake className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltAlianza,
     },
     {
         id: 2,
         title: "Paso 02",
-        subtitle: "Integración de Datos",
+        subtitle: "Activación del Motor de IA",
         description:
-            "Despliegue de la Red. Transmisión de la información necesaria de los administradores colegiados al CRM centralizado del sistema.",
-        icon: <Network className="w-12 h-12 md:w-16 md:h-16" />,
+            "Inicio de auditorías automáticas mediante un escaneo multimarca de más de 80 ofertas del mercado energético.",
+        icon: <Brain className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltIA,
     },
     {
         id: 3,
         title: "Paso 03",
-        subtitle: "Inteligencia en Tiempo Real",
+        subtitle: "Monitorización y Seguridad",
         description:
-            "Activación del Motor de IA. Inicio de auditorías automáticas mediante un escaneo multimarca de más de 80 ofertas del mercado energético.",
-        icon: <Brain className="w-12 h-12 md:w-16 md:h-16" />,
+            "Control continuo de la eficiencia energética con alertas proactivas que identifican renovaciones tácitas y cláusulas abusivas.",
+        icon: <ShieldCheck className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltMonitorizacion,
     },
     {
         id: 4,
         title: "Paso 04",
-        subtitle: "Control y Seguridad",
+        subtitle: "Despliegue de la Red",
         description:
-            "Monitorización y Escalado. Control continuo de la eficiencia energética con alertas proactivas que identifican renovaciones tácitas y cláusulas abusivas.",
-        icon: <ShieldCheck className="w-12 h-12 md:w-16 md:h-16" />,
+            "Transmisión de la información necesaria de los administradores colegiados al CRM centralizado del sistema.",
+        icon: <Network className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltRed,
     },
     {
         id: 5,
         title: "Paso 05",
-        subtitle: "Libertad Operativa",
+        subtitle: "Escalabilidad Operativa",
         description:
-            "Valor para el Administrador: Escalabilidad Operativa. Eliminación de la carga burocrática para permitir la gestión de un volumen ilimitado de comunidades con la misma estructura de personal.",
+            "Eliminación de la carga burocrática para permitir la gestión de un volumen ilimitado de comunidades con la misma estructura de personal.",
         icon: <Building2 className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltEscalabilidad,
     },
 ];
 
@@ -67,6 +80,7 @@ export function RoadmapSection() {
     const pathRef = useRef<SVGPathElement>(null);
     const circlesRef = useRef<(HTMLDivElement | null)[]>([]);
     const textsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const backgroundsRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         if (!sectionRef.current || !pathRef.current) return;
@@ -91,6 +105,53 @@ export function RoadmapSection() {
                     },
                 });
             }
+
+            // Animate background images with crossfade
+            backgroundsRef.current.forEach((bg, index) => {
+                if (!bg) return;
+
+                // Set initial opacity to 0 for all except the first
+                if (index !== 0) {
+                    gsap.set(bg, { opacity: 0 });
+                }
+
+                const circle = circlesRef.current[index];
+                if (!circle) return;
+
+                // Fade in current background and fade out previous ones
+                gsap.to(bg, {
+                    opacity: 0.25, // 25% opacity for better visibility
+                    scrollTrigger: {
+                        trigger: circle,
+                        start: "top 85%", // Start earlier for faster appearance
+                        end: "top 50%",
+                        scrub: 1,
+                        onEnter: () => {
+                            // Fade out all other backgrounds
+                            backgroundsRef.current.forEach((otherBg, otherIndex) => {
+                                if (otherIndex !== index && otherBg) {
+                                    gsap.to(otherBg, {
+                                        opacity: 0,
+                                        duration: 0.8,
+                                        ease: "power2.inOut"
+                                    });
+                                }
+                            });
+                        },
+                    },
+                });
+
+                // Fade out when scrolling past
+                gsap.to(bg, {
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: circle,
+                        start: "bottom 20%",
+                        end: "bottom top",
+                        scrub: 1,
+                    },
+                });
+            });
 
             // Animate circles and text content
             circlesRef.current.forEach((circle, index) => {
@@ -159,6 +220,30 @@ export function RoadmapSection() {
                 </svg>
             </div>
 
+            {/* Dynamic Volt Background Images */}
+            {roadmapSteps.map((step, index) => (
+                <div
+                    key={`bg-${step.id}`}
+                    ref={(el) => {
+                        backgroundsRef.current[index] = el;
+                    }}
+                    className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000"
+                    style={{
+                        opacity: index === 0 ? 0.2 : 0,
+                    }}
+                >
+                    <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{
+                            backgroundImage: `url(${step.image})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center',
+                            filter: 'blur(0px)', // No blur to maintain Volt's proportions
+                        }}
+                    />
+                </div>
+            ))}
+
             <div className="container mx-auto px-4 relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-20">
@@ -182,18 +267,70 @@ export function RoadmapSection() {
                         viewBox="0 0 1000 1400"
                         preserveAspectRatio="none"
                     >
+                        <defs>
+                            {/* Gradient for the glowing light */}
+                            <radialGradient id="lightGlow">
+                                <stop offset="0%" stopColor="var(--color-brand-yellow)" stopOpacity="1" />
+                                <stop offset="50%" stopColor="var(--color-brand-yellow)" stopOpacity="0.6" />
+                                <stop offset="100%" stopColor="var(--color-brand-yellow)" stopOpacity="0" />
+                            </radialGradient>
+                        </defs>
+
+                        {/* Main path */}
                         <path
                             ref={pathRef}
+                            id="roadmapPath"
                             d="M 200 100 Q 400 150, 500 250 T 500 450 Q 500 550, 600 650 T 700 850 Q 750 950, 650 1050 T 500 1250"
                             fill="none"
                             stroke="var(--color-brand-yellow)"
                             strokeWidth="4"
                             strokeLinecap="round"
                         />
+
+                        {/* Animated light that follows the path */}
+                        <circle
+                            id="pathLight"
+                            r="12"
+                            fill="url(#lightGlow)"
+                            opacity="0.8"
+                        >
+                            <animateMotion
+                                dur="8s"
+                                repeatCount="indefinite"
+                                path="M 200 100 Q 400 150, 500 250 T 500 450 Q 500 550, 600 650 T 700 850 Q 750 950, 650 1050 T 500 1250"
+                            />
+                        </circle>
+
+                        {/* Outer glow ring */}
+                        <circle
+                            r="20"
+                            fill="none"
+                            stroke="var(--color-brand-yellow)"
+                            strokeWidth="2"
+                            opacity="0.3"
+                        >
+                            <animateMotion
+                                dur="8s"
+                                repeatCount="indefinite"
+                                path="M 200 100 Q 400 150, 500 250 T 500 450 Q 500 550, 600 650 T 700 850 Q 750 950, 650 1050 T 500 1250"
+                            />
+                            <animate
+                                attributeName="r"
+                                values="20;28;20"
+                                dur="1.5s"
+                                repeatCount="indefinite"
+                            />
+                            <animate
+                                attributeName="opacity"
+                                values="0.3;0.6;0.3"
+                                dur="1.5s"
+                                repeatCount="indefinite"
+                            />
+                        </circle>
                     </svg>
 
                     {/* Steps */}
-                    <div className="space-y-32 md:space-y-40">
+                    <div className="space-y-64 md:space-y-80">
                         {roadmapSteps.map((step, index) => (
                             <div
                                 key={step.id}

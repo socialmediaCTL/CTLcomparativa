@@ -80,8 +80,18 @@ export default function CollaboratorsPage() {
         </section>
 
         {/* Value Proposition Section */}
-        <section className="py-20 bg-white relative">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-white relative overflow-hidden">
+          {/* Decorative Yellow Curved Lines */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-10">
+            <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M-10 30 Q 30 60 110 30" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.5" />
+              <path d="M-10 70 Q 50 40 110 70" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.6" />
+              <circle cx="85" cy="15" r="25" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.4" />
+              <path d="M0 90 C 20 60 40 80 60 50" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.4" opacity="0.5" />
+            </svg>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-[#0F1B2D] mb-4">
                 Una Propuesta de Valor Única
@@ -118,8 +128,17 @@ export default function CollaboratorsPage() {
 
 
         {/* Final CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100">
-          <div className="container mx-auto px-4 text-center">
+        <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
+          {/* Decorative Yellow Curved Lines */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-8">
+            <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M110 20 Q 70 50 -10 20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.4" />
+              <circle cx="15" cy="85" r="20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.2" opacity="0.5" />
+              <path d="M100 80 C 80 50 60 70 40 40" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.6" />
+            </svg>
+          </div>
+
+          <div className="container mx-auto px-4 text-center relative z-10">
 
             <div className="max-w-4xl mx-auto bg-white rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden ring-1 ring-slate-200">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
