@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/navbar";
+﻿import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -88,13 +88,14 @@ export default function CollaboratorsPage() {
               <path d="M-10 70 Q 50 40 110 70" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.6" />
               <circle cx="85" cy="15" r="25" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.4" />
               <path d="M0 90 C 20 60 40 80 60 50" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.4" opacity="0.5" />
+              <circle cx="10" cy="50" r="15" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.2" opacity="0.3" />
             </svg>
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-[#0F1B2D] mb-4">
-                Una Propuesta de Valor Única
+                Una Propuesta de Valor <span className="text-[var(--color-brand-yellow)]">Única</span>
               </h2>
               <p className="text-slate-600 text-lg">
                 Hemos diseñado una solución integral para eliminar fricciones y maximizar resultados.
@@ -103,17 +104,17 @@ export default function CollaboratorsPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {valueProps.map((prop, index) => (
-                <Card key={index} className="border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
+                <Card key={index} className="border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white hover:bg-[#0F1B2D] group cursor-pointer">
                   <CardHeader className="pb-2">
-                    <div className="w-16 h-16 rounded-2xl bg-[#0F1B2D]/5 flex items-center justify-center mb-4 mx-auto md:mx-0">
-                      {prop.icon}
+                    <div className="w-16 h-16 rounded-2xl bg-[#0F1B2D]/5 group-hover:bg-white flex items-center justify-center mb-4 mx-auto md:mx-0 transition-all duration-500 group-hover:rotate-[5deg]">
+                      <div className="[&>svg]:text-[var(--color-brand-yellow)] group-hover:[&>svg]:text-[#0F1B2D] transition-colors duration-500">{prop.icon}</div>
                     </div>
-                    <CardTitle className="text-xl font-bold text-[#0F1B2D] text-center md:text-left">
+                    <CardTitle className="text-xl font-bold text-[#0F1B2D] group-hover:text-white text-center md:text-left transition-colors duration-500">
                       {prop.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-slate-600 leading-relaxed text-center md:text-left">
+                    <p className="text-slate-600 group-hover:text-slate-100 leading-relaxed text-center md:text-left transition-colors duration-500">
                       {prop.description}
                     </p>
                   </CardContent>
@@ -128,13 +129,15 @@ export default function CollaboratorsPage() {
 
 
         {/* Final CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
+        <section id="cta" className="py-24 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
           {/* Decorative Yellow Curved Lines */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-8">
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-10">
             <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M110 20 Q 70 50 -10 20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.4" />
-              <circle cx="15" cy="85" r="20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.2" opacity="0.5" />
-              <path d="M100 80 C 80 50 60 70 40 40" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.6" />
+              <path d="M110 20 Q 70 50 -10 20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.5" />
+              <path d="M-10 60 Q 50 30 110 60" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.6" />
+              <circle cx="15" cy="85" r="20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.5" />
+              <circle cx="90" cy="10" r="15" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.2" opacity="0.4" />
+              <path d="M100 80 C 80 50 60 70 40 40" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.4" opacity="0.7" />
             </svg>
           </div>
 
@@ -146,20 +149,17 @@ export default function CollaboratorsPage() {
 
               <div className="relative z-10">
                 <h2 className="text-3xl md:text-5xl font-bold text-[#0F1B2D] mb-8">
-                  ¿Estás listo para escalar?
+                  ¿Estás listo para <span className="text-[var(--color-brand-yellow)]">escalar</span>?
                 </h2>
                 <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
                   Contacta directamente con nuestro equipo de expansión a través de WhatsApp para agilizar tu registro y resolver dudas.
                 </p>
 
-                <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xl px-12 h-20 rounded-full shadow-xl hover:shadow-2xl gap-4 transition-all transform hover:scale-105">
+                <Button asChild size="lg" className="bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-[#0F1B2D] font-bold text-xl px-12 h-20 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
                   <a
-                    href="https://wa.me/584120628427?text=Hola,%20estoy%20interesado%20en%20el%20programa%20de%20colaboradores%20de%20ComparamosTuLuz.%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n."
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/contacto"
                   >
-                    <img src={whatsappLogo} alt="WhatsApp" className="w-10 h-10 filter brightness-0 invert" />
-                    Hablar con un Agente
+                    Quiero formar parte y ser colaborador
                   </a>
                 </Button>
 

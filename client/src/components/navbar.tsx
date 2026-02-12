@@ -9,7 +9,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -32,9 +32,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${
-        isScrolled ? "bg-[#0F1B2D]/95 backdrop-blur-md border-white/10" : "bg-[#0F1B2D] border-white/5"
-      } text-[#C6CFDA]`}
+      className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${isScrolled ? "bg-[#0F1B2D]/95 backdrop-blur-md border-white/10" : "bg-[#0F1B2D] border-white/5"
+        } text-[#C6CFDA]`}
       role="navigation"
       aria-label="Main navigation"
     >
@@ -66,13 +65,24 @@ export function Navbar() {
               <div className="h-4 w-px bg-white/50"></div>
             </div>
           ))}
-          
+
           {/* Nuevo enlace Colaboradores */}
           <div className="flex items-center">
-             <Link href="/colaboradores">
+            <Link href="/colaboradores">
               <a className={`relative text-[10px] lg:text-xs font-bold uppercase transition-colors px-3 lg:px-4 whitespace-nowrap group ${location === '/colaboradores' ? 'text-[var(--color-brand-yellow)]' : 'hover:text-[var(--color-brand-yellow)]'}`}>
                 Colaboradores
                 <span className={`absolute bottom-[-6px] left-1/2 h-[2px] bg-[var(--color-brand-yellow)] -translate-x-1/2 transition-all duration-500 ease-out ${location === '/colaboradores' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </a>
+            </Link>
+            <div className="h-4 w-px bg-white/50"></div>
+          </div>
+
+          {/* Enlace Contacto */}
+          <div className="flex items-center">
+            <Link href="/contacto">
+              <a className={`relative text-[10px] lg:text-xs font-bold uppercase transition-colors px-3 lg:px-4 whitespace-nowrap group ${location === '/contacto' ? 'text-[var(--color-brand-yellow)]' : 'hover:text-[var(--color-brand-yellow)]'}`}>
+                Contacto
+                <span className={`absolute bottom-[-6px] left-1/2 h-[2px] bg-[var(--color-brand-yellow)] -translate-x-1/2 transition-all duration-500 ease-out ${location === '/contacto' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </a>
             </Link>
           </div>
@@ -113,10 +123,10 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            
+
             {/* Enlace móvil Colaboradores */}
             <Link href="/colaboradores">
-              <a 
+              <a
                 className={`block text-sm font-bold uppercase border-b border-white/10 pb-3 ${location === '/colaboradores' ? 'text-[var(--color-brand-yellow)]' : 'text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]'}`}
                 onClick={() => setIsOpen(false)}
               >

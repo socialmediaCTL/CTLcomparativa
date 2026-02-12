@@ -106,49 +106,58 @@ export function RoadmapSection() {
                 });
             }
 
-            // Animate background images with crossfade
+            // Animate background images with instant transitions
             backgroundsRef.current.forEach((bg, index) => {
                 if (!bg) return;
 
                 // Set initial opacity to 0 for all except the first
-                if (index !== 0) {
-                    gsap.set(bg, { opacity: 0 });
-                }
+                gsap.set(bg, { opacity: index === 0 ? 0.25 : 0 });
 
                 const circle = circlesRef.current[index];
                 if (!circle) return;
 
-                // Fade in current background and fade out previous ones
-                gsap.to(bg, {
-                    opacity: 0.25, // 25% opacity for better visibility
-                    scrollTrigger: {
-                        trigger: circle,
-                        start: "top 85%", // Start earlier for faster appearance
-                        end: "top 50%",
-                        scrub: 1,
-                        onEnter: () => {
-                            // Fade out all other backgrounds
-                            backgroundsRef.current.forEach((otherBg, otherIndex) => {
-                                if (otherIndex !== index && otherBg) {
-                                    gsap.to(otherBg, {
-                                        opacity: 0,
-                                        duration: 0.8,
-                                        ease: "power2.inOut"
-                                    });
-                                }
-                            });
-                        },
+                // Instant background switch when step enters viewport
+                ScrollTrigger.create({
+                    trigger: circle,
+                    start: "top 75%", // When step enters viewport
+                    end: "bottom 25%", // When step leaves viewport
+                    onEnter: () => {
+                        // Show current background instantly
+                        gsap.to(bg, { opacity: 0.25, duration: 0.3, ease: "power2.out" });
+                        // Hide all other backgrounds instantly
+                        backgroundsRef.current.forEach((otherBg, otherIndex) => {
+                            if (otherIndex !== index && otherBg) {
+                                gsap.to(otherBg, { opacity: 0, duration: 0.3, ease: "power2.out" });
+                            }
+                        });
                     },
-                });
-
-                // Fade out when scrolling past
-                gsap.to(bg, {
-                    opacity: 0,
-                    scrollTrigger: {
-                        trigger: circle,
-                        start: "bottom 20%",
-                        end: "bottom top",
-                        scrub: 1,
+                    onEnterBack: () => {
+                        // Show current background when scrolling back up
+                        gsap.to(bg, { opacity: 0.25, duration: 0.3, ease: "power2.out" });
+                        // Hide all other backgrounds
+                        backgroundsRef.current.forEach((otherBg, otherIndex) => {
+                            if (otherIndex !== index && otherBg) {
+                                gsap.to(otherBg, { opacity: 0, duration: 0.3, ease: "power2.out" });
+                            }
+                        });
+                    },
+                    onLeave: () => {
+                        // When scrolling down past this step, only hide if not going to next step
+                        if (index < backgroundsRef.current.length - 1) {
+                            // Let next step handle it
+                        } else {
+                            // Last step, hide background when leaving
+                            gsap.to(bg, { opacity: 0, duration: 0.3, ease: "power2.out" });
+                        }
+                    },
+                    onLeaveBack: () => {
+                        // When scrolling up past this step, only hide if not going to previous step
+                        if (index > 0) {
+                            // Let previous step handle it
+                        } else {
+                            // First step, hide background when leaving back
+                            gsap.to(bg, { opacity: 0, duration: 0.3, ease: "power2.out" });
+                        }
                     },
                 });
             });

@@ -6,6 +6,7 @@ import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 import Upload from "@/pages/upload";
 import CollaboratorsPage from "@/pages/collaborators-page"; // IMPORTANTE
+import ContactPage from "@/pages/contact-page";
 import { ChatWidget } from "@/components/chat-widget";
 
 function Router() {
@@ -13,6 +14,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/colaboradores" component={CollaboratorsPage} /> {/* IMPORTANTE */}
+      <Route path="/contacto" component={ContactPage} />
       <Route path="/subir-factura" component={Upload} />
       <Route component={NotFound} />
     </Switch>

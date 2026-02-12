@@ -12,6 +12,7 @@ import {
   Clock,
   MapPin,
   Phone,
+  Users,
 } from "lucide-react";
 import {
   Dialog,
@@ -176,6 +177,24 @@ export function Footer() {
                   Conoce a Volt
                 </a>
               </li>
+              <li>
+                <a
+                  href="/colaboradores"
+                  className="flex items-center gap-2 hover:text-white transition-colors"
+                >
+                  <Users className="w-4 h-4 text-[var(--color-brand-yellow)]" />
+                  Colaboradores
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contacto"
+                  className="flex items-center gap-2 hover:text-white transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-[var(--color-brand-yellow)]" />
+                  Contacto
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -302,7 +321,7 @@ export function Footer() {
             </ul>
           </div>
 
-                    {/* Columna 4: Contacto */}
+          {/* Columna 4: Contacto */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h4 className="text-white font-bold mb-6 text-lg">Contacto</h4>
             <ul className="space-y-3 text-sm">
