@@ -30,50 +30,63 @@ interface RoadmapStep {
 const roadmapSteps: RoadmapStep[] = [
     {
         id: 1,
-        title: "Paso 01",
+        title: "01",
         subtitle: "Alianza Estratégica",
         description:
-            "Firma de Convenio Institucional. Formalización de la plataforma como herramienta oficial del Colegio de Administradores de Fincas (CAF).",
+            "Establecemos un marco de colaboración oficial para integrar nuestra tecnología como la herramienta de gestión energética de referencia para tu entidad.",
         icon: <Handshake className="w-12 h-12 md:w-16 md:h-16" />,
         image: voltAlianza,
     },
     {
         id: 2,
-        title: "Paso 02",
-        subtitle: "Activación del Motor de IA",
-        description:
-            "Inicio de auditorías automáticas mediante un escaneo multimarca de más de 80 ofertas del mercado energético.",
-        icon: <Brain className="w-12 h-12 md:w-16 md:h-16" />,
-        image: voltIA,
-    },
-    {
-        id: 3,
-        title: "Paso 03",
-        subtitle: "Monitorización y Seguridad",
-        description:
-            "Control continuo de la eficiencia energética con alertas proactivas que identifican renovaciones tácitas y cláusulas abusivas.",
-        icon: <ShieldCheck className="w-12 h-12 md:w-16 md:h-16" />,
-        image: voltMonitorizacion,
-    },
-    {
-        id: 4,
-        title: "Paso 04",
+        title: "02",
         subtitle: "Despliegue de la Red",
         description:
-            "Transmisión de la información necesaria de los administradores colegiados al CRM centralizado del sistema.",
+            "Conectamos y centralizamos todos tus puntos de suministro en nuestro sistema inteligente, permitiendo una visión global de tu ecosistema energético desde un solo lugar.",
         icon: <Network className="w-12 h-12 md:w-16 md:h-16" />,
         image: voltRed,
     },
     {
+        id: 3,
+        title: "03",
+        subtitle: "Activación del Motor de IA",
+        description:
+            "Iniciamos el proceso de auditoría automática mediante un escaneo multimarca que detecta y activa ahorros netos garantizados de forma inmediata.",
+        icon: <Brain className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltIA,
+    },
+    {
+        id: 4,
+        title: "04",
+        subtitle: "Escudo Técnico y Control",
+        description:
+            "Implementamos un sistema de vigilancia proactiva que monitoriza incidencias y protege tu rentabilidad frente a cláusulas abusivas o renovaciones tácticas.",
+        icon: <ShieldCheck className="w-12 h-12 md:w-16 md:h-16" />,
+        image: voltMonitorizacion,
+    },
+    {
         id: 5,
-        title: "Paso 05",
+        title: "05",
         subtitle: "Escalabilidad Operativa",
         description:
-            "Eliminación de la carga burocrática para permitir la gestión de un volumen ilimitado de comunidades con la misma estructura de personal.",
+            "Liberamos a tu equipo del 100% de la carga burocrática, permitiendo gestionar un volumen ilimitado de activos con la misma estructura de personal.",
         icon: <Building2 className="w-12 h-12 md:w-16 md:h-16" />,
         image: voltEscalabilidad,
     },
 ];
+
+// Utility function to split text into words wrapped in spans
+const splitTextIntoWords = (text: string): React.ReactNode => {
+    return text.split(' ').map((word, index) => (
+        <span
+            key={index}
+            className="inline-block opacity-0"
+            style={{ willChange: 'opacity, transform' }}
+        >
+            {word}{index < text.split(' ').length - 1 ? '\u00A0' : ''}
+        </span>
+    ));
+};
 
 export function RoadmapSection() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -81,6 +94,8 @@ export function RoadmapSection() {
     const circlesRef = useRef<(HTMLDivElement | null)[]>([]);
     const textsRef = useRef<(HTMLDivElement | null)[]>([]);
     const backgroundsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const subtitlesRef = useRef<(HTMLHeadingElement | null)[]>([]);
+    const descriptionsRef = useRef<(HTMLParagraphElement | null)[]>([]);
 
     useEffect(() => {
         if (!sectionRef.current || !pathRef.current) return;
@@ -116,6 +131,10 @@ export function RoadmapSection() {
                 const circle = circlesRef.current[index];
                 if (!circle) return;
 
+                // Get text elements for this step
+                const subtitle = subtitlesRef.current[index];
+                const description = descriptionsRef.current[index];
+
                 // Instant background switch when step enters viewport
                 ScrollTrigger.create({
                     trigger: circle,
@@ -130,6 +149,36 @@ export function RoadmapSection() {
                                 gsap.to(otherBg, { opacity: 0, duration: 0.3, ease: "power2.out" });
                             }
                         });
+
+                        // Trigger text animations when background appears
+                        if (subtitle) {
+                            const words = subtitle.querySelectorAll('span');
+                            gsap.fromTo(words,
+                                { opacity: 0, y: 10 },
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    stagger: 0.04,
+                                    duration: 0.6,
+                                    ease: "power2.out",
+                                }
+                            );
+                        }
+
+                        if (description) {
+                            const words = description.querySelectorAll('span');
+                            gsap.fromTo(words,
+                                { opacity: 0, y: 10 },
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    stagger: 0.04,
+                                    duration: 0.6,
+                                    delay: 0.2, // Slight delay after subtitle
+                                    ease: "power2.out",
+                                }
+                            );
+                        }
                     },
                     onEnterBack: () => {
                         // Show current background when scrolling back up
@@ -140,6 +189,36 @@ export function RoadmapSection() {
                                 gsap.to(otherBg, { opacity: 0, duration: 0.3, ease: "power2.out" });
                             }
                         });
+
+                        // Re-trigger text animations when scrolling back
+                        if (subtitle) {
+                            const words = subtitle.querySelectorAll('span');
+                            gsap.fromTo(words,
+                                { opacity: 0, y: 10 },
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    stagger: 0.04,
+                                    duration: 0.6,
+                                    ease: "power2.out",
+                                }
+                            );
+                        }
+
+                        if (description) {
+                            const words = description.querySelectorAll('span');
+                            gsap.fromTo(words,
+                                { opacity: 0, y: 10 },
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    stagger: 0.04,
+                                    duration: 0.6,
+                                    delay: 0.2,
+                                    ease: "power2.out",
+                                }
+                            );
+                        }
                     },
                     onLeave: () => {
                         // When scrolling down past this step, only hide if not going to next step
@@ -370,16 +449,29 @@ export function RoadmapSection() {
                                         <p className="text-[var(--color-brand-yellow)] font-bold text-sm md:text-base uppercase tracking-wider mb-2">
                                             {step.title}
                                         </p>
-                                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                                            {step.subtitle}
+                                        <h3
+                                            ref={(el) => { subtitlesRef.current[index] = el; }}
+                                            className="text-2xl md:text-3xl font-bold text-white mb-4"
+                                        >
+                                            {splitTextIntoWords(step.subtitle)}
                                         </h3>
-                                        <p className="text-[#C6CFDA] leading-relaxed text-base md:text-lg">
-                                            {step.description}
+                                        <p
+                                            ref={(el) => { descriptionsRef.current[index] = el; }}
+                                            className="text-[#C6CFDA] leading-relaxed text-base md:text-lg"
+                                        >
+                                            {splitTextIntoWords(step.description)}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Final Phrase */}
+                    <div className="mt-20 text-center">
+                        <p className="text-xl md:text-2xl text-white font-bold italic max-w-3xl mx-auto">
+                            "El éxito de tu crecimiento se construye sobre una base sólida de tecnología, confianza y resultados medibles"
+                        </p>
                     </div>
                 </div>
             </div>
