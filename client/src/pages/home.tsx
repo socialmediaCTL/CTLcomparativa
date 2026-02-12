@@ -88,6 +88,7 @@ import whatsappLogo from "@assets/whatsapp_logo.png";
 import { CollaboratorsSection } from "@/components/collaborators-section";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import voltVideo from '@/assets/volt_para_web.webm';
 
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -842,28 +843,34 @@ function MeetVolt() {
       <GoldenArcBackground position="top-right" />
       <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-20 w-auto mx-auto">
-          {/* IMAGEN: Izquierda (lg:order-1) */}
-          <div className=" w-auto lg:w-5/12 flex justify-center relative lg:mb-0 order-1 lg:order-1">
-            <div className="relative scale-100 lg:scale-110 w-full max-w-sm lg:max-w-md mx-auto">
-              {/* Círculo de fondo con sombra blanca sutil */}
-              <div className="absolute inset-0 m-auto w-[300px] h-[300px] lg:w-[380px] lg:h-[380px] bg-[#002782] rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/10 z-0">
-                {/* Arco Blanco (Superior Derecho) */}
-                <div className="absolute -top-[2px] -right-[2px] w-full h-full rounded-full border-t-4 border-r-4 border-white opacity-90 transform rotate-12 pointer-events-none"></div>
-                {/* Arco Amarillo (Inferior Izquierdo) */}
-                <div className="absolute -bottom-[2px] -left-[2px] w-full h-full rounded-full border-b-4 border-l-4 border-[var(--color-brand-yellow)] opacity-90 transform rotate-12 pointer-events-none"></div>
-              </div>
+        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 w-auto mx-auto">
+                    {/* VIDEO: Izquierda - ESTÁTICO PERO MÁS GRANDE */}
+                    {/* VIDEO: Izquierda - VOLT GRANDE, SIN ARCOS, CON SOMBRA Y RESPONSIVE */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-end items-center relative mb-12 lg:mb-0 order-1 lg:order-1">
+            {/* Contenedor con anchos responsivos: Móvil (280px) -> Tablet (400px) -> Desktop (600px) */}
+            <div className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[600px] mx-auto">
+              
+              {/* Video */}
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                // scale-110 y origin-bottom hacen que crezca hacia arriba, viéndose más grande
+                className="w-full h-auto relative z-10 pointer-events-none transform scale-110 lg:scale-145 mt-20 origin-bottom drop-shadow-2xl"
+              >
+                <source src={voltVideo} type="video/webm" />
+                Tu navegador no soporta videos HTML5.
+              </video>
 
-              <img
-                src={voltTools}
-                alt="Volt con herramientas"
-                className="w-full drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] relative z-10"
-              />
+              {/* Sombra de "Piso" (Efecto de estar parado) */}
+              {/* Se ajusta automáticamente según el tamaño del contenedor padre */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[60%] h-3 lg:h-6 bg-black/60 blur-lg lg:blur-xl rounded-[100%] z-0"></div>
             </div>
           </div>
 
           {/* TEXTO: Derecha (lg:order-2) */}
-          <div className="w-full lg:w-6/12 order-2 lg:order-2">
+          <div className="w-full lg:w-5/12 order-2 lg:order-2 pl-lg-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight text-left">
               Volt: tu acompañante en cada{" "}
               <span className="text-[var(--color-brand-yellow)]"> decisión</span> energética
@@ -1059,7 +1066,7 @@ function FAQ() {
                 src={voltFAQ}
                 alt="Volt respondiendo dudas"
                 // CAMBIO: Agregado 'mx-auto block' al final para centrar
-                className="w-[60%] xl:w-10/8 h-auto relative z-10 drop-shadow-2xl mx-auto block"
+                className="w-[60%] xl:w-10/4 h-auto relative z-10 drop-shadow-2xl mx-auto block"
               />
             </motion.div>
           </div>
