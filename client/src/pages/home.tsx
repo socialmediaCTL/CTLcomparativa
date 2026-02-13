@@ -62,6 +62,7 @@ import {
   BookOpen,
   Lock,
   Home as HomeIcon,
+  Play,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -474,32 +475,100 @@ function Features() {
   );
 }
 function HowItWorks() {
+  const [player, setPlayer] = useState<any>(null);
+  const videoRef = useState<string>("youtube-player-" + Math.random().toString(36).substr(2, 9))[0];
+
+  useEffect(() => {
+    // Load YouTube API
+    if (!(window as any).YT) {
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+    }
+
+    (window as any).onYouTubeIframeAPIReady = () => {
+      initPlayer();
+    };
+
+    if ((window as any).YT && (window as any).YT.Player) {
+      initPlayer();
+    }
+
+    function initPlayer() {
+      const newPlayer = new (window as any).YT.Player(videoRef, {
+        height: '100%',
+        width: '100%',
+        videoId: 'gCXUoxUHHFg',
+        playerVars: {
+          autoplay: 0,
+          controls: 1,
+          rel: 0,
+          showinfo: 0,
+          mute: 1,
+          loop: 1,
+          playlist: 'gCXUoxUHHFg'
+        },
+        events: {
+          onReady: (event: any) => {
+            setPlayer(event.target);
+          }
+        }
+      });
+    }
+  }, [videoRef]);
+
+  useEffect(() => {
+    if (!player) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            player.playVideo();
+          } else {
+            player.pauseVideo();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const element = document.getElementById("how-it-works");
+    if (element) observer.observe(element);
+
+    return () => {
+      if (element) observer.unobserve(element);
+    };
+  }, [player]);
+
   const steps = [
     {
-      icon: <FileUp className="h-8 w-8 text-[var(--color-brand-yellow)]" />,
+      icon: <FileUp className="h-6 w-6 text-[var(--color-brand-yellow)]" />,
       title: "Sube tu factura",
       description:
         "Analizamos tu consumo real y detectamos oportunidades de ahorro personalizadas.",
     },
     {
       icon: (
-        <ArrowLeftRight className="h-8 w-8 text-[var(--color-brand-yellow)]" />
+        <ArrowLeftRight className="h-6 w-6 text-[var(--color-brand-yellow)]" />
       ),
       title: "Comparamos tarifas por ti",
       description:
         "Revisamos las mejores compañías del mercado y seleccionamos solo las tarifas que te benefician de verdad.",
     },
     {
-      icon: <Zap className="h-8 w-8 text-[var(--color-brand-yellow)]" />,
+      icon: <Zap className="h-6 w-6 text-[var(--color-brand-yellow)]" />,
       title: "Ahorra desde el primer mes",
       description:
         "Elige la opción ideal y empieza a pagar menos sin papeleo ni llamadas interminables.",
     },
   ];
+
   return (
     <section
       id="how-it-works"
-      className="py-10 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
+      className="py-20 md:py-32 bg-[var(--color-brand-blue)] border-t border-white/5 relative z-10 scroll-mt-28"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -525,40 +594,67 @@ function HowItWorks() {
         </svg>
       </div>
       <div className="absolute top-0 left-0 w-full h-px bg-white/5"></div>
+
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             ¿Cómo <span className="text-[var(--color-brand-yellow)]">funciona</span>?
           </h2>
-          <p className="text-lg text-[#C6CFDA]">
+          <p className="text-lg md:text-xl text-[#C6CFDA] leading-relaxed">
             Nuestro proceso es rápido, fácil y pensado para ayudarte a pagar
             menos por tu electricidad sin complicaciones.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-12 relative">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="flex flex-col items-center text-center group bg-[#102033] border border-white/5 rounded-2xl p-8 shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-            >
-              <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/5 group-hover:bg-white/10 transition-all duration-300 relative">
-                {step.icon}
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-[var(--color-brand-yellow)] rounded-full flex items-center justify-center text-[#0F1B2D] font-bold text-sm border-2 border-[#0F1B2D]">
-                  {index + 1}
+
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Tarjetas a la izquierda */}
+          <div className="w-full lg:w-1/2 space-y-6">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                className="flex items-start gap-6 bg-[#102033]/60 backdrop-blur-sm border border-white/5 rounded-2xl p-6 shadow-lg hover:border-[var(--color-brand-yellow)]/20 transition-all duration-300 group"
+              >
+                <div className="w-14 h-14 shrink-0 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-white/10 transition-all duration-300 relative">
+                  {step.icon}
+                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-[var(--color-brand-yellow)] rounded-full flex items-center justify-center text-[#0F1B2D] font-bold text-xs border-2 border-[#102033]">
+                    {index + 1}
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-4">
-                {step.title}
-              </h3>
-              <p className="text-[#C6CFDA] leading-relaxed max-w-sm mx-auto">
-                {step.description}
-              </p>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[var(--color-brand-yellow)] transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-[#C6CFDA] leading-relaxed text-sm md:text-base">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Video a la derecha */}
+          <div className="w-full lg:w-1/2 relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0C1A2B] group"
+            >
+              <div id={videoRef} className="w-full h-full"></div>
+
+              {/* Overlay decorativo suave */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
             </motion.div>
-          ))}
+
+            {/* Decoración detrás del video */}
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-[var(--color-brand-yellow)]/10 rounded-full blur-2xl -z-10"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -844,12 +940,12 @@ function MeetVolt() {
       <GoldenArcBackground position="bottom-left" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 w-auto mx-auto">
-                    {/* VIDEO: Izquierda - ESTÁTICO PERO MÁS GRANDE */}
-                    {/* VIDEO: Izquierda - VOLT GRANDE, SIN ARCOS, CON SOMBRA Y RESPONSIVE */}
+          {/* VIDEO: Izquierda - ESTÁTICO PERO MÁS GRANDE */}
+          {/* VIDEO: Izquierda - VOLT GRANDE, SIN ARCOS, CON SOMBRA Y RESPONSIVE */}
           <div className="w-full lg:w-1/2 flex flex-col justify-end items-center relative mb-12 lg:mb-0 order-1 lg:order-1">
             {/* Contenedor con anchos responsivos: Móvil (280px) -> Tablet (400px) -> Desktop (600px) */}
             <div className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[600px] mx-auto">
-              
+
               {/* Video */}
               <video
                 autoPlay
