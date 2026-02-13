@@ -24,7 +24,7 @@ export default function ContactPage() {
             `Teléfono: ${formData.telefono}%0A` +
             `Comentario: ${formData.comentario}`;
 
-        window.open(`https://wa.me/584120628427?text=${message}`, '_blank');
+        window.open(`https://wa.me/34635624154?text=${message}`, '_blank');
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -100,7 +100,7 @@ export default function ContactPage() {
                                             <div>
                                                 <h3 className="font-bold mb-1">Atención al cliente</h3>
                                                 <a href="tel:+584120628427" className="text-slate-300 hover:text-[var(--color-brand-yellow)] transition-colors text-lg">
-                                                    +58 412 062 8427
+                                                    +34 635 62 41 54
                                                 </a>
                                                 <p className="text-slate-400 text-sm mt-1">Lun - Vie / 9:00 - 19:00</p>
                                             </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                                             </div>
                                             <div>
                                                 <h3 className="font-bold mb-1">Oficina</h3>
-                                                <p className="text-slate-300">Caracas, Venezuela</p>
+                                                <p className="text-slate-300">Avd. Cami Reial 101 46470 Valencia, España</p>
                                                 <p className="text-slate-400 text-sm mt-1">Atención internacional</p>
                                             </div>
                                         </div>
