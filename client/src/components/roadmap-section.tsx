@@ -126,7 +126,7 @@ export function RoadmapSection() {
                 if (!bg) return;
 
                 // Set initial opacity to 0 for all except the first
-                gsap.set(bg, { opacity: index === 0 ? 0.25 : 0 });
+                gsap.set(bg, { opacity: 0 });
 
                 const circle = circlesRef.current[index];
                 if (!circle) return;
@@ -317,8 +317,8 @@ export function RoadmapSection() {
                     }}
                     className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000"
                     style={{
-                        opacity: index === 0 ? 0.2 : 0,
-                    }}
+    opacity: 0, // Siempre 0 al inicio
+}}
                 >
                     <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

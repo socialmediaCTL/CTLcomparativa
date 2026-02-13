@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Youtube, Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
+import voltContacto from "@assets/volt_contacto.webp"; // <--- Importamos la imagen de Volt
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -62,7 +63,7 @@ export default function ContactPage() {
                 </section>
 
                 {/* Contact Form Section */}
-                <section className="py-20 bg-white relative overflow-hidden">
+                <section className="py-20 bg-white relative z-10">
                     {/* Decorative Yellow Curved Lines */}
                     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-10">
                         <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -78,7 +79,6 @@ export default function ContactPage() {
                     <div className="container mx-auto px-4 relative z-10">
                         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                             {/* Left Column - Contact Info */}
-                            {/* MODIFICADO: order-2 (abajo en móvil) lg:order-1 (izquierda/primero en PC) */}
                             <div className="bg-[#0F1B2D] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden order-2 lg:order-1">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                                             </div>
                                             <div>
                                                 <h3 className="font-bold mb-1">Atención al cliente</h3>
-                                                <a href="tel:+584120628427" className="text-slate-300 hover:text-[var(--color-brand-yellow)] transition-colors text-lg">
+                                                <a href="tel:+34635624154" className="text-slate-300 hover:text-[var(--color-brand-yellow)] transition-colors text-lg">
                                                     +34 635 62 41 54
                                                 </a>
                                                 <p className="text-slate-400 text-sm mt-1">Lun - Vie / 9:00 - 19:00</p>
@@ -153,87 +153,97 @@ export default function ContactPage() {
                             </div>
 
                             {/* Right Column - Contact Form */}
-                            {/* MODIFICADO: order-1 (arriba en móvil) lg:order-2 (derecha/segundo en PC) */}
-                            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100 order-1 lg:order-2">
-                                <h2 className="text-3xl font-bold text-[#0F1B2D] mb-3">
-                                    Envíanos tu <span className="text-[var(--color-brand-yellow)]">consulta</span>
-                                </h2>
-                                <p className="text-slate-600 mb-8">
-                                    Completa la siguiente información y en breve nos pondremos en contacto contigo.
-                                </p>
+                            {/* Agregamos relative y mt-24 para el espacio de Volt en móvil */}
+                            <div className="relative order-1 lg:order-2 mt-24 lg:mt-0">
+                                
+                                {/* Imagen de Volt flotando arriba */}
+                                <img 
+                                  src={voltContacto} 
+                                  alt="Volt Contacto" 
+                                  className="absolute -top-48 left-1/2 transform -translate-x-1/4 w-[70%] z-20 drop-shadow-2xl pointer-events-none"
+                                />
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="nombre" className="block text-sm font-bold text-[#0F1B2D] mb-2">
-                                                Nombre <span className="text-red-500">*</span>
-                                            </label>
-                                            <Input
-                                                type="text"
-                                                id="nombre"
-                                                name="nombre"
-                                                required
-                                                value={formData.nombre}
-                                                onChange={handleChange}
-                                                className="h-12 border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)]"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label htmlFor="email" className="block text-sm font-bold text-[#0F1B2D] mb-2">
-                                                Email <span className="text-red-500">*</span>
-                                            </label>
-                                            <Input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                required
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                className="h-12 border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)]"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="telefono" className="block text-sm font-bold text-[#0F1B2D] mb-2">
-                                            Teléfono
-                                        </label>
-                                        <Input
-                                            type="tel"
-                                            id="telefono"
-                                            name="telefono"
-                                            value={formData.telefono}
-                                            onChange={handleChange}
-                                            className="h-12 border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)]"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="comentario" className="block text-sm font-bold text-[#0F1B2D] mb-2">
-                                            Comentario
-                                        </label>
-                                        <Textarea
-                                            id="comentario"
-                                            name="comentario"
-                                            rows={5}
-                                            value={formData.comentario}
-                                            onChange={handleChange}
-                                            className="border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)] resize-none"
-                                        />
-                                    </div>
-
-                                    <Button
-                                        type="submit"
-                                        className="w-full h-14 bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-[#0F1B2D] font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-                                    >
-                                        Enviar Consulta
-                                    </Button>
-
-                                    <p className="text-center text-sm text-slate-500">
-                                        Al enviar este formulario, serás redirigido a WhatsApp para completar tu consulta.
+                                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100 relative z-10">
+                                    <h2 className="text-3xl font-bold text-[#0F1B2D] mb-3">
+                                        Envíanos tu <span className="text-[var(--color-brand-yellow)]">consulta</span>
+                                    </h2>
+                                    <p className="text-slate-600 mb-8">
+                                        Completa la siguiente información y en breve nos pondremos en contacto contigo.
                                     </p>
-                                </form>
+
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label htmlFor="nombre" className="block text-sm font-bold text-[#0F1B2D] mb-2">
+                                                    Nombre <span className="text-red-500">*</span>
+                                                </label>
+                                                <Input
+                                                    type="text"
+                                                    id="nombre"
+                                                    name="nombre"
+                                                    required
+                                                    value={formData.nombre}
+                                                    onChange={handleChange}
+                                                    className="h-12 border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)]"
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <label htmlFor="email" className="block text-sm font-bold text-[#0F1B2D] mb-2">
+                                                    Email <span className="text-red-500">*</span>
+                                                </label>
+                                                <Input
+                                                    type="email"
+                                                    id="email"
+                                                    name="email"
+                                                    required
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    className="h-12 border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)]"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="telefono" className="block text-sm font-bold text-[#0F1B2D] mb-2">
+                                                Teléfono
+                                            </label>
+                                            <Input
+                                                type="tel"
+                                                id="telefono"
+                                                name="telefono"
+                                                value={formData.telefono}
+                                                onChange={handleChange}
+                                                className="h-12 border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)]"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="comentario" className="block text-sm font-bold text-[#0F1B2D] mb-2">
+                                                Comentario
+                                            </label>
+                                            <Textarea
+                                                id="comentario"
+                                                name="comentario"
+                                                rows={5}
+                                                value={formData.comentario}
+                                                onChange={handleChange}
+                                                className="border-slate-300 focus:border-[var(--color-brand-yellow)] focus:ring-[var(--color-brand-yellow)] resize-none"
+                                            />
+                                        </div>
+
+                                        <Button
+                                            type="submit"
+                                            className="w-full h-14 bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-[#0F1B2D] font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                                        >
+                                            Enviar Consulta
+                                        </Button>
+
+                                        <p className="text-center text-sm text-slate-500">
+                                            Al enviar este formulario, serás redirigido a WhatsApp para completar tu consulta.
+                                        </p>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
