@@ -25,6 +25,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 import logoFooter from "@assets/logo_footer.webp";
 import logoUE from "@assets/logo-compo-ue-color.png";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -178,23 +179,17 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="/colaboradores"
-                  className="flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <Users className="w-4 h-4 text-[var(--color-brand-yellow)]" />
-                  Colaboradores
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contacto"
-                  className="flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-[var(--color-brand-yellow)]" />
-                  Contacto
-                </a>
-              </li>
+  <Link href="/colaboradores" className="flex items-center gap-2 hover:text-white transition-colors">
+    <Users className="w-4 h-4 text-[var(--color-brand-yellow)]" />
+    Colaboradores
+  </Link>
+</li>
+<li>
+  <Link href="/contacto" className="flex items-center gap-2 hover:text-white transition-colors">
+    <Mail className="w-4 h-4 text-[var(--color-brand-yellow)]" />
+    Contacto
+  </Link>
+</li>
             </ul>
           </div>
 
