@@ -11,10 +11,7 @@ import {
 } from "lucide-react";
 import whatsappLogo from "@assets/whatsapp_logo.png";
 import { RoadmapSection } from "@/components/roadmap-section";
-// Importa tus imágenes de Volt
-// import voltBusiness from "@assets/volt_business.png";
-// import voltTech from "@assets/volt_tech.png";
-// import voltSuccess from "@assets/volt_rocket.png";
+import { CollaboratorsSection } from "@/components/collaborators-section"; // <--- Importamos la sección
 
 export default function CollaboratorsPage() {
   const valueProps = [
@@ -45,42 +42,12 @@ export default function CollaboratorsPage() {
       <Navbar />
 
       <main className="flex-grow pt-24">
-        {/* Hero Section */}
-        <section className="py-20 md:py-28 bg-[#0F1B2D] relative overflow-hidden text-center">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-
-          {/* Líneas decorativas - Estilo Volt */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-            <svg className="absolute top-0 left-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M-10 20 Q 30 50 110 20" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" />
-              <circle cx="10" cy="80" r="20" fill="none" stroke="white" strokeWidth="0.2" opacity="0.5" />
-              <path d="M80 100 C 60 70 90 40 100 0" fill="none" stroke="var(--color-brand-yellow)" strokeWidth="0.3" opacity="0.6" />
-            </svg>
-          </div>
-
-          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px]"></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[var(--color-brand-yellow)]/10 rounded-full blur-[100px]"></div>
-
-          <div className="container mx-auto px-4 relative z-10">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-              Transforma tu Red en un <span className="text-[var(--color-brand-yellow)]">Activo Rentable</span>
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Únete al ecosistema de colaboración líder en el sector energético.
-              Automatización, rentabilidad y servicio premium para tus clientes.
-            </p>
-            <div className="flex flex-col items-center gap-4">
-              <Button asChild size="lg" className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] hover:bg-yellow-400 font-bold text-lg px-10 h-14 rounded-full shadow-[0_0_20px_rgba(255,204,0,0.4)] transition-transform transform hover:scale-105">
-                <a href="#roadmap">
-                  Ver Hoja de Ruta <ArrowDown className="ml-2 w-5 h-5" />
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
+        
+        {/* AQUÍ ESTÁ EL CAMBIO: Sección de Colaboradores como Hero Principal */}
+        <CollaboratorsSection />
 
         {/* Value Proposition Section */}
-        <section className="py-20 bg-white relative overflow-hidden">
+        <section id="value-proposition" className="py-20 bg-white relative overflow-hidden">
           {/* Decorative Yellow Curved Lines */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-10">
             <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -126,7 +93,6 @@ export default function CollaboratorsPage() {
 
         {/* Roadmap Section - Interactive with GSAP ScrollTrigger */}
         <RoadmapSection />
-
 
         {/* Final CTA Section */}
         <section id="cta" className="py-24 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">

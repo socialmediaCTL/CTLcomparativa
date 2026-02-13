@@ -78,7 +78,8 @@ export default function ContactPage() {
                     <div className="container mx-auto px-4 relative z-10">
                         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                             {/* Left Column - Contact Info */}
-                            <div className="bg-[#0F1B2D] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+                            {/* MODIFICADO: order-2 (abajo en móvil) lg:order-1 (izquierda/primero en PC) */}
+                            <div className="bg-[#0F1B2D] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden order-2 lg:order-1">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
@@ -152,7 +153,8 @@ export default function ContactPage() {
                             </div>
 
                             {/* Right Column - Contact Form */}
-                            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100">
+                            {/* MODIFICADO: order-1 (arriba en móvil) lg:order-2 (derecha/segundo en PC) */}
+                            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100 order-1 lg:order-2">
                                 <h2 className="text-3xl font-bold text-[#0F1B2D] mb-3">
                                     Envíanos tu <span className="text-[var(--color-brand-yellow)]">consulta</span>
                                 </h2>

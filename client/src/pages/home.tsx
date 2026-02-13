@@ -119,7 +119,6 @@ export default function Home() {
         <Testimonials />
         <MeetVolt />
         <FAQ />
-        <CollaboratorsSection />
         <CTA />
       </main>
       <footer>

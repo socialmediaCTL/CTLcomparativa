@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Handshake, Globe, TrendingUp, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import colaboradoresBg from "@assets/colaboradores.png"; // <--- Asegúrate de que la imagen esté aquí
+import { Handshake, Globe, TrendingUp, ArrowDown } from "lucide-react";
+// import colaboradoresBg from "@assets/colaboradores.png"; // Ya no usamos la imagen
+import voltVideo from "@assets/video_colaboradores_page.webm"; // <--- Importamos el video
 
 export function CollaboratorsSection() {
   const steps = [
@@ -22,16 +22,29 @@ export function CollaboratorsSection() {
     }
   ];
 
+  const handleScroll = () => {
+    const nextSection = document.getElementById('value-proposition');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="py-24 relative overflow-hidden">
-       {/* Fondo de Imagen con Overlay */}
+       {/* CAMBIO PRINCIPAL: Video de Fondo */}
        <div className="absolute inset-0 z-0">
-          <img 
-            src={colaboradoresBg} 
-            alt="Fondo Colaboradores" 
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover object-center"
-          />
-          {/* Overlay oscuro para legibilidad (Gradiante profesional) */}
+          >
+            <source src={voltVideo} type="video/webm" />
+            Su navegador no soporta videos HTML5.
+          </video>
+          
+          {/* Overlay oscuro para que el texto se lea bien sobre el video */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0F1B2D]/95 via-[#0F1B2D]/90 to-[#0F1B2D]/80"></div>
        </div>
 
@@ -47,18 +60,15 @@ export function CollaboratorsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 relative">
-          {/* Pequeña etiqueta superior */}
           <span className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-brand-yellow)]/30 bg-[var(--color-brand-yellow)]/10 text-[var(--color-brand-yellow)] font-medium text-sm mb-6 tracking-wide uppercase">
             Programa de Partners
           </span>
 
-          {/* Título Principal con la palabra clave */}
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
             ¿Quieres ser nuestro <br className="hidden md:block" />
             <span className="text-[var(--color-brand-yellow)]">Colaborador Oficial?</span>
           </h2>
 
-          {/* Subtítulo descriptivo */}
           <p className="text-xl text-slate-300 font-light leading-relaxed">
             Únete al ecosistema que rentabiliza tu red de contactos mientras ayudas a tus clientes a ahorrar.
           </p>
@@ -79,11 +89,13 @@ export function CollaboratorsSection() {
         </div>
 
         <div className="text-center">
-          <Link href="/colaboradores">
-            <Button size="lg" className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] hover:bg-[#FFD700] hover:text-black font-bold text-lg px-10 h-16 rounded-full shadow-[0_0_20px_rgba(255,204,0,0.3)] hover:shadow-[0_0_30px_rgba(255,204,0,0.6)] gap-3 transition-all transform hover:scale-105">
-              Más información <ArrowRight className="w-6 h-6" />
-            </Button>
-          </Link>
+          <Button 
+            size="lg" 
+            onClick={handleScroll}
+            className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] hover:bg-[#FFD700] hover:text-black font-bold text-lg px-10 h-16 rounded-full shadow-[0_0_20px_rgba(255,204,0,0.3)] hover:shadow-[0_0_30px_rgba(255,204,0,0.6)] gap-3 transition-all transform hover:scale-105"
+          >
+            Más información <ArrowDown className="w-6 h-6" />
+          </Button>
         </div>
       </div>
     </section>
