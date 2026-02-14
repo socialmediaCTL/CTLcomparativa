@@ -31,7 +31,7 @@ export default function ContactPage() {
                 data.append("attachment", file);
             }
 
-            const response = await fetch("https://formspree.io/f/xreapwqa", {
+            const response = await fetch("https://formspree.io/f/xaqdonvj", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",

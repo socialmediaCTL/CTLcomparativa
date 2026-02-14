@@ -67,7 +67,7 @@ function AnalyzeForm() {
     }
 
     try {
-      const response = await fetch("https://formspree.io/f/xreapwqa", {
+      const response = await fetch("https://formspree.io/f/xaqdonvj", {
         method: "POST",
         body: data,
         headers: {
@@ -238,7 +238,7 @@ function CallForm() {
     if (file) data.append("invoice", file);
 
     try {
-      const response = await fetch("https://formspree.io/f/xreapwqa", {
+      const response = await fetch("https://formspree.io/f/xaqdonvj", {
         method: "POST",
         body: data,
         headers: { 'Accept': 'application/json' }
@@ -348,7 +348,7 @@ function ShareForm() {
     setStatus("submitting");
 
     try {
-      const response = await fetch("https://formspree.io/f/xreapwqa", {
+      const response = await fetch("https://formspree.io/f/xaqdonvj", {
         method: "POST",
         body: JSON.stringify({ form_type: "Share Link/Reminder", email }),
         headers: {
