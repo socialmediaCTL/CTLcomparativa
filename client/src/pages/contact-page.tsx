@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Youtube, Facebook, Instagram, ShieldCheck, Upload } from "lucide-react";
 import { useState, useRef } from "react";
 import voltContacto from "@assets/volt_contacto.webp"; // <--- Importamos la imagen de Volt
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -83,12 +84,14 @@ export default function ContactPage() {
                     </div>
 
                     <div className="container mx-auto px-4 relative z-10 text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            ¿Tienes dudas? <span className="text-[var(--color-brand-yellow)]">Te las resolvemos</span>
-                        </h1>
-                        <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-                            Un equipo completo con técnicos y asesores a tu disposición para cualquier duda.
-                        </p>
+                        <ScrollReveal direction="down">
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                ¿Tienes dudas? <span className="text-[var(--color-brand-yellow)]">Te las resolvemos</span>
+                            </h1>
+                            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+                                Un equipo completo con técnicos y asesores a tu disposición para cualquier duda.
+                            </p>
+                        </ScrollReveal>
                     </div>
                 </section>
 
@@ -109,7 +112,7 @@ export default function ContactPage() {
                     <div className="container mx-auto px-4 relative z-10">
                         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                             {/* Left Column - Contact Info */}
-                            <div className="bg-[#0F1B2D] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden order-2 lg:order-1">
+                            <ScrollReveal direction="left" className="bg-[#0F1B2D] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden order-2 lg:order-1">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
@@ -180,11 +183,11 @@ export default function ContactPage() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </ScrollReveal>
 
                             {/* Right Column - Contact Form */}
                             {/* Agregamos relative y mt-24 para el espacio de Volt en móvil */}
-                            <div className="relative order-1 lg:order-2 mt-24 lg:mt-0">
+                            <ScrollReveal direction="right" className="relative order-1 lg:order-2 mt-24 lg:mt-0">
 
                                 {/* Imagen de Volt flotando arriba */}
                                 <img
@@ -319,7 +322,7 @@ export default function ContactPage() {
                                         </>
                                     )}
                                 </div>
-                            </div>
+                            </ScrollReveal>
                         </div>
                     </div>
                 </section>

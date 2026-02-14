@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 import whatsappLogo from "@assets/whatsapp_logo.png";
 import { RoadmapSection } from "@/components/roadmap-section";
-import { CollaboratorsSection } from "@/components/collaborators-section"; // <--- Importamos la sección
+import { CollaboratorsSection } from "@/components/collaborators-section";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function CollaboratorsPage() {
   const valueProps = [
@@ -42,7 +43,7 @@ export default function CollaboratorsPage() {
       <Navbar />
 
       <main className="flex-grow pt-24">
-        
+
         {/* AQUÍ ESTÁ EL CAMBIO: Sección de Colaboradores como Hero Principal */}
         <CollaboratorsSection />
 
@@ -60,32 +61,40 @@ export default function CollaboratorsPage() {
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0F1B2D] mb-4">
-                Una Propuesta de Valor <span className="text-[var(--color-brand-yellow)]">Única</span>
-              </h2>
-              <p className="text-slate-600 text-lg">
-                Hemos diseñado una solución integral para eliminar fricciones y maximizar resultados.
-              </p>
-            </div>
+            <ScrollReveal>
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#0F1B2D] mb-4">
+                  Una Propuesta de Valor <span className="text-[var(--color-brand-yellow)]">Única</span>
+                </h2>
+                <p className="text-slate-600 text-lg">
+                  Hemos diseñado una solución integral para eliminar fricciones y maximizar resultados.
+                </p>
+              </div>
+            </ScrollReveal>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {valueProps.map((prop, index) => (
-                <Card key={index} className="border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white hover:bg-[#0F1B2D] group cursor-pointer">
-                  <CardHeader className="pb-2">
-                    <div className="w-16 h-16 rounded-2xl bg-[#0F1B2D]/5 group-hover:bg-white flex items-center justify-center mb-4 mx-auto md:mx-0 transition-all duration-500 group-hover:rotate-[5deg]">
-                      <div className="[&>svg]:text-[var(--color-brand-yellow)] group-hover:[&>svg]:text-[#0F1B2D] transition-colors duration-500">{prop.icon}</div>
-                    </div>
-                    <CardTitle className="text-xl font-bold text-[#0F1B2D] group-hover:text-white text-center md:text-left transition-colors duration-500">
-                      {prop.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-600 group-hover:text-slate-100 leading-relaxed text-center md:text-left transition-colors duration-500">
-                      {prop.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <ScrollReveal
+                  key={index}
+                  delay={index * 0.1}
+                  className="border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white hover:bg-[#0F1B2D] group cursor-pointer rounded-xl overflow-hidden"
+                >
+                  <Card className="border-0 shadow-none bg-transparent">
+                    <CardHeader className="pb-2">
+                      <div className="w-16 h-16 rounded-2xl bg-[#0F1B2D]/5 group-hover:bg-white flex items-center justify-center mb-4 mx-auto md:mx-0 transition-all duration-500 group-hover:rotate-[5deg]">
+                        <div className="[&>svg]:text-[var(--color-brand-yellow)] group-hover:[&>svg]:text-[#0F1B2D] transition-colors duration-500">{prop.icon}</div>
+                      </div>
+                      <CardTitle className="text-xl font-bold text-[#0F1B2D] group-hover:text-white text-center md:text-left transition-colors duration-500">
+                        {prop.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-slate-600 group-hover:text-slate-100 leading-relaxed text-center md:text-left transition-colors duration-500">
+                        {prop.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -108,33 +117,34 @@ export default function CollaboratorsPage() {
           </div>
 
           <div className="container mx-auto px-4 text-center relative z-10">
+            <ScrollReveal direction="up" distance={50}>
+              <div className="max-w-4xl mx-auto bg-white rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden ring-1 ring-slate-200">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
-            <div className="max-w-4xl mx-auto bg-white rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden ring-1 ring-slate-200">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--color-brand-yellow)]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                <div className="relative z-10">
+                  <h2 className="text-3xl md:text-5xl font-bold text-[#0F1B2D] mb-8">
+                    ¿Estás listo para <span className="text-[var(--color-brand-yellow)]">escalar</span>?
+                  </h2>
+                  <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+                    Contacta directamente con nuestro equipo de expansión a través de WhatsApp para agilizar tu registro y resolver dudas.
+                  </p>
 
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-5xl font-bold text-[#0F1B2D] mb-8">
-                  ¿Estás listo para <span className="text-[var(--color-brand-yellow)]">escalar</span>?
-                </h2>
-                <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-                  Contacta directamente con nuestro equipo de expansión a través de WhatsApp para agilizar tu registro y resolver dudas.
-                </p>
+                  <Button asChild size="lg" className="bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-[#0F1B2D] font-bold text-xl px-12 h-20 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+                    <a
+                      href="/contacto"
+                    >
+                      Quiero formar parte y ser colaborador
+                    </a>
+                  </Button>
 
-                <Button asChild size="lg" className="bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-[#0F1B2D] font-bold text-xl px-12 h-20 rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-                  <a
-                    href="/contacto"
-                  >
-                    Quiero formar parte y ser colaborador
-                  </a>
-                </Button>
-
-                <div className="mt-8 flex items-center justify-center gap-2 text-slate-500 text-sm">
-                  <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                  Respuesta media: &lt; 15 minutos
+                  <div className="mt-8 flex items-center justify-center gap-2 text-slate-500 text-sm">
+                    <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Respuesta media: &lt; 15 minutos
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
       </main>

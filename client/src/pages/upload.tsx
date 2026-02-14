@@ -91,9 +91,9 @@ function AnalyzeForm() {
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
           <ShieldCheck className="w-10 h-10 text-green-600" />
         </div>
-        <h3 className="text-2xl font-bold text-[#002782]">¡Recibido!</h3>
+        <h3 className="text-2xl font-bold text-[#0F1B2D]">¡Recibido!</h3>
         <p className="text-gray-600">Estamos analizando tu factura. Te contactaremos pronto.</p>
-        <Button onClick={() => setStatus("idle")} className="bg-[var(--color-brand-yellow)] text-[#002782] font-bold">VOLVER</Button>
+        <Button onClick={() => setStatus("idle")} className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] font-bold">VOLVER</Button>
       </div>
     );
   }
@@ -111,7 +111,7 @@ function AnalyzeForm() {
       {/* Formulario */}
       <div className="flex-1 w-full space-y-5 flex flex-col justify-center">
         <div className="text-center md:text-left space-y-2">
-          <h3 className="text-2xl font-bold text-[#002782]">Sube tu factura <span className="text-[var(--color-brand-yellow)]">de la luz</span> </h3>
+          <h3 className="text-2xl font-bold text-[#0F1B2D]">Sube tu factura <span className="text-[var(--color-brand-yellow)]">de la luz</span> </h3>
           <p className="text-gray-500">Descubre cuánto dinero te puedes ahorrar</p>
         </div>
 
@@ -139,9 +139,9 @@ function AnalyzeForm() {
             </div>
           ) : (
             <>
-              <UploadIcon className="w-10 h-10 text-[#002782]" />
+              <UploadIcon className="w-10 h-10 text-[#0F1B2D]" />
               <div className="text-center">
-                <p className="font-bold text-[#002782] text-sm">Factura Reciente</p>
+                <p className="font-bold text-[#0F1B2D] text-sm">Factura Reciente</p>
                 <p className="text-[10px] text-gray-500">.pdf, .jpeg, .png</p>
               </div>
             </>
@@ -149,7 +149,7 @@ function AnalyzeForm() {
         </div>
         <div className="space-y-3">
           <div>
-            <Label className="text-[#002782]">Datos de contacto:</Label>
+            <Label className="text-[#0F1B2D]">Datos de contacto:</Label>
             <Input
               name="email"
               type="email"
@@ -200,7 +200,7 @@ function AnalyzeForm() {
         <Button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-4 shadow-lg hover:shadow-yellow-500/20"
+          className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#0F1B2D] font-bold text-lg py-4 shadow-lg hover:shadow-yellow-500/20"
         >
           {status === "submitting" ? "ENVIANDO..." : "SIGUIENTE"}
         </Button>
@@ -257,9 +257,9 @@ function CallForm() {
         <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
           <Phone className="w-10 h-10 text-blue-600" />
         </div>
-        <h3 className="text-2xl font-bold text-[#002782]">¡Solicitud enviada!</h3>
+        <h3 className="text-2xl font-bold text-[#0F1B2D]">¡Solicitud enviada!</h3>
         <p className="text-gray-600">Te llamaremos muy pronto.</p>
-        <Button onClick={() => setStatus("idle")} className="bg-[var(--color-brand-yellow)] text-[#002782] font-bold">VOLVER</Button>
+        <Button onClick={() => setStatus("idle")} className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] font-bold">VOLVER</Button>
       </div>
     );
   }
@@ -281,7 +281,7 @@ function CallForm() {
           <div className="md:hidden w-12 h-12 bg-[var(--color-brand-yellow)] rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg">
             <Phone className="w-6 h-6 text-[#0F1B2D]" />
           </div>
-          <h3 className="text-2xl font-bold text-[#002782]">¡Nosotros te <span className="text-[var(--color-brand-yellow)]">llamamos!</span></h3>
+          <h3 className="text-2xl font-bold text-[#0F1B2D]">¡Nosotros te <span className="text-[var(--color-brand-yellow)]">llamamos!</span></h3>
           <p className="text-gray-500">Déjanos tu número y te asesoramos gratis.</p>
         </div>
         <div className="space-y-3">
@@ -304,7 +304,7 @@ function CallForm() {
           />
 
           <div className="p-3 bg-gray-50 rounded-lg border border-gray-100">
-            <p className="text-xs font-bold text-[#002782] mb-1">OPCIONAL - Adjuntar factura:</p>
+            <p className="text-xs font-bold text-[#0F1B2D] mb-1">OPCIONAL - Adjuntar factura:</p>
             <label className="flex items-center justify-center border border-dashed border-gray-300 rounded p-2 hover:border-[#002782] transition-colors cursor-pointer bg-white">
               <span className="text-xs text-gray-400">{file ? file.name : "Seleccionar archivo"}</span>
               <input
@@ -330,7 +330,7 @@ function CallForm() {
         <Button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-4 shadow-lg shadow-yellow-500/10"
+          className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#0F1B2D] font-bold text-lg py-4 shadow-lg shadow-yellow-500/10"
         >
           {status === "submitting" ? "ENVIANDO..." : "ENVIAR SOLICITUD"}
         </Button>
@@ -370,9 +370,9 @@ function ShareForm() {
         <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
           <Mail className="w-10 h-10 text-yellow-600" />
         </div>
-        <h3 className="text-2xl font-bold text-[#002782]">¡Recordatorio enviado!</h3>
+        <h3 className="text-2xl font-bold text-[#0F1B2D]">¡Recordatorio enviado!</h3>
         <p className="text-gray-600">Revisa tu bandeja de entrada.</p>
-        <Button onClick={() => setStatus("idle")} className="bg-[var(--color-brand-yellow)] text-[#002782] font-bold">VOLVER</Button>
+        <Button onClick={() => setStatus("idle")} className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] font-bold">VOLVER</Button>
       </div>
     );
   }
@@ -391,7 +391,7 @@ function ShareForm() {
       <div className="flex-1 w-full max-w-md mx-auto space-y-6 flex flex-col justify-center">
         <div className="text-center md:text-left space-y-4">
           <div>
-            <h3 className="text-2xl font-bold text-[#002782]">¿No tienes la <span className="text-[var(--color-brand-yellow)]">factura?</span> </h3>
+            <h3 className="text-2xl font-bold text-[#0F1B2D]">¿No tienes la <span className="text-[var(--color-brand-yellow)]">factura?</span> </h3>
             <p className="text-gray-500 mt-2">Te enviamos un recordatorio para que la subas cuando puedas.</p>
           </div>
         </div>
@@ -408,7 +408,7 @@ function ShareForm() {
           <Button
             type="submit"
             disabled={status === "submitting"}
-            className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#002782] font-bold text-lg py-6 shadow-lg shadow-yellow-500/10"
+            className="w-full bg-[var(--color-brand-yellow)] hover:bg-yellow-500 text-[#0F1B2D] font-bold text-lg py-6 shadow-lg shadow-yellow-500/10"
           >
             {status === "submitting" ? "ENVIANDO..." : "ENVIAR RECORDATORIO"}
           </Button>

@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import logoRound from "@assets/logo_ctl_clean.png";
 import whatsappLogo from "@assets/whatsapp_logo.png";
 
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
@@ -87,7 +88,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <Button asChild className="ml-4 bg-[var(--color-brand-yellow)] text-white hover:bg-yellow-400 font-bold shadow-lg shadow-white/20 transition-all uppercase text-xs tracking-wide border-2 [text-shadow:1px_1px_2px_black] border-white whitespace-nowrap transition-all transform hover:scale-105">
+          <Button asChild className="ml-4 bg-[var(--color-brand-yellow)] text-[#0F1B2D] hover:bg-yellow-400 font-bold shadow-lg shadow-white/20 transition-all uppercase text-xs tracking-wide border-2 border-[#0F1B2D] whitespace-nowrap transition-all transform hover:scale-105">
             <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
               Subir Factura
             </a>
@@ -134,7 +135,7 @@ export function Navbar() {
               </a>
             </Link>
 
-             {/* Enlace móvil Colaboradores */}
+            {/* Enlace móvil Colaboradores */}
             <Link href="/contacto">
               <a
                 className={`block text-sm font-bold uppercase border-b border-white/10 pb-3 pt-3 ${location === '/contacto' ? 'text-[var(--color-brand-yellow)]' : 'text-[#C6CFDA] hover:text-[var(--color-brand-yellow)]'}`}
@@ -153,7 +154,7 @@ export function Navbar() {
                 </div>
               </a>
             </Button>
-            <Button asChild className="w-full bg-[var(--color-brand-yellow)] text-white font-bold uppercase border-2 border-white ">
+            <Button asChild className="w-full bg-[var(--color-brand-yellow)] text-[#0F1B2D] font-bold uppercase border-2 border-[#0F1B2D] ">
               <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
                 Subir Factura
               </a>

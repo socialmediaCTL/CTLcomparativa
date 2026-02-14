@@ -90,6 +90,7 @@ import { CollaboratorsSection } from "@/components/collaborators-section";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import voltVideo from '@/assets/volt_para_web.webm';
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -262,75 +263,73 @@ function Hero() {
         <div className="absolute bottom-0 left-20 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl"></div>
       </div>
       <div className="container mx-auto px-4 relative z-20 grid lg:grid-cols-2 gap-12 items-center h-full">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-8 text-center lg:text-left pt-32 lg:pt-0 pb-12 lg:pb-0">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-            Ahorra en tu factura de luz sin{" "}
-            <span className="text-[var(--color-brand-yellow)]">
-              complicaciones
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed mb-10">
-            Comparamos por ti las mejores tarifas del mercado y te mostramos la
-            opción que realmente te ayuda a pagar menos cada mes.
-          </p>
+        <ScrollReveal direction="left">
+          <div className="space-y-8 text-center lg:text-left pt-32 lg:pt-0 pb-12 lg:pb-0">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+              Ahorra en tu factura de luz sin{" "}
+              <span className="text-[var(--color-brand-yellow)]">
+                complicaciones
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed mb-10">
+              Comparamos por ti las mejores tarifas del mercado y te mostramos la
+              opción que realmente te ayuda a pagar menos cada mes.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 items-center sm:items-end">
-            <div className="relative transition-transform duration-300 hover:-translate-y-2">
-              <Button
-                asChild
-                size="lg"
-                className="bg-[var(--color-brand-yellow)] [text-shadow:1px_1px_2px_black] hover:bg-yellow-400 text-white font-bold text-lg h-14 px-8 rounded-xl shadow-lg shadow-yellow-500/20 transition-all duration-300 relative z-10"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 items-center sm:items-end">
+              <div className="relative transition-transform duration-300 hover:-translate-y-2">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[var(--color-brand-yellow)] hover:bg-yellow-400 text-[#0F1B2D] font-bold text-lg h-14 px-8 rounded-xl shadow-lg shadow-yellow-500/20 transition-all duration-300 relative z-10"
+                >
+                  <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
+                    Comparar tarifas ahora
+                  </a>
+                </Button>
+                {/* Imagen de Volt recostado */}
+                <img
+                  src={voltBoton}
+                  alt="Volt"
+                  className="absolute -left-8 -bottom-1.5 w-22 z-20 pointer-events-none filter drop-shadow-lg hidden sm:block"
+                />
+              </div>
+              <a
+                href="https://wa.me/34635624154?text=Hola,%20quisiera%20mas%20informacion%20sobre%20la%20comparativa%20de%20la%20factura%20de%20luz"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
-                  Comparar tarifas ahora
-                </a>
-              </Button>
-              {/* Imagen de Volt recostado */}
-              <img
-                src={voltBoton}
-                alt="Volt"
-                className="absolute -left-8 -bottom-1.5 w-22 z-20 pointer-events-none filter drop-shadow-lg hidden sm:block"
-              />
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white/20 bg-transparent text-white hover:bg-[var(--color-brand-yellow)] hover:text-[#0F1B2D] hover:-translate-y-1 hover:border-[var(--color-brand-white)] transition-all duration-300 h-14 px-8 font-bold rounded-xl"
+                >
+                  Hablar con un asesor
+                </Button>
+              </a>
             </div>
-            <a
-              href="https://wa.me/34635624154?text=Hola,%20quisiera%20mas%20informacion%20sobre%20la%20comparativa%20de%20la%20factura%20de%20luz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white/20 bg-transparent text-white hover:bg-[var(--color-brand-yellow)] hover:text-[#FFFFFF] hover:-translate-y-1 hover:border-[var(--color-brand-white)] transition-all duration-300 h-14 px-8 font-bold rounded-xl"
-              >
-                Hablar con un asesor
-              </Button>
-            </a>
-          </div>
-          <div className="pt-6 border-t border-white/10 mt-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-medium text-gray-300">
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <CheckCircle2 className="w-4 h-4 text-green-400" />
-                <span>100% gratis</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <CheckCircle2 className="w-4 h-4 text-green-400" />
-                <span>Comparativa imparcial</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <CheckCircle2 className="w-4 h-4 text-green-400" />
-                <span>Sin permanencia</span>
-              </div>
-              <div className="flex items-center gap-2 justify-center lg:justify-start">
-                <CheckCircle2 className="w-4 h-4 text-green-400" />
-                <span>Seguro y transparente</span>
+            <div className="pt-6 border-t border-white/10 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-medium text-gray-300">
+                <div className="flex items-center gap-2 justify-center lg:justify-start">
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span>100% gratis</span>
+                </div>
+                <div className="flex items-center gap-2 justify-center lg:justify-start">
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span>Comparativa imparcial</span>
+                </div>
+                <div className="flex items-center gap-2 justify-center lg:justify-start">
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span>Sin permanencia</span>
+                </div>
+                <div className="flex items-center gap-2 justify-center lg:justify-start">
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span>Seguro y transparente</span>
+                </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </ScrollReveal>
         <div className="hidden lg:block"></div>
       </div>
     </section>
@@ -399,25 +398,24 @@ function Features() {
         </svg>
       </div>
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            ¿Por qué <span className="text-[var(--color-brand-yellow)]">elegirnos</span>?
-          </h2>
-          <p className="text-lg text-blue-100">
-            Descubre cómo te ayudamos a pagar menos por tu factura de luz,
-            siempre con transparencia y sin complicaciones.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              ¿Por qué <span className="text-[var(--color-brand-yellow)]">elegirnos</span>?
+            </h2>
+            <p className="text-lg text-blue-100">
+              Descubre cómo te ayudamos a pagar menos por tu factura de luz,
+              siempre con transparencia y sin complicaciones.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Vista Escritorio (Grid) - Oculto en móviles */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <ScrollReveal
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              delay={index * 0.1}
               className="flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300 hover:shadow-[0_0_16px_rgba(255,255,255,0.12)] rounded-2xl p-6"
             >
               <div className="mb-6 p-4 rounded-full bg-white/5 group-hover:bg-white/10 transition-all duration-300 border border-white/5 group-hover:rotate-6">
@@ -429,7 +427,7 @@ function Features() {
               <p className="text-blue-100 leading-relaxed">
                 {feature.description}
               </p>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
@@ -595,26 +593,26 @@ function HowItWorks() {
       <div className="absolute top-0 left-0 w-full h-px bg-white/5"></div>
 
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            ¿Cómo <span className="text-[var(--color-brand-yellow)]">funciona</span>?
-          </h2>
-          <p className="text-lg md:text-xl text-[#C6CFDA] leading-relaxed">
-            Nuestro proceso es rápido, fácil y pensado para ayudarte a pagar
-            menos por tu electricidad sin complicaciones.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              ¿Cómo <span className="text-[var(--color-brand-yellow)]">funciona</span>?
+            </h2>
+            <p className="text-lg md:text-xl text-[#C6CFDA] leading-relaxed">
+              Nuestro proceso es rápido, fácil y pensado para ayudarte a pagar
+              menos por tu electricidad sin complicaciones.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Tarjetas a la izquierda */}
           <div className="w-full lg:w-1/2 space-y-6">
             {steps.map((step, index) => (
-              <motion.div
+              <ScrollReveal
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
+                direction="left"
+                delay={index * 0.2}
                 className="flex items-start gap-6 bg-[#102033]/60 backdrop-blur-sm border border-white/5 rounded-2xl p-6 shadow-lg hover:border-[var(--color-brand-yellow)]/20 transition-all duration-300 group"
               >
                 <div className="w-14 h-14 shrink-0 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-white/10 transition-all duration-300 relative">
@@ -631,24 +629,20 @@ function HowItWorks() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </div>
 
           {/* Video a la derecha */}
           <div className="w-full lg:w-1/2 relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0C1A2B] group"
-            >
-              <div id={videoRef} className="w-full h-full"></div>
+            <ScrollReveal direction="right">
+              <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0C1A2B] group">
+                <div id={videoRef} className="w-full h-full"></div>
 
-              {/* Overlay decorativo suave */}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
-            </motion.div>
+                {/* Overlay decorativo suave */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+            </ScrollReveal>
 
             {/* Decoración detrás del video */}
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-[var(--color-brand-yellow)]/10 rounded-full blur-2xl -z-10"></div>
@@ -670,7 +664,7 @@ function Comparison() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
           {/* Contenido de Imagen (Ahora a la Izquierda) */}
-          <div className="w-6/8 lg:w-auto relative flex justify-center lg:justify-end">
+          <ScrollReveal direction="left" className="w-6/8 lg:w-auto relative flex justify-center lg:justify-end">
             {/* Elementos decorativos de fondo */}
             <div className="absolute inset-0 bg-gradient-to-tr to-transparent rounded-full blur-3xl transform scale-90"></div>
 
@@ -680,10 +674,10 @@ function Comparison() {
               className="relative z-10 w-full max-w-sm lg:max-w-md object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
-          </div>
+          </ScrollReveal>
 
           {/* Contenido de Texto (Ahora a la Derecha) */}
-          <div className="lg:w-7/12 space-y-8">
+          <ScrollReveal direction="right" className="lg:w-7/12 space-y-8">
             <div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
                 Te comparamos la tasa entre{" "}
@@ -757,8 +751,7 @@ function Comparison() {
                 </div>
               </div>
             </div>
-
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -828,19 +821,21 @@ function Testimonials() {
         </svg>
       </div>
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Lo que dicen nuestros{" "}
-            <span className="text-[var(--color-brand-yellow)]">usuarios</span>
-          </h2>
-          <p className="text-lg text-[#C6CFDA]">
-            Estas son opiniones reales de personas que ya están ahorrando con
-            nuestras recomendaciones.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Lo que dicen nuestros{" "}
+              <span className="text-[var(--color-brand-yellow)]">usuarios</span>
+            </h2>
+            <p className="text-lg text-[#C6CFDA]">
+              Estas son opiniones reales de personas que ya están ahorrando con
+              nuestras recomendaciones.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Carrusel de Testimonios (Responsive) */}
-        <div className="px-8 md:px-12">
+        <ScrollReveal direction="up" className="px-8 md:px-12">
           <Carousel
             opts={{
               align: "start",
@@ -890,7 +885,7 @@ function Testimonials() {
             <CarouselPrevious className="-left-4 sm:-left-9 bg-[#0F1B2D] border-white/10 text-white hover:bg-white/10 transition-colors" />
             <CarouselNext className="-right-4 sm:-right-9 bg-[#0F1B2D] border-white/10 text-white hover:bg-white/10 transition-colors" />
           </Carousel>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>
@@ -941,7 +936,7 @@ function MeetVolt() {
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 w-auto mx-auto">
           {/* VIDEO: Izquierda - ESTÁTICO PERO MÁS GRANDE */}
           {/* VIDEO: Izquierda - VOLT GRANDE, SIN ARCOS, CON SOMBRA Y RESPONSIVE */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-end items-center relative mb-12 lg:mb-0 order-1 lg:order-1">
+          <ScrollReveal direction="left" className="w-full lg:w-1/2 flex flex-col justify-end items-center relative mb-12 lg:mb-0 order-1 lg:order-1">
             {/* Contenedor con anchos responsivos: Móvil (280px) -> Tablet (400px) -> Desktop (600px) */}
             <div className="relative w-full max-w-[280px] sm:max-w-[400px] lg:max-w-[600px] mx-auto">
 
@@ -962,10 +957,10 @@ function MeetVolt() {
               {/* Se ajusta automáticamente según el tamaño del contenedor padre */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[60%] h-3 lg:h-6 bg-black/60 blur-lg lg:blur-xl rounded-[100%] z-0"></div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* TEXTO: Derecha (lg:order-2) */}
-          <div className="w-full lg:w-5/12 order-2 lg:order-2 pl-lg-8">
+          <ScrollReveal direction="right" className="w-full lg:w-5/12 order-2 lg:order-2 pl-lg-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight text-left">
               Volt: tu acompañante en cada{" "}
               <span className="text-[var(--color-brand-yellow)]"> decisión</span> energética
@@ -977,7 +972,7 @@ function MeetVolt() {
             {/* ACCORDION CARDS */}
             <div className="flex flex-col gap-4">
               {tabs.map((tab) => (
-                <motion.div
+                <div
                   key={tab.id}
                   className={`bg-[#102033] rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer ${activeTab === tab.id
                     ? "border-[var(--color-brand-yellow)] shadow-[0_0_12px_rgba(255,255,255,0.08)]"
@@ -992,7 +987,7 @@ function MeetVolt() {
                   <div className="p-4 flex items-start gap-4">
                     <div
                       className={`p-2 rounded-lg transition-colors duration-300 ${activeTab === tab.id
-                        ? "bg-[var(--color-brand-yellow)] text-[#1c2e4a]"
+                        ? "bg-[var(--color-brand-yellow)] text-[#0F1B2D]"
                         : "bg-white/5 text-gray-400"
                         }`}
                     >
@@ -1021,10 +1016,10 @@ function MeetVolt() {
                       </AnimatePresence>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -1088,41 +1083,40 @@ function FAQ() {
       </div>
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Preguntas <span className="text-[var(--color-brand-yellow)]">frecuentes</span>
-          </h2>
-          <p className="text-lg text-[#C6CFDA]">
-            Resolvemos las dudas más comunes para ayudarte a entender cómo <br />
-            funciona nuestra plataforma y cómo puedes empezar a ahorrar.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Preguntas <span className="text-[var(--color-brand-yellow)]">frecuentes</span>
+            </h2>
+            <p className="text-lg text-[#C6CFDA]">
+              Resolvemos las dudas más comunes para ayudarte a entender cómo <br />
+              funciona nuestra plataforma y cómo puedes empezar a ahorrar.
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Columna Izquierda: Preguntas */}
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="border border-white/5 rounded-xl bg-[#102033] px-6 transition-all duration-200 ease-out hover:shadow-[0_0_12px_rgba(255,255,255,0.08)] hover:-translate-y-[2px] [&[data-state=open]]:shadow-[0_0_16px_rgba(255,255,255,0.12)] [&[data-state=open]]:border-white/20"
-              >
-                <AccordionTrigger className="text-left font-bold text-white hover:text-[var(--color-brand-yellow)] hover:no-underline py-6 text-lg [&[data-state=open]]:text-[var(--color-brand-yellow)] transition-colors">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-[#C6CFDA] pb-6 text-base leading-relaxed">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <ScrollReveal direction="left">
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`item-${i}`}
+                  className="border border-white/5 rounded-xl bg-[#102033] px-6 transition-all duration-200 ease-out hover:shadow-[0_0_12px_rgba(255,255,255,0.08)] hover:-translate-y-[2px] [&[data-state=open]]:shadow-[0_0_16px_rgba(255,255,255,0.12)] [&[data-state=open]]:border-white/20"
+                >
+                  <AccordionTrigger className="text-left font-bold text-white hover:text-[var(--color-brand-yellow)] hover:no-underline py-6 text-lg [&[data-state=open]]:text-[var(--color-brand-yellow)] transition-colors">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[#C6CFDA] pb-6 text-base leading-relaxed">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </ScrollReveal>
           {/* Columna Derecha: Volt */}
-          <div className="flex justify-center lg:justify-center relative pt-4 mb-0 sm:pt-10 md:mb-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500">
-            <motion.div
-              initial={{ scale: 0.9 }}
-              whileHover={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-full max-w-xs"
-            >
+          <ScrollReveal direction="right" className="flex justify-center lg:justify-center relative pt-4 mb-0 sm:pt-10 md:mb-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform hover:scale-105 transition-transform duration-500">
+            <div className="relative w-full max-w-xs">
               {/* Fondo difuminado detrás */}
               <motion.div
                 animate={{ opacity: [0.3, 0.15, 0.3], scale: [0.95, 1, 0.30] }}
@@ -1163,8 +1157,8 @@ function FAQ() {
                 // CAMBIO: Agregado 'mx-auto block' al final para centrar
                 className="w-[60%] xl:w-10/4 h-auto relative z-10 drop-shadow-2xl mx-auto block"
               />
-            </motion.div>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -1201,7 +1195,7 @@ function CTA() {
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
+        <ScrollReveal className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             Empieza hoy a{" "}
             <span className="text-[var(--color-brand-yellow)]">
@@ -1217,7 +1211,7 @@ function CTA() {
             <Button
               asChild
               size="lg"
-              className="bg-[var(--color-brand-yellow)] [text-shadow:1px_1px_2px_black]  text-[#f8f8f8] font-bold text-lg h-16 px-10 rounded-full  transition-all transform hover:scale-105"
+              className="bg-[var(--color-brand-yellow)] text-[#0F1B2D] font-bold text-lg h-16 px-10 rounded-full transition-all transform hover:scale-105"
             >
               <a href="https://campaign.comparamostuluz.es/?agente=17216" target="_blank" rel="noopener noreferrer">
                 Comparar tarifas ahora
@@ -1231,18 +1225,16 @@ function CTA() {
               "Comparativa imparcial",
               "Seguro y transparente",
             ].map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5 cursor-default"
+                className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5 cursor-default hover:translate-y-[-5px] transition-transform duration-200"
               >
                 <CheckCircle2 className="w-4 h-4 text-[#00C97E]" />
                 <span>{item}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
