@@ -496,7 +496,7 @@ function HowItWorks() {
       const newPlayer = new (window as any).YT.Player(videoRef, {
         height: '100%',
         width: '100%',
-        videoId: 'gCXUoxUHHFg',
+        videoId: 'tsA8mWShUcA',
         playerVars: {
           autoplay: 0,
           controls: 1,
@@ -504,7 +504,7 @@ function HowItWorks() {
           showinfo: 0,
           mute: 1,
           loop: 1,
-          playlist: 'gCXUoxUHHFg'
+          playlist: 'tsA8mWShUcA'
         },
         events: {
           onReady: (event: any) => {
